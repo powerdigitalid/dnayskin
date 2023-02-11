@@ -1,14 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+
+import Layout from '../components/home-pages/utils/layout'
+import Hero from '../components/home-pages/utils/hero'
+import NewProduct from '../components/home-pages/utils/newProduct'
 
 
 
 export default function Home() {
   return (
     <>
-      <h1>Hello Word</h1>
+      <Layout>
+      <Hero />
+      <NewProduct />
+      </Layout>
     </>
   )
 }

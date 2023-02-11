@@ -1,4 +1,7 @@
-export default function newProduct() {
+import Product from "../../../public/dist/img/products/product-1.jpg"
+import Image from "next/image";
+
+export default function NewProduct() {
   return (
     <section className="trending-product section" style={{ marginTop: 12 }}>
       <div className="container">
@@ -18,7 +21,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-1.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <div className="button">
                   <a href="product-details.html" className="btn">
                     <i className="lni lni-cart" /> Add to Cart
@@ -61,7 +64,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-2.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <span className="sale-tag">-25%</span>
                 <div className="button">
                   <a href="product-details.html" className="btn">
@@ -106,7 +109,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-3.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <div className="button">
                   <a href="product-details.html" className="btn">
                     <i className="lni lni-cart" /> Add to Cart
@@ -149,7 +152,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-4.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <span className="new-tag">New</span>
                 <div className="button">
                   <a href="product-details.html" className="btn">
@@ -193,7 +196,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-5.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <div className="button">
                   <a href="product-details.html" className="btn">
                     <i className="lni lni-cart" /> Add to Cart
@@ -236,7 +239,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-6.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <div className="button">
                   <a href="product-details.html" className="btn">
                     <i className="lni lni-cart" /> Add to Cart
@@ -279,7 +282,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-7.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <span className="sale-tag">-50%</span>
                 <div className="button">
                   <a href="product-details.html" className="btn">
@@ -324,7 +327,7 @@ export default function newProduct() {
             {/* Start Single Product */}
             <div className="single-product">
               <div className="product-image">
-                <img src="assets/images/products/product-8.jpg" alt="#" />
+                <Image src={Product} className="h-50"  alt="#" />
                 <div className="button">
                   <a href="product-details.html" className="btn">
                     <i className="lni lni-cart" /> Add to Cart

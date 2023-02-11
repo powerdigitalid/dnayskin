@@ -1,3 +1,7 @@
+import slider1 from "../../../public/dist/img/hero/slider-bg1.jpg"
+import slider2 from "../../../public/dist/img/hero/slider-bg2.jpg"
+import slider from "../../../public/dist/img/hero/slider-bnr.jpg"
+
 export default function Hero() {
   return (
     <section className="hero-area">
@@ -11,7 +15,7 @@ export default function Hero() {
                 <div
                   className="single-slider"
                   style={{
-                    backgroundImage: "url(assets/images/hero/slider-bg1.jpg)",
+                    backgroundImage:`url(${slider1.src})` ,
                   }}
                 >
                   <div className="content">
@@ -39,7 +43,7 @@ export default function Hero() {
                 <div
                   className="single-slider"
                   style={{
-                    backgroundImage: "url(assets/images/hero/slider-bg2.jpg)",
+                    backgroundImage: `url(${slider2.src})` ,
                   }}
                 >
                   <div className="content">
@@ -74,7 +78,7 @@ export default function Hero() {
                 <div
                   className="hero-small-banner"
                   style={{
-                    backgroundImage: 'url("assets/images/hero/slider-bnr.jpg")',
+                    backgroundImage: `url(${slider.src})` ,
                   }}
                 >
                   <div className="content">

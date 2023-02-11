@@ -1699,7 +1699,7 @@ top: -1px;
   display: flex;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .header .navbar-cart .wishlist {
@@ -3142,7 +3142,7 @@ top: 2px;
 
 .hero-area .hero-small-banner.style2 {
   margin-top: 12px;
-  background-image: url("/public/dist/img/hero/small-banner-bg.png");
+  background-image: url("../img/hero/small-banner-bg.png");
   background-color: #081828;
 }
 
