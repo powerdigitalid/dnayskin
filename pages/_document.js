@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import Script from 'next/script'
+import Scripts from '../components/home-pages/utils/scripts'
 
 export default function Document() {
   return (
@@ -8,7 +8,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script src='../public/dist/js/main.js'/>
+        <Scripts/>
       </body>
     </Html>
   )
