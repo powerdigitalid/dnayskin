@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import Scripts from '../components/home-pages/utils/scripts'
+import HomeScripts from '../components/home-pages/utils/scripts'
+import AdminScript from '../components/admin-pages/utils/scripts'
 
 export default function Document() {
   return (
@@ -8,7 +9,8 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Scripts/>
+        <HomeScripts/>
+        <AdminScript/>
       </body>
     </Html>
   )
