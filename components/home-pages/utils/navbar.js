@@ -33,7 +33,7 @@ export default function Navbar() {
               {/* Start Header Logo */}
               <a className="navbar-brand fs-1" href="index.html">
                 <img
-                  src="assets/images/logo/logo-3.png"
+                  src="dist/img/logo/logo-3.png"
                   className="w-25"
                   alt="Logo"
                 />
@@ -72,11 +72,11 @@ export default function Navbar() {
                 <div className="nav-hotline">
                   <i className="lni lni-phone" />
                   <h3>
-                    Hotline:
-                    <span>(+100) 123 456 7890</span>
+                    Hubungi Kami:
+                    <span>(+628) 123 456 7890</span>
                   </h3>
                 </div>
-                <div className="navbar-cart">
+                {/* <div className="navbar-cart">
                   <div className="wishlist">
                     <a href="javascript:void(0)">
                       <i className="lni lni-heart" />
@@ -88,7 +88,7 @@ export default function Navbar() {
                       <i className="lni lni-cart" />
                       <span className="total-items">2</span>
                     </a>
-                    {/* Shopping Item */}
+
                     <div className="shopping-item">
                       <div className="dropdown-cart-header">
                         <span>2 Items</span>
@@ -162,9 +162,8 @@ export default function Navbar() {
                         </div>
                       </div>
                     </div>
-                    {/*/ End Shopping Item */}
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -183,9 +182,9 @@ export default function Navbar() {
                   All Categories
                 </span>
                 <ul className="sub-category">
-                  <li>
+                  {/* <li>
                     <a href="product-grids.html">
-                      Electronics <i className="lni lni-chevron-right" />
+                      Semua Produk <i className="lni lni-chevron-right" />
                     </a>
                     <ul className="inner-sub-category">
                       <li>
@@ -195,18 +194,18 @@ export default function Navbar() {
                         <a href="product-grids.html">Camcorders</a>
                       </li>
                     </ul>
+                  </li> */}
+                  <li>
+                    <a href="product-grids.html">Semua Treatmen</a>
                   </li>
                   <li>
-                    <a href="product-grids.html">accessories</a>
-                  </li>
-                  <li>
-                    <a href="product-grids.html">Televisions</a>
+                    <a href="product-grids.html">Semua Produks</a>
                   </li>
                 </ul>
               </div>
               {/* End Mega Category Menu */}
               {/* Start Navbar */}
-              <nav className="navbar navbar-expand-lg">
+              <nav className="navbar navbar-expand-lg ">
                 <button
                   className="navbar-toggler mobile-menu-btn"
                   type="button"
@@ -244,7 +243,7 @@ export default function Navbar() {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                       >
-                        Pages
+                        Produk
                       </a>
                       <ul className="sub-menu collapse" id="submenu-1-2">
                         <li className="nav-item">
@@ -277,7 +276,7 @@ export default function Navbar() {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                       >
-                        Shop
+                        Treatment
                       </a>
                       <ul className="sub-menu collapse" id="submenu-1-3">
                         <li className="nav-item">
@@ -307,7 +306,7 @@ export default function Navbar() {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                       >
-                        Blog
+                        Contact Person
                       </a>
                       <ul className="sub-menu collapse" id="submenu-1-4">
                         <li className="nav-item">
@@ -338,11 +337,11 @@ export default function Navbar() {
           <div className="col-lg-4 col-md-6 col-12">
             {/* Start Nav Social */}
             <div className="nav-social">
-              <h5 className="title">Follow Us:</h5>
+              <h5 className="title">Social Media Kami:</h5>
               <ul>
                 <li>
                   <a href="javascript:void(0)">
-                    <i className="lni lni-facebook-filled" />
+                    <i className="lni lni-facebook" />
                   </a>
                 </li>
                 <li>
@@ -355,11 +354,11 @@ export default function Navbar() {
                     <i className="lni lni-instagram" />
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="javascript:void(0)">
                     <i className="lni lni-skype" />
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             {/* End Nav Social */}
