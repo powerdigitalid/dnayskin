@@ -5,20 +5,20 @@ export default function Navbar() {
       <div className="topbar">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-4 col-md-4 col-12">
-              <div className="top-end">
+            <div className="">
+              <div className="top-start">
                 <div className="user">
                   <i className="lni lni-user" />
-                  Hello
+                  Hello Gais | Selamat Datang di Website S'Nayskin | Selamat Menikmati Perawatan
                 </div>
-                <ul className="user-login">
+                {/* <ul className="user-login">
                   <li>
                     <a href="login.html">Sign In</a>
                   </li>
                   <li>
                     <a href="register.html">Register</a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -51,8 +51,6 @@ export default function Navbar() {
                         <option value={1}>option 01</option>
                         <option value={2}>option 02</option>
                         <option value={3}>option 03</option>
-                        <option value={4}>option 04</option>
-                        <option value={5}>option 05</option>
                       </select>
                     </div>
                   </div>
@@ -205,7 +203,7 @@ export default function Navbar() {
               </div>
               {/* End Mega Category Menu */}
               {/* Start Navbar */}
-              <nav className="navbar navbar-expand-lg ">
+              <nav className="navbar navbar-expand-lg  ">
                 <button
                   className="navbar-toggler mobile-menu-btn"
                   type="button"
@@ -296,7 +294,7 @@ export default function Navbar() {
                         </li>
                       </ul>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a
                         className="dd-menu collapsed"
                         href="javascript:void(0)"
@@ -321,7 +319,7 @@ export default function Navbar() {
                           </a>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                       <a href="contact.html" aria-label="Toggle navigation">
                         Contact Us

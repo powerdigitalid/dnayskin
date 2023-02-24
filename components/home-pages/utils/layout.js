@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
-import Favicon from '../../../public/dist/img/logo/logo-3.png'
+import Favicon from '../../../public/dist/img/logo/logo.svg'
 import Footer from './footer'
 import Navbar from './navbar'
 
