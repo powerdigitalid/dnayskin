@@ -4,7 +4,7 @@ export default function Sidebar() {
     <div className="main-sidebar sidebar-style-2">
       <aside id="sidebar-wrapper">
         <div className="sidebar-brand">
-          <Link href="/">Peminjaman LAB</Link>
+          <Link href="/">Admin Rumah Athan</Link>
         </div>
         <div className="sidebar-brand sidebar-brand-sm">
           <Link href="/">PL</Link>
