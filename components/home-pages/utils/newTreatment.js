@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function NewTreatment() {
   return (
-    <section className="trending-product section" style={{ marginTop: 12 }}>
+    <section className="trending-product section">
       <div className="container">
         <div className="row">
-          <div className="col-6">
+          <div className="col-12">
             <div className="section-title">
               <h2>Trending Treatment</h2>
               <p>
@@ -17,7 +17,7 @@ export default function NewTreatment() {
           </div>
         </div>
         <div className="row">
-          <div className=" col-md-3">
+          <div className=" col">
             {/* Start Single Product */}
             <div className="single-product">
               <div className="row">
@@ -33,11 +33,13 @@ export default function NewTreatment() {
                 </div>
                 <div className="col">
                   <div className="product-info">
-                    <span className="category">Watches</span>
+                    
                     <h4 className="title">
-                      <a href="product-grids.html">Xiaomi Mi Band 5</a>
+                      <a href="product-grids.html">Glowing Peeling</a>
+
                     </h4>
-                    <ul className="review">
+                    <span className="category">Wajah kamu kusam dan kasar? Yuk, angkat sel kulit matimu dalam waktu singkat. Bahan aktifnya membuat wajahmu cerah bersinar. Ga perlu nunggu lama. Wajahmu kembali glowing!</span>
+                    {/* <ul className="review">
                       <li>
                         <i className="lni lni-star-filled" />
                       </li>
@@ -56,9 +58,70 @@ export default function NewTreatment() {
                       <li>
                         <span>4.0 Review(s)</span>
                       </li>
-                    </ul>
+                    </ul> */}
                     <div className="price">
                       <span>$199.00</span>
+                    </div>
+                    <div className="button">
+                      <a href="product-details.html" className="btn">
+                        <i className="lni lni-cart" /> Pesan Sekarang
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* End Single Product */}
+          </div>
+          <div className=" col">
+            {/* Start Single Product */}
+            <div className="single-product">
+              <div className="row">
+                <div className="col">
+                  <div className="product-image">
+                    <Image src={Product} className="h-50" alt="#" />
+                    <div className="button">
+                      <a href="product-details.html" className="btn">
+                        <i className="lni lni-cart" /> Add to Cart
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="product-info">
+                    
+                    <h4 className="title">
+                      <a href="product-grids.html">Glowing Peeling</a>
+
+                    </h4>
+                    <span className="category">Wajah kamu kusam dan kasar? Yuk, angkat sel kulit matimu dalam waktu singkat. Bahan aktifnya membuat wajahmu cerah bersinar. Ga perlu nunggu lama. Wajahmu kembali glowing!</span>
+                    {/* <ul className="review">
+                      <li>
+                        <i className="lni lni-star-filled" />
+                      </li>
+                      <li>
+                        <i className="lni lni-star-filled" />
+                      </li>
+                      <li>
+                        <i className="lni lni-star-filled" />
+                      </li>
+                      <li>
+                        <i className="lni lni-star-filled" />
+                      </li>
+                      <li>
+                        <i className="lni lni-star" />
+                      </li>
+                      <li>
+                        <span>4.0 Review(s)</span>
+                      </li>
+                    </ul> */}
+                    <div className="price">
+                      <span>$199.00</span>
+                    </div>
+                    <div className="button">
+                      <a href="product-details.html" className="btn">
+                        <i className="lni lni-cart" /> Pesan Sekarang
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -67,94 +130,6 @@ export default function NewTreatment() {
             {/* End Single Product */}
           </div>
           
-          <div className=" col-md-3">
-            {/* Start Single Product */}
-            <div className="single-product">
-              <div className="product-image">
-                <Image src={Product} className="h-50" alt="#" />
-                <span className="sale-tag">-50%</span>
-                <div className="button">
-                  <a href="product-details.html" className="btn">
-                    <i className="lni lni-cart" /> Add to Cart
-                  </a>
-                </div>
-              </div>
-              <div className="product-info">
-                <span className="category">Headphones</span>
-                <h4 className="title">
-                  <a href="product-grids.html">PX7 Wireless Headphones</a>
-                </h4>
-                <ul className="review">
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star" />
-                  </li>
-                  <li>
-                    <span>4.0 Review(s)</span>
-                  </li>
-                </ul>
-                <div className="price">
-                  <span>$100.00</span>
-                  <span className="discount-price">$200.00</span>
-                </div>
-              </div>
-            </div>
-            {/* End Single Product */}
-          </div>
-          <div className=" col-md-3">
-            {/* Start Single Product */}
-            <div className="single-product">
-              <div className="product-image">
-                <Image src={Product} className="h-50" alt="#" />
-                <div className="button">
-                  <a href="product-details.html" className="btn">
-                    <i className="lni lni-cart" /> Add to Cart
-                  </a>
-                </div>
-              </div>
-              <div className="product-info">
-                <span className="category">Laptop</span>
-                <h4 className="title">
-                  <a href="product-grids.html">Apple MacBook Air</a>
-                </h4>
-                <ul className="review">
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <i className="lni lni-star-filled" />
-                  </li>
-                  <li>
-                    <span>5.0 Review(s)</span>
-                  </li>
-                </ul>
-                <div className="price">
-                  <span>$899.00</span>
-                </div>
-              </div>
-            </div>
-            {/* End Single Product */}
-          </div>
         </div>
       </div>
     </section>
