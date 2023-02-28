@@ -33,11 +33,11 @@ export default function Navbar() {
               {/* Start Header Logo */}
               <a className="navbar-brand fs-1" href="index.html">
                 <img
-                  src="dist/img/logo/logo-3.png"
-                  className="w-25"
+                  src="dist/img/logo/logos.png"
+                  className="w-100"
                   alt="Logo"
                 />
-                <span className="span-navbar">D'Nayskin</span>
+                {/* <span className="span-navbar">D'Nayskin</span> */}
               </a>
               {/* End Header Logo */}
             </div>
