@@ -9,7 +9,7 @@ export default function Navbar() {
               <div className="top-start">
                 <div className="user">
                   <i className="lni lni-user" />
-                  Hello Gais | Selamat Datang di Website S'Nayskin | Selamat Menikmati Perawatan
+                  Hello Gais | Selamat Datang di Website SNayskin | Selamat Menikmati Perawatan
                 </div>
                 {/* <ul className="user-login">
                   <li>
