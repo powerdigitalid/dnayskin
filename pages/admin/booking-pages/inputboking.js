@@ -1,12 +1,12 @@
 import React from 'react'
-import TabelBooking from '../../../components/admin-pages/booking/tabelBooking'
+import InputBooking from '../../../components/admin-pages/booking/inputBooking'
 import Layout from '../../../components/admin-pages/utils/layout'
 
-export default function index() {
+export default function inputboking() {
   return (
     <div>
       <Layout>
-        <TabelBooking />
+        <InputBooking />
       </Layout>
     </div>
   )
