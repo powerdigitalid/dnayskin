@@ -28,7 +28,7 @@ export default function TabelBooking() {
                                                 <div className="table-responsive table-lg mt-3">
                                                     <table className="table table-bordered text-center" >
                                                         <thead>
-                                                            <tr className=''>
+                                                            <tr>
                                                                 <th className="max-width">Nama</th>
                                                                 <th className="sortable">Jasa/Produk</th>
                                                                 <th className="sortable">Kantor</th>
@@ -36,7 +36,7 @@ export default function TabelBooking() {
                                                                 <th className="sortable">Deskripsi</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody className='overflow-auto'>
                                                             <tr>
                                                                 <td className="text-nowrap align-middle">Hakimah</td>
                                                                 <td className="text-nowrap align-middle">Treatmen Wajah</td>
