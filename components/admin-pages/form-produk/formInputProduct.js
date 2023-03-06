@@ -1,8 +1,8 @@
 import AllProducts from "../utils/allProducts";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function FormInputProduct() {
-  
+
   const [image, setImage] = useState("");
   const [nameProduct, setNameProduct] = useState("");
   const [price, setPrice] = useState("");
@@ -18,10 +18,14 @@ export default function FormInputProduct() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setImage(res.data);
+        if(res.data){
+          setImage(res.data);
+          alert(res.message)
+        } else {
+          alert(res.message)
+        }
         console.log(res);
-      }
-      )
+      })
       .catch((err) => console.log(err));
   }
 
@@ -36,7 +40,7 @@ export default function FormInputProduct() {
     e.preventDefault();
     const dataProduct = {
       product_name: nameProduct,
-      product_price: price,
+      product_price: parseInt(price),
       product_img: image,
       product_desc: description,
     };
@@ -45,7 +49,7 @@ export default function FormInputProduct() {
       headers: {
         "Content-Type": "application/json",
       },
-      body:(dataProduct),
+      body: JSON.stringify(dataProduct),
     })
       .then((res) => res.json())
       .then((res) => {
@@ -68,14 +72,14 @@ export default function FormInputProduct() {
             </div>
           </div>
           <form onSubmit={handleAddProduct}>
-          <div className="author-box-left">
-            <img
-              alt="image"
-              src="/dist/img/products/product-1.jpg"
-              className="rounded author-box-picture"
-            />
-            <div className="clearfix" />
-            {/* <a
+            <div className="author-box-left">
+              <img
+                alt="image"
+                src="/dist/img/products/product-1.jpg"
+                className="rounded author-box-picture"
+              />
+              <div className="clearfix" />
+              {/* <a
               href="#"
               className="btn btn-primary mt-3 follow-btn"
               data-follow-action="alert('follow clicked');"
@@ -83,52 +87,52 @@ export default function FormInputProduct() {
             >
               
             </a> */}
-            <input type="file" onChange={handleUploadImage} id="product" />
-          </div>
-          <div className="author-box-details">
-            <div className="author-box-name">
-              <div className="form-group">
-                <div className="form-row">
-                  <div className="form-group col-sm-6">
-                    <label>Nama Produk</label>
-                    <input
-                      type="text"
-                      className="form-control form-control-sm"
-                      placeholder="Nama Produk"
-                      value={nameProduct}
-                      onChange={(e) => setNameProduct(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-group col-sm-6">
-                    <label>Harga</label>
-                    <div className="input-group input-group-sm">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">Rp</span>
-                      </div>
+              <input type="file" onChange={handleUploadImage} id="product" />
+            </div>
+            <div className="author-box-details">
+              <div className="author-box-name">
+                <div className="form-group">
+                  <div className="form-row">
+                    <div className="form-group col-sm-6">
+                      <label>Nama Produk</label>
                       <input
                         type="text"
                         className="form-control form-control-sm"
-                        aria-label="Rupiah"
-                        placeholder="Harga"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        placeholder="Nama Produk"
+                        value={nameProduct}
+                        onChange={(e) => setNameProduct(e.target.value)}
                       />
-                      <div className="input-group-append">
-                        <span className="input-group-text">.00</span>
+                    </div>
+                    <div className="form-group col-sm-6">
+                      <label>Harga</label>
+                      <div className="input-group input-group-sm">
+                        <div className="input-group-prepend">
+                          <span className="input-group-text">Rp</span>
+                        </div>
+                        <input
+                          type="text"
+                          className="form-control form-control-sm"
+                          aria-label="Rupiah"
+                          placeholder="Harga"
+                          value={price}
+                          onChange={(e) => setPrice(e.target.value)}
+                        />
+                        <div className="input-group-append">
+                          <span className="input-group-text">.00</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="form-row">
-                  <div className="form-group col-sm-12">
-                    <label>Deskripsi</label>
-                    <textarea class="form-control" value={description} onChange={(e)=> setDescription(e.target.value)} placeholder="isi deskripsi product"/>
+                  <div className="form-row">
+                    <div className="form-group col-sm-12">
+                      <label>Deskripsi</label>
+                      <textarea class="form-control" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="isi deskripsi product" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="mb-2 mt-3">
-              {/* <a
+              <div className="mb-2 mt-3">
+                {/* <a
                 href="#"
                 className="btn btn-primary mt-3 follow-btn"
                 data-follow-action="alert('follow clicked');"
@@ -136,12 +140,12 @@ export default function FormInputProduct() {
               >
                 <i className="fas fa-plus " /> Tambah Produk
               </a> */}
-              <div className="row float-right">
-            <button className="btn btn-success"><i className="fas fa-plus fa-fw"></i> Tambah</button>
-          </div>
+                <div className="row float-right">
+                  <button className="btn btn-success"><i className="fas fa-plus fa-fw"></i> Tambah</button>
+                </div>
+              </div>
             </div>
-          </div>
-            </form>
+          </form>
         </div>
       </div>
       <div className="container">
