@@ -1,5 +1,6 @@
 import AllProducts from "../utils/allProducts";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function FormInputProduct() {
 
@@ -7,6 +8,8 @@ export default function FormInputProduct() {
   const [nameProduct, setNameProduct] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+
+  const router = useRouter();
 
   const handleUploadImage = (e) => {
     let file = e.target.files[0];
@@ -54,8 +57,9 @@ export default function FormInputProduct() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        clearData();
         alert(res.message);
+        router.push("/formprodukpages");
+        clearData();
       }
       )
       .catch((err) => console.log(err));

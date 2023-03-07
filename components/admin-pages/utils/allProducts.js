@@ -1,9 +1,11 @@
-import Product from "../../../public/dist/img/products/product-1.jpg";
-import Image from "next/image";
+
 import { useEffect, useState } from "react"
+import { useRouter } from "next/router";
 
 export default function AllProducts() {
   const [dataProduct, setDataProduct] = useState([]);
+
+  const router = useRouter();
 
   useEffect(() => {
     const getDataProduct = async () => {
@@ -15,21 +17,38 @@ export default function AllProducts() {
     getDataProduct();
   }, []);
   
-  useEffect(() => {
-    async function getImage() {
-      const data = await Promise.all(dataProduct.map(async (product) => {
-        const res = await fetch(`http://localhost:3000${product.product_img}`);
-        const imageData = await res.blob(); // ubah format respon ke dalam Blob
-        const imageURL = URL.createObjectURL(imageData); // buat URL objek untuk gambar
-        return{
-          ...product,
-          image: imageURL
-        }
-      }))
-      setDataProduct(data);
+  // useEffect(() => {
+  //   async function getImage() {
+  //     const data = await Promise.all(dataProduct.map(async (product) => {
+  //       const res = await fetch(`http://localhost:3000${product.product_img}`);
+  //       const imageData = await res.blob(); // ubah format respon ke dalam Blob
+  //       const imageURL = URL.createObjectURL(imageData); // buat URL objek untuk gambar
+  //       return{
+  //         ...product,
+  //         image: imageURL
+  //       }
+  //     }))
+  //     setDataProduct(data);
+  //   }
+  //   getImage();
+  // }, [dataProduct])
+
+  async function deleteProduct (id){
+    try{
+      const res = await fetch(`http://localhost:3000/api/v1/product/delete/${id}`, {
+        method: "DELETE",
+      })
+      const data = await res.json();
+      console.log(data);
+      alert("Data berhasil dihapus");
     }
-    getImage();
-  }, [dataProduct])
+    catch(err){
+      console.log(err);
+      alert("Data gagal dihapus");
+    }
+    router.push("/admin");
+
+  }
 
   return (
     <>
@@ -49,9 +68,7 @@ export default function AllProducts() {
               {/* Start Single Product */}
               <div className="single-product">
                 <div className="product-image">
-                  {/* tempat memanggil getImage yang telah useEffect */}
-                  <Image src={product.image} className="" height={150} width={50} alt="#" />
-                  {/* <Image src={product.product_img} className="h-50 w-auto" alt="#"  /> */}
+                  <img src={`http://localhost:3000${product.product_img}`} className="" height={150} width={50} alt="#" />
                   <div className="row">
                     <div className="col text-white">
                       <div className="btn btn-success" >
@@ -60,11 +77,9 @@ export default function AllProducts() {
                         </a>
                       </div>
                     </div>
-                    <div className="col">
+                    <div className="col text-white">
                       <div className="btn btn-danger">
-                        <a href="product-details.html" className="text-dark">
-                          <i className="fas fa-edit" /> Hapus
-                        </a>
+                        <button className="btn btn-danger" onClick={() => deleteProduct( product.id)}><i className="fas fa-trash" /> Hapus</button>
                       </div>
                     </div>
                   </div>
@@ -90,60 +105,3 @@ export default function AllProducts() {
   );
 }
 
-
-  // return (
-  //   <>
-  //     <div className="container">
-  //       <div className="row">
-  //         <div className="col-12">
-  //           <div className="section-title">
-  //             <h2>All Product</h2>
-  //           </div>
-  //         </div>
-  //       </div>
-
-  //       <div className="row">
-  //         <div className="card author-box card-primary"></div>
-  //         <div className="col-lg-3 col-md-6 col-12">
-  //           {/* Start Single Product */}
-  //           <div className="single-product">
-  //             <div className="product-image">
-  //               <Image src={Product} className="h-50" alt="#" />
-  //               <div className="row">
-  //                 <div className="col text-white">
-  //                   <div className="btn btn-success" >
-  //                     <a href="product-details.html" className="text-dark">
-  //                       <i className="fas fa-edit" /> Edit
-  //                     </a>
-  //                   </div>
-  //                 </div>
-  //                 <div className="col">
-  //                   <div className="btn btn-danger">
-  //                     <a href="product-details.html" className="text-dark">
-  //                       <i className="fas fa-edit" /> Hapus
-  //                     </a>
-  //                   </div>
-  //                 </div>
-  //               </div>
-  //             </div>
-  //             <div className="product-info">
-  //               <h4 className="title">
-  //                 <a href="product-grids.html">Xiaomi Mi Band 5</a>
-  //               </h4>
-  //               <div className="price">
-  //                 <span>Rp 199.00</span>
-  //               </div>
-  //               <span className="category mt-1">
-  //                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-  //                 Cupiditate, consequatur ducimus dolorem error amet doloremque
-  //                 officiis unde nisi asperiores quos!
-  //               </span>
-  //             </div>
-  //           </div>
-  //           {/* End Single Product */}
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </>
-  // );
-// }

@@ -32,24 +32,24 @@ export default function Sidebar() {
           </li>
           <li className="menu-header">Starter</li>
           <li>
-            <a href="/formprodukpages" className="nav-link">
+            <Link href={"/formprodukpages"}>
               <i className="fas fa-store" /> <span>Input Produk</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/formcustomerpages" className="nav-link">
+            <Link href={"/formcustomerpages"}>
               <i className="fas fa-users" /> <span>Input Customer</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/bookingpages" className="nav-link">
+            <Link href={"/bookingpages"}>
               <i className="fas fa-sticky-note" /> <span>Tabel Booking</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/transaksipages" className="nav-link">
+            <Link href={"/transaksipages"}>
               <i className="fas fa-book-open" /> <span>Tabel Transaksi</span>
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="mt-4 mb-4 p-3 hide-sidebar-mini">
