@@ -55,6 +55,7 @@ export default function FormInputProduct() {
       .then((res) => {
         console.log(res);
         clearData();
+        alert(res.message);
       }
       )
       .catch((err) => console.log(err));
@@ -79,15 +80,12 @@ export default function FormInputProduct() {
                 className="rounded author-box-picture"
               />
               <div className="clearfix" />
-              {/* <a
-              href="#"
-              className="btn btn-primary mt-3 follow-btn"
-              data-follow-action="alert('follow clicked');"
-              data-unfollow-action="alert('unfollow clicked');"
+              <a
+              className="btn btn-primary mt-3"
             >
-              
-            </a> */}
               <input type="file" onChange={handleUploadImage} id="product" />
+            </a>
+              
             </div>
             <div className="author-box-details">
               <div className="author-box-name">
