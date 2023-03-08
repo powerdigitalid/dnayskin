@@ -1,11 +1,36 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import React, { Component } from 'react'
+import Link from "next/link";
+
 export default function Navbar() {
+  const router = useRouter()
+  const [path, setPath] = useState("")
+  const change = (e) => {
+    e.preventDefault()
+    if (document.body.classList.contains("sidebar-mini")){
+      document.body.classList.remove("sidebar-mini")
+    } else {
+      document.body.classList.add("sidebar-mini")
+    }
+  }
+
+  useEffect(() => {
+    console.log(router.pathname)
+    setPath(router.pathname)
+  }, [])
+
   return (
     <div>
       <div className="navbar-bg"></div>
       <nav className="navbar main-navbar">
         <form className="form-inline mr-auto">
           <ul className="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" className="nav-link nav-link-lg"><i className="fas fa-bars" /></a></li>
+            <li>
+              <a data-toggle="sidebar" onClick={change} className="nav-link nav-link-lg">
+                <i className="fas fa-bars" />
+              </a>
+            </li>
           </ul>
         </form>
         <ul className="navbar-nav navbar-right">
@@ -22,6 +47,5 @@ export default function Navbar() {
         </ul>
       </nav>
     </div>
-
   )
 }

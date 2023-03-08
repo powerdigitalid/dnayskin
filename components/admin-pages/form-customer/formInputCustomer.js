@@ -52,7 +52,7 @@ export default function FormInputCustomer() {
                 <div className="form-row">
                   <div className="form-group col-sm-12">
                     <label>Alamat</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea className="form-control"></textarea>
                   </div>
                 </div>
               </div>

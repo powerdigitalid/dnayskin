@@ -7,7 +7,7 @@ export default function Scripts() {
       <script src="dist/js/bootstrap.min.js" />
       <script src="dist/js/jquery.nicescroll.min.js" />
       <script src="dist/js/moment.min.js" />
-      <script src="assets/js/stisla.js" />
+      <script src="dist/js/stisla.js" />
       <script src="dist/js/summernote-bs4.js" />
       <script src="dist/js/jquery.chocolat.min.js" />
 

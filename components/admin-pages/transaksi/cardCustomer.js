@@ -48,7 +48,7 @@ export default function CardCustomer() {
                 <div className="form-row">
                   <div className="form-group col-sm-12">
                     <label>Alamat</label>
-                    <textarea class="form-control" disabled></textarea>
+                    <textarea className="form-control" disabled></textarea>
                   </div>
                 </div>
               </div>

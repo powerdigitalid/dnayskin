@@ -113,7 +113,7 @@ export default function EditProduct() {
                 <div className="form-row">
                   <div className="form-group col-sm-12">
                     <label>Deskripsi</label>
-                    <textarea class="form-control" value={_description} onChange={(e)=> setDescription(e.target.value)} />
+                    <textarea className="form-control" value={_description} onChange={(e)=> setDescription(e.target.value)} />
                   </div>
                 </div>
               </div>
