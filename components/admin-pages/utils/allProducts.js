@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 
@@ -71,14 +71,14 @@ export default function AllProducts() {
                   <img src={`http://localhost:3000${product.product_img}`} className="" height={150} width={50} alt="#" />
                   <div className="row">
                     <div className="col text-white">
-                      <div className="btn btn-success" >
-                        <a href="product-details.html" className="text-dark">
+                      <div >
+                        <button type="button" className="btn btn-success">
                           <i className="fas fa-edit" /> Edit
-                        </a>
+                        </button>
                       </div>
                     </div>
                     <div className="col text-white">
-                      <div className="btn btn-danger">
+                      <div>
                         <button className="btn btn-danger" onClick={() => deleteProduct( product.id)}><i className="fas fa-trash" /> Hapus</button>
                       </div>
                     </div>

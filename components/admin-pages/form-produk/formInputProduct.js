@@ -80,7 +80,8 @@ export default function FormInputProduct() {
             <div className="author-box-left">
               <img
                 alt="image"
-                src="/dist/img/products/product-1.jpg"
+                src={`http://localhost:3000${product.product_img}`}
+                value={image}
                 className="rounded author-box-picture"
               />
               <div className="clearfix" />

@@ -1,6 +1,6 @@
-import slider1 from "../../../public/dist/img/hero/slider-bg1.jpg"
-import slider2 from "../../../public/dist/img/hero/slider-bg2.jpg"
-import slider from "../../../public/dist/img/hero/slider-bnr.jpg"
+import slider1 from "../../../public/dist/img/products/produkss.jpeg"
+import slider2 from "../../../public/dist/img/products/produkss1.jpeg"
+import slider from "../../../public/dist/img/products/ibuibu.jpeg"
 
 export default function Hero() {
   return (
@@ -81,13 +81,13 @@ export default function Hero() {
                     backgroundImage: `url(${slider.src})` ,
                   }}
                 >
-                  <div className="content">
+                  {/* <div className="content">
                     <h2>
                       <span>New line required</span>
                       iPhone 12 Pro Max
                     </h2>
                     <h3>$259.99</h3>
-                  </div>
+                  </div> */}
                 </div>
                 {/* End Small Banner */}
               </div>
