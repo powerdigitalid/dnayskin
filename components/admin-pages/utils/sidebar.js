@@ -33,9 +33,9 @@ export default function Sidebar() {
           <li className="menu-header">Starter</li>
           <li>
             <Link className="nav-link" href="/">
-              {/* <Link href={"/"}> */}
+              <Link  className="nav-link" href="formprodukpages">
               <i className="fas fa-store" /> <span>Input Produk</span>
-              {/* </Link> */}
+              </Link>
             </Link>
           </li>
           <li>
