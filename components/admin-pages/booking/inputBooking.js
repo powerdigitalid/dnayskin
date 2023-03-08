@@ -6,7 +6,7 @@ export default function InputBooking() {
       <form>
         <div className="form-row">
           <div className="form-group col-sm-6">
-            <label>Text</label>
+            <label>Text</label> 
             <input type="text" className="form-control" placeholder='Masukkan Nama' />
           </div>
           <div className="form-group col-sm-6">
