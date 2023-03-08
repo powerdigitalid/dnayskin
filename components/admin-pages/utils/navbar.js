@@ -1,11 +1,6 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import React, { Component } from 'react'
-import Link from "next/link";
 
 export default function Navbar() {
-  const router = useRouter()
-  const [path, setPath] = useState("")
   const change = (e) => {
     e.preventDefault()
     if (document.body.classList.contains("sidebar-mini")){
@@ -14,11 +9,6 @@ export default function Navbar() {
       document.body.classList.add("sidebar-mini")
     }
   }
-
-  useEffect(() => {
-    console.log(router.pathname)
-    setPath(router.pathname)
-  }, [])
 
   return (
     <div>
