@@ -32,10 +32,8 @@ export default function Sidebar() {
           </li>
           <li className="menu-header">Starter</li>
           <li>
-            <Link className="nav-link" href="/">
-              <Link  className="nav-link" href="formprodukpages">
+            <Link className="nav-link" href="formprodukpages">
               <i className="fas fa-store" /> <span>Input Produk</span>
-              </Link>
             </Link>
           </li>
           <li>
@@ -61,7 +59,7 @@ export default function Sidebar() {
           >
             <i className="fas fa-rocket" /> Documentation
           </a>
-        </div>{" "}
+        </div>
       </aside>
     </div>
   );
