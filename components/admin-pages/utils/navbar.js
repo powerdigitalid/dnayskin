@@ -3,10 +3,16 @@ import React, { Component } from 'react'
 export default function Navbar() {
   const change = (e) => {
     e.preventDefault()
-    if (document.body.classList.contains("sidebar-mini")){
+    if (document.body.classList.contains("sidebar-mini") && screen.width > 1024){
       document.body.classList.remove("sidebar-mini")
-    } else {
+    } else if (!document.body.classList.contains("sidebar-mini") && screen.width > 1024) {
       document.body.classList.add("sidebar-mini")
+    } else if (document.body.classList.contains("sidebar-gone") && screen.width <= 1024) {
+      document.body.classList.add("sidebar-show")
+      document.body.classList.remove("sidebar-gone")
+    } else if (document.body.classList.contains("sidebar-show") && screen.width <= 1024) {
+      document.body.classList.remove("sidebar-show")
+      document.body.classList.add("sidebar-gone")
     }
   }
 
