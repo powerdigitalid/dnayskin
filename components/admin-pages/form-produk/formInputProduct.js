@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function FormInputProduct() {
-
   const [image, setImage] = useState("");
   const [nameProduct, setNameProduct] = useState("");
   const [price, setPrice] = useState("");
@@ -21,23 +20,23 @@ export default function FormInputProduct() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if(res.data){
+        if (res.data) {
           setImage(res.data);
-          alert(res.message)
+          alert(res.message);
         } else {
-          alert(res.message)
+          alert(res.message);
         }
         console.log(res);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   const clearData = () => {
     setNameProduct("");
     setPrice("");
     setImage("");
     setDescription("");
-  }
+  };
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -60,12 +59,9 @@ export default function FormInputProduct() {
         alert(res.message);
         router.push("/formprodukpages");
         clearData();
-      }
-      )
+      })
       .catch((err) => console.log(err));
-
-  }
-
+  };
 
   return (
     <>
@@ -80,17 +76,23 @@ export default function FormInputProduct() {
             <div className="author-box-left">
               <img
                 alt="image"
-                src={`http://localhost:3000${product.product_img}`}
+                // src={`http://localhost:3000${product.product_img}`}
                 value={image}
                 className="rounded author-box-picture"
+                style={{ width: "100px", height: "100px" }}
               />
               <div className="clearfix" />
-              <a
-              className="btn btn-primary mt-3"
-            >
-              <input type="file" onChange={handleUploadImage} id="product" />
-            </a>
-              
+              <div className="custom-file w-75 h-50 m-1">
+                <input
+                  type="file"
+                  className="custom-file-input form-control-sm"
+                  id="customFile"
+                  onChange={handleUploadImage}
+                />
+                <label className="custom-file-label" htmlFor="customFile">
+                  Choose file
+                </label>
+              </div>
             </div>
             <div className="author-box-details">
               <div className="author-box-name">
@@ -129,22 +131,21 @@ export default function FormInputProduct() {
                   <div className="form-row">
                     <div className="form-group col-sm-12">
                       <label>Deskripsi</label>
-                      <textarea class="form-control" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="isi deskripsi product" />
+                      <textarea
+                        class="form-control"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="isi deskripsi product"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
               <div className="mb-2 mt-3">
-                {/* <a
-                href="#"
-                className="btn btn-primary mt-3 follow-btn"
-                data-follow-action="alert('follow clicked');"
-                data-unfollow-action="alert('unfollow clicked');"
-              >
-                <i className="fas fa-plus " /> Tambah Produk
-              </a> */}
                 <div className="row float-right">
-                  <button className="btn btn-success"><i className="fas fa-plus fa-fw"></i> Tambah</button>
+                  <button className="btn btn-success">
+                    <i className="fas fa-plus fa-fw"></i> Tambah
+                  </button>
                 </div>
               </div>
             </div>

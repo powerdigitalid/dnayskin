@@ -13,16 +13,19 @@ export default function FormInputCustomer() {
               alt="image"
               src="/dist/img/products/product-1.jpg"
               className="rounded author-box-picture"
+              style={{ width: "100px", height: "100px" }}
             />
             <div className="clearfix" />
-            <a
-              href="#"
-              className="btn btn-primary mt-3 follow-btn"
-              data-follow-action="alert('follow clicked');"
-              data-unfollow-action="alert('unfollow clicked');"
-            >
-              Upload Gambar
-            </a>
+            <div className="custom-file w-75 h-50 m-1">
+              <input
+                type="file"
+                className="custom-file-input"
+                id="customFile"
+              />
+              <label className="custom-file-label" htmlFor="customFile">
+                Upload
+              </label>
+            </div>
           </div>
           <div className="author-box-details">
             <div className="author-box-name">
@@ -58,15 +61,12 @@ export default function FormInputCustomer() {
               </div>
             </div>
             <div className="mb-2 mt-3">
-              <a
-                href="#"
-                className="btn btn-primary mt-3 follow-btn"
-                data-follow-action="alert('follow clicked');"
-                data-unfollow-action="alert('unfollow clicked');"
-              >
-                <i className="fas fa-plus" /> Tambah Customer
-              </a>
-            </div>
+                <div className="row float-right">
+                  <button className="btn btn-success">
+                    <i className="fas fa-plus fa-fw"></i> Tambah Customer
+                  </button>
+                </div>
+              </div>
           </div>
         </div>
       </div>
