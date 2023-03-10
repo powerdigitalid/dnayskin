@@ -43,7 +43,7 @@ export default function Sidebar() {
           </li>
           <li>
             <Link className="nav-link" href="reservationpages">
-              <i className="fas fa-sticky-note" /> <span>Tabel Booking</span>
+              <i className="fas fa-sticky-note" /> <span>Tabel Reservation</span>
             </Link>
           </li>
           <li>

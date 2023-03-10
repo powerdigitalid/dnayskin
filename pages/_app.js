@@ -13,7 +13,9 @@ import '../public/dist/css/style.css'
 import '../public/dist/css/summernote-bs4.css'
 import '../public/dist/css/weather-icons-wind.min.css'
 import '../public/dist/css/weather-icons.min.css'
-import '../public/dist/css/datatabel.css'
+import '../public/dist/css/datatables.css'
+import '../public/dist/css/datatablesbs.css'
+import '../public/dist/css/datatablesbsselect.css'
 
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />

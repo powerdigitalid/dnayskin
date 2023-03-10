@@ -15,6 +15,13 @@ export default function Scripts() {
 
       <script src="dist/js/scripts.js" />
       <script src="dist/js/custom.js" />
+      <script src="dist/js/jquery-ui.min.js" />
+
+      <script src="dist/js/dataTables.min.js" />
+      <script src="dist/js/dataTablesbs.min.js" />
+      <script src="dist/js/dataTablesbsselect.min.js" />
+      <script src="dist/js/modul-datatables.js" />
+      
     </>
   )
 }

@@ -7,7 +7,7 @@ export default function InputTransaksi() {
         <div className="card-body">
           <div className="col-12">
             <div className="text-center text-dark ">
-              <h2>Input Order</h2>
+              <h2>Input Transaksi</h2>
               <hr className="mx-auto rounded custom-hr"></hr>
             </div>
           </div>
