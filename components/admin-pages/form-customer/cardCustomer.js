@@ -7,7 +7,7 @@ export default function CardCustomer() {
         <div className="card-body">
           <div className="col-12">
             <div className="text-center text-dark ">
-              <h2>Order</h2><hr className='mx-auto rounded custom-hr'></hr>
+              <h2>Data Member</h2><hr className='mx-auto rounded custom-hr'></hr>
             </div>
           </div>
           <div className="author-box-left">
@@ -32,9 +32,9 @@ export default function CardCustomer() {
                   </div>
                   <div className="form-group col-sm-6">
                     <label>Nomer Handphone</label>
-                    <div className="input-group input-group-sm">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">+62</span>
+                    <div className="input-group">
+                      <div className="input-group-prepend bg-secondary">
+                        <span className="form-control-sm">+62</span>
                       </div>
                       <input
                         type="text"

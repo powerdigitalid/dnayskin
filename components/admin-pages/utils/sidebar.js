@@ -42,12 +42,12 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="bookingpages">
+            <Link className="nav-link" href="reservationpages">
               <i className="fas fa-sticky-note" /> <span>Tabel Booking</span>
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="bookingpages">
+            <Link className="nav-link" href="transaksipages">
               <i className="fas fa-book-open" /> <span>Tabel Transaksi</span>
             </Link>
           </li>
