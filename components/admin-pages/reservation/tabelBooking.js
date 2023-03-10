@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TabelBooking() {
+export default function TabelReservation() {
 
     return (
         <div>

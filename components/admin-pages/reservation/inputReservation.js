@@ -1,13 +1,18 @@
 import React from 'react'
 
-export default function InputBooking() {
+export default function InputReservation() {
   return (
     <div>
       <form>
         <div className="form-row">
           <div className="form-group col-sm-6">
-            <label>Text</label> 
-            <input type="text" className="form-control" placeholder='Masukkan Nama' />
+          <label>Pilih Member</label>
+            <select className="form-select">
+              <option value="">Pilih Kantor</option>
+              <option value="Kantor 1">Kantor 1</option>
+              <option value="Kantor 2">Kantor 2</option>
+            </select>
+            <div className="validate" />
           </div>
           <div className="form-group col-sm-6">
             <label>Kantor</label>
