@@ -128,22 +128,7 @@ export default function TabelReservation() {
                                   <tr role="row" className="odd">
                                     <td className="sorting_1">1</td>
                                     <td>Nama aku</td>
-                                    <td className="align-middle">
-                                      <div
-                                        className="progress"
-                                        data-height={4}
-                                        data-toggle="tooltip"
-                                        title
-                                        data-original-title="100%"
-                                        style={{ height: 4 }}
-                                      >
-                                        <div
-                                          className="progress-bar bg-success"
-                                          data-width="100%"
-                                          style={{ width: "100%" }}
-                                        />
-                                      </div>
-                                    </td>
+                                    <td>Kantor Songgon</td>
                                     <td>2018-01-20</td>
                                     <td>
                                       <a href="#" className="btn btn-success">

@@ -5,50 +5,36 @@ export default function Sidebar() {
     <div className="main-sidebar sidebar-style-2">
       <aside id="sidebar-wrapper">
         <div className="sidebar-brand">
-          <a href="index.html">Rumah Athan</a>
+          <a href="/admin">Rumah Athan</a>
         </div>
         <div className="sidebar-brand sidebar-brand-sm">
-          <a href="index.html">RA</a>
+          <a href="/admin">RA</a>
         </div>
         <ul className="sidebar-menu">
-          <li className="menu-header">Dashboard</li>
-          <li className="dropdown active">
-            <a href="#" className="nav-link has-dropdown">
-              <i className="fas fa-fire" />
-              <span>Dashboard</span>
-            </a>
-            <ul className="dropdown-menu">
-              <li className="active">
-                <a className="nav-link" href="index-0.html">
-                  General Dashboard
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="index.html">
-                  Ecommerce Dashboard
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="menu-header">Starter</li>
+        <li className="menu-header">Admin Menu</li>
           <li>
-            <Link className="nav-link" href="formprodukpages">
+            <Link className="nav-link" href="/admin">
+              <i className="fas fa-fire" /> <span>Dashboard</span>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-link" href="/admin/formprodukpages">
               <i className="fas fa-store" /> <span>Input Produk</span>
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="formcustomerpages">
-              <i className="fas fa-users" /> <span>Input Customer</span>
+            <Link className="nav-link" href="/admin/formcustomerpages">
+              <i className="fas fa-users" /> <span>Customer</span>
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="reservationpages">
+            <Link className="nav-link" href="/admin/reservationpages">
               <i className="fas fa-sticky-note" /> <span>Tabel Reservation</span>
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="transaksipages">
-              <i className="fas fa-book-open" /> <span>Tabel Transaksi</span>
+            <Link className="nav-link" href="/admin/transaksipages">
+              <i className="fas fa-book-open" /> <span>History Transaksi</span>
             </Link>
           </li>
         </ul>

@@ -1,40 +1,32 @@
 import React from "react";
-
-export default function InputTransaksi() {
+import Link from "next/link";
+export default function DetailTransaksi() {
   return (
     <>
       <div className="card author-box card-primary">
         <div className="card-body">
           <div className="col-12">
             <div className="text-center text-dark ">
-              <h2>Input Transaksi</h2>
+              <h2>Detail Transaksi</h2>
               <hr className="mx-auto rounded custom-hr"></hr>
             </div>
           </div>
           <div className="row">
-            <div className="form-group col-6">
-              <label>Nama Member</label>
-              <select className="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-              </select>
-            </div>
-            <div className="form-group col-4">
-              <label>Product</label>
-              <select className="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-              </select>
-            </div>
-            <div className="form-group col-2 my-auto">
-              <button className="btn btn-primary btn-block">Tambah</button>
+            <div className="form-group col-12">
+              <div className="form-group">
+                <label>Nama Member</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  disabled
+                  value={"Nama Aku"}
+                />
+              </div>
             </div>
           </div>
           <div className="row">
             <label className="form-group col-12 text-primary m-0">
-              Product Added
+              Product & Treatment
             </label>
             <div
               className="form-group col-12 overflow-auto w-auto"
@@ -58,33 +50,46 @@ export default function InputTransaksi() {
           </div>
           <div className="row">
             <div className="form-group col-6">
-              <label>Kantor</label>
-              <select className="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-              </select>
+              <div className="form-group">
+                <label>Kantor</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  disabled
+                  value={"Kantor Songgon"}
+                />
+              </div>
             </div>
             <div className="form-group col-6">
               <label>Tanggal</label>
-              <input type="date" className="form-control" />
+              <input type="date" className="form-control" disabled />
             </div>
           </div>
           <div className="row">
             <div className="form-group col-12">
               <div className="form-group">
                 <label>Anamnesia</label>
-                <textarea className="form-control" />
+                <textarea
+                  className="form-control"
+                  disabled
+                  value={"mengalami kerutan wajah"}
+                />
               </div>
               <div className="form-group">
                 <label>Diagnosis</label>
-                <textarea className="form-control" />
+                <textarea
+                  className="form-control"
+                  disabled
+                  value={"ada tuma"}
+                />
               </div>
               <div className="form-group">
                 <label>Total Pesanan : Rp. 500.000</label>
               </div>
               <div className="form-group">
-                <button className="btn btn-primary ">Simpan</button>
+                <Link href="/admin/transaksipages" className="btn btn-danger">
+                  Close
+                </Link>
               </div>
             </div>
           </div>
