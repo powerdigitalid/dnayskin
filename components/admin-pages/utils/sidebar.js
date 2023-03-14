@@ -27,12 +27,17 @@ export default function Sidebar() {
           </li>
           <li>
             <Link className="nav-link" href="/admin/editbanner">
-              <i className="fas fa-fire" /> <span>Edit Banner</span>
+              <i className="fas fa-pencil-alt" /> <span>Edit Banner</span>
             </Link>
           </li>
           <li>
             <Link className="nav-link" href="/admin/formprodukpages">
-              <i className="fas fa-store" /> <span>Input Produk</span>
+              <i className="fas fa-store" /> <span>Input Products</span>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-link" href="/admin/formtreatmentpages">
+              <i className="fas fa-female" /> <span>Input Treatments</span>
             </Link>
           </li>
           <li>
@@ -42,7 +47,7 @@ export default function Sidebar() {
           </li>
           <li>
             <Link className="nav-link" href="/admin/reservationpages">
-              <i className="fas fa-sticky-note" />{" "}
+              <i className="fas fa-sticky-note" />
               <span>Tabel Reservation</span>
             </Link>
           </li>

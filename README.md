@@ -9,6 +9,7 @@
 - [ ] treatment - admin pages
 - [x] reservation complete - admin pages
 - [x] history transaksi - admin pages
+- [x] login pages - admin pages
 - [ ] checkup final
 
 ## backend side

@@ -22,7 +22,7 @@ export default function InputTreatment() {
         <div className="form-row">
           <div className="form-group col-sm-6">
           <div className="form-group">
-              <label className="d-block">Pilih Jasa</label>
+              <label className="d-block">Pilih Products & Treatments</label>
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
