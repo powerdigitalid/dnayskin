@@ -103,7 +103,6 @@ export default function FormInputProduct() {
                       <input
                         type="text"
                         className="form-control form-control-sm"
-                        placeholder="Nama Produk"
                         value={nameProduct}
                         onChange={(e) => setNameProduct(e.target.value)}
                       />
@@ -118,7 +117,6 @@ export default function FormInputProduct() {
                           type="text"
                           className="form-control form-control-sm"
                           aria-label="Rupiah"
-                          placeholder="Harga"
                           value={price}
                           onChange={(e) => setPrice(e.target.value)}
                         />
@@ -135,7 +133,6 @@ export default function FormInputProduct() {
                         class="form-control"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder="isi deskripsi product"
                       />
                     </div>
                   </div>
