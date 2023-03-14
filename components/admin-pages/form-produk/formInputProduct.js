@@ -57,7 +57,7 @@ export default function FormInputProduct() {
       .then((res) => {
         console.log(res);
         alert(res.message);
-        router.push("/formprodukpages");
+        router.push("/admin/formprodukpages");
         clearData();
       })
       .catch((err) => console.log(err));
@@ -144,7 +144,7 @@ export default function FormInputProduct() {
               <div className="mb-2 mt-3">
                 <div className="row float-right">
                   <button className="btn btn-success">
-                    <i className="fas fa-plus fa-fw"></i> Tambah
+                    <i className="fas fa-plus fa-fw "></i> Tambah
                   </button>
                 </div>
               </div>

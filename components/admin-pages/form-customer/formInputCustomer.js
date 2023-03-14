@@ -1,4 +1,66 @@
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 export default function FormInputCustomer() {
+  const [image, setImage] = useState("");
+  const [nameCustomer, setNameCustomer] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const router = useRouter();
+
+  const clearData=()=>{
+    setNameCustomer("");
+    setPhone("");
+    setImage("");
+    setAddress("");
+  };
+
+  const handleAddCustomer = (e) => {
+    e.preventDefault();
+    const dataCustomer = {
+      cust_name: nameCustomer,
+      cust_phone: phone,
+      cust_address: address,
+      cust_img: image,
+    };
+    fetch("http://localhost:3000/api/v1/customer/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataCustomer),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        alert(res.message);
+        router.push("/admin/formcustomerpages");
+        clearData();
+      })
+      .catch((err) => console.log(err));
+  };
+
+
+  const handleUploadImageCust = (e) => {
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("image", file);
+    fetch("http://localhost:3000/api/v1/upload/image", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) {
+          setImage(res.data);
+          alert(res.message);
+        } else {
+          alert(res.message);
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <div className="card author-box card-primary">
@@ -8,6 +70,7 @@ export default function FormInputCustomer() {
               <h2>Tambahkan Customer</h2>
             </div>
           </div>
+          <form onSubmit={handleAddCustomer}>
           <div className="author-box-left">
             <img
               alt="image"
@@ -21,6 +84,7 @@ export default function FormInputCustomer() {
                 type="file"
                 className="custom-file-input"
                 id="customFile"
+                onChange={handleUploadImageCust}
               />
               <label className="custom-file-label" htmlFor="customFile">
                 Upload
@@ -36,6 +100,8 @@ export default function FormInputCustomer() {
                     <input
                       type="text"
                       className="form-control form-control-sm"
+                      value={nameCustomer}
+                      onChange={(e) => setNameCustomer(e.target.value)}
                     />
                   </div>
                   <div className="form-group col-sm-6">
@@ -48,6 +114,9 @@ export default function FormInputCustomer() {
                         type="text"
                         className="form-control form-control-sm"
                         aria-label="Nomer HP"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="masukkan nomer handphone"
                       />
                     </div>
                   </div>
@@ -55,7 +124,7 @@ export default function FormInputCustomer() {
                 <div className="form-row">
                   <div className="form-group col-sm-12">
                     <label>Alamat</label>
-                    <textarea className="form-control"></textarea>
+                    <textarea className="form-control" value={address} onChange={(e)=> setAddress(e.target.value)}/>
                   </div>
                 </div>
               </div>
@@ -68,6 +137,7 @@ export default function FormInputCustomer() {
                 </div>
               </div>
           </div>
+            </form>
         </div>
       </div>
     </>

@@ -1,5 +1,43 @@
 import Link from "next/link";
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router";
 export default function TableCustomer() {
+  const [dataCustomer, setDataCustomer] = useState([]);
+  const router = useRouter();
+  const fetchCustomer = async () => {
+    fetch("http://localhost:3000/api/v1/customer/all",{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setDataCustomer(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    fetchCustomer();
+  }, []);
+
+  async function deleteCustomer (id){
+    try{
+      const res = await fetch(`http://localhost:3000/api/v1/customer/delete/${id}`, {
+        method: "DELETE",
+      })
+      const data = await res.json();
+      console.log(data);
+      alert("Data berhasil dihapus");
+    }
+    catch(err){
+      console.log(err);
+      alert("Data gagal dihapus");
+    }
+    router.push("/admin/formcustomerpages");
+  }
+
   return (
     <div>
       <div className="row flex-lg-nowrap">
@@ -115,7 +153,38 @@ export default function TableCustomer() {
                               </tr>
                             </thead>
                             <tbody className="overflow-auto">
+                              {dataCustomer.map((customer, i) => (
                               <tr role="row" className="odd">
+                                <td className="sorting_1">{i+1}</td>
+                                <td>{customer.cust_name}</td>
+                                <td>{customer.cust_address}</td>
+                                <td>
+                                  <Link
+                                    href="/admin/reservationpages/inputreservation"
+                                    className="btn btn-primary m-2"
+                                  >
+                                    Reservations
+                                  </Link>
+                                  <Link
+                                    href="/admin/transaksipages/inputtransaksi"
+                                    className="btn btn-warning m-2"
+                                  >
+                                    Input Transaksi
+                                  </Link>
+                                  <Link
+                                    href="/admin/formcustomerpages/edit"
+                                    className="btn btn-info m-2"
+                                  >
+                                    Edit
+                                  </Link>
+                                  <button className="btn btn-danger m-2" onClick={() => deleteCustomer(customer.cust_id)}>
+                                    Hapus
+                                  </button>
+                                </td>
+                              </tr>
+                              ))}
+                            
+                              {/* <tr role="row" className="odd">
                                 <td className="sorting_1">1</td>
                                 <td>Dian Ahmad</td>
                                 <td>
@@ -145,7 +214,7 @@ export default function TableCustomer() {
                                     Hapus
                                   </a>
                                 </td>
-                              </tr>
+                              </tr> */}
                             </tbody>
                           </table>
                         </div>

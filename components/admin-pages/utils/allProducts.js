@@ -7,15 +7,25 @@ export default function AllProducts() {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const getDataProduct = async () => {
-      const res = await fetch("http://localhost:3000/api/v1/product/all");
-      const data = await res.json();
-      setDataProduct(data.data);
-    }
+  const fetchProduct = async () => {
+    fetch("http://localhost:3000/api/v1/product/all",{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setDataProduct(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
-    getDataProduct();
+  useEffect(() => {
+    fetchProduct();
   }, []);
+
   
   // useEffect(() => {
   //   async function getImage() {
@@ -46,7 +56,7 @@ export default function AllProducts() {
       console.log(err);
       alert("Data gagal dihapus");
     }
-    router.push("/admin");
+    router.push("/admin/formprodukpages");
 
   }
 
@@ -63,7 +73,7 @@ export default function AllProducts() {
 
         <div className="row">
           <div className="card author-box card-primary"></div>
-          {dataProduct.map((i, product) => (
+          {dataProduct.map((product,i) => (
             <div key={i} className="col-lg-3 col-md-6 col-12">
               {/* Start Single Product */}
               <div className="single-product">
@@ -86,7 +96,7 @@ export default function AllProducts() {
                 </div>
                 <div className="product-info">
                   <h4 className="title">
-                    <a href="product-grids.html">{product.product_name}</a>
+                    <a  href="product-grids.html">{product.product_name}</a>
                   </h4>
                   <p className="title">
                     <a href="product-grids.html">{product.product_desc}</a>
