@@ -1,83 +1,18 @@
-import AllProducts from "../utils/allProducts";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import React from 'react'
 
-export default function FormInputProduct() {
-  const [image, setImage] = useState("");
-  const [nameProduct, setNameProduct] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-
-  const router = useRouter();
-
-  const handleUploadImage = (e) => {
-    let file = e.target.files[0];
-    let formData = new FormData();
-    formData.append("image", file);
-    fetch("http://localhost:3000/api/v1/upload/image", {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.data) {
-          setImage(res.data);
-          alert(res.message);
-        } else {
-          alert(res.message);
-        }
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const clearData = () => {
-    setNameProduct("");
-    setPrice("");
-    setImage("");
-    setDescription("");
-  };
-
-  const handleAddProduct = (e) => {
-    e.preventDefault();
-    const dataProduct = {
-      product_name: nameProduct,
-      product_price: parseInt(price),
-      product_img: image,
-      product_desc: description,
-    };
-    fetch("http://localhost:3000/api/v1/product/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataProduct),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        alert(res.message);
-        router.push("/admin/formprodukpages");
-        clearData();
-      })
-      .catch((err) => console.log(err));
-  };
-
+export default function EditTreatment() {
   return (
-    <>
-      <div className="card author-box card-primary">
+    <div className="card author-box card-primary">
         <div className="card-body">
           <div className="col-12">
-            <div className="section-title">
-              <h2>Tambahkan Product</h2>
+            <div className="section-title row">
+              <h2 className='col-12'>Tambahkan Treatment</h2>
             </div>
           </div>
-          <form onSubmit={handleAddProduct}>
+          <form >
             <div className="author-box-left">
               <img
                 alt="image"
-                // src={`http://localhost:3000${product.product_img}`}
-                value={image}
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
               />
@@ -87,7 +22,6 @@ export default function FormInputProduct() {
                   type="file"
                   className="custom-file-input form-control-sm"
                   id="customFile"
-                  onChange={handleUploadImage}
                 />
                 <label className="custom-file-label" htmlFor="customFile">
                   Choose file
@@ -99,12 +33,10 @@ export default function FormInputProduct() {
                 <div className="form-group">
                   <div className="form-row">
                     <div className="form-group col-sm-6">
-                      <label>Nama Produk</label>
+                      <label>Nama Treatment</label>
                       <input
                         type="text"
                         className="form-control form-control-sm"
-                        value={nameProduct}
-                        onChange={(e) => setNameProduct(e.target.value)}
                       />
                     </div>
                     <div className="form-group col-sm-6">
@@ -117,8 +49,6 @@ export default function FormInputProduct() {
                           type="text"
                           className="form-control form-control-sm"
                           aria-label="Rupiah"
-                          value={price}
-                          onChange={(e) => setPrice(e.target.value)}
                         />
                         <div className="input-group-append">
                           <span className="form-control form-control-sm">.00</span>
@@ -131,8 +61,6 @@ export default function FormInputProduct() {
                       <label>Deskripsi</label>
                       <textarea
                         class="form-control"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
                       />
                     </div>
                   </div>
@@ -149,9 +77,6 @@ export default function FormInputProduct() {
           </form>
         </div>
       </div>
-      <div className="container">
-        <AllProducts />
-      </div>
-    </>
-  );
+      
+  )
 }

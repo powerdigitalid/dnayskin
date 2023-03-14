@@ -95,7 +95,7 @@ export default function EditProduct() {
                     <label>Harga</label>
                     <div className="input-group input-group-sm">
                       <div className="input-group-prepend">
-                        <span className="input-group-text">Rp</span>
+                        <span className="form-control form-control-sm">Rp</span>
                       </div>
                       <input
                         type="text"
@@ -105,7 +105,7 @@ export default function EditProduct() {
                         onChange={(e) => setPrice(e.target.value)}
                       />
                       <div className="input-group-append">
-                        <span className="input-group-text">.00</span>
+                        <span className="form-control form-control-sm">.00</span>
                       </div>
                     </div>
                   </div>

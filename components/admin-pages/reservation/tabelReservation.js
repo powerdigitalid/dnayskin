@@ -9,9 +9,11 @@ export default function TabelReservation() {
             <div className="col">
               <div className="row">
                 <div className="col-12">
-                  <div className="card">
-                    <div className="card-header">
-                      <h4>Tabel Reservation</h4>
+                  <div className="card card-primary">
+                    <div className="col-12">
+                      <div className="section-title">
+                        <h2>Tabel Reservation</h2>
+                      </div>
                     </div>
                     <div className="card-body">
                       <div className="table-responsive">

@@ -42,7 +42,7 @@ export default function EditCustomer() {
                     <label>Nomer Handphone</label>
                     <div className="input-group input-group-sm">
                       <div className="input-group-prepend">
-                        <span className="input-group-text">+62</span>
+                        <span className="form-control form-control-sm">+62</span>
                       </div>
                       <input
                         type="text"

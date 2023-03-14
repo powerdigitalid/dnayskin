@@ -31,15 +31,12 @@ export default function EditBanner() {
             <div className="author-box-name">
               <div className="form-group">
                 <div className="form-row">
-                  <div className="form-group col-sm-6">
-                    <label>Text Heading</label>
+                  <div className="form-group col-12">
+                    <label>Text Header</label>
                     <input
                       type="text"
                       className="form-control form-control-sm"
                     />
-                  </div>
-                  <div className="form-group col-sm-6">
-                    
                   </div>
                 </div>
                 <div className="form-row">
@@ -53,7 +50,7 @@ export default function EditBanner() {
             <div className="mb-2 mt-3">
               <div className="row float-right">
                 <button className="btn btn-success">
-                  <i className="fas fa-plus fa-fw"></i> Edit
+                  <i className="fas fa-plus fa-fw"></i> Tambah
                 </button>
               </div>
             </div>

@@ -26,7 +26,7 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" href="/admin/editbanner">
+            <Link className="nav-link" href="/admin/editbannerpages">
               <i className="fas fa-pencil-alt" /> <span>Edit Banner</span>
             </Link>
           </li>
