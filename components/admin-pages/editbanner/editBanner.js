@@ -1,4 +1,51 @@
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 export default function EditBanner() {
+  const [image, setImage] = useState("");
+
+  const handleUploadImage = (e) => {
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("image", file);
+    fetch("http://localhost:3000/api/v1/upload/image", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) {
+          setImage(res.data);
+          alert(res.message);
+        } else {
+          alert(res.message);
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleAddBanner =(e)=>{
+    e.preventDefault();
+    const dataTreatment ={
+      image_path: image,
+    };
+    fetch("http://localhost:3000/api/v1/banner/create",{
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataTreatment),
+    })
+    .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        alert(res.message);
+        router.push("/admin/formtreatmentpages");
+        clearData();
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
       <div className="card author-box card-primary">
@@ -8,6 +55,7 @@ export default function EditBanner() {
               <h2>Edit Banner</h2>
             </div>
           </div>
+          <form onSubmit={handleAddBanner}>
           <div className="author-box-left">
             <img
               alt="image"
@@ -21,6 +69,7 @@ export default function EditBanner() {
                 type="file"
                 className="custom-file-input"
                 id="customFile"
+                onChange={handleUploadImage}
               />
               <label className="custom-file-label" htmlFor="customFile">
                 Upload
@@ -55,6 +104,7 @@ export default function EditBanner() {
               </div>
             </div>
           </div>
+            </form>
         </div>
       </div>
     </>

@@ -1,6 +1,67 @@
 import React from 'react'
-
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+ 
 export default function InputTreatment() {
+  const [image, setImage] = useState("");
+  const [nameTreatment, setNameTreatment] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+
+  const router = useRouter();
+
+  const clearData = () => {
+    setNameTreatment("");
+    setPrice("");
+    setImage("");
+    setDescription("");
+  };
+
+  const handleUploadImage = (e) => {
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("image", file);
+    fetch("http://localhost:3000/api/v1/upload/image", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) {
+          setImage(res.data);
+          alert(res.message);
+        } else {
+          alert(res.message);
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleAddTreatment =(e)=>{
+    e.preventDefault();
+    const dataTreatment ={
+      treatment_name: nameTreatment,
+        treatment_price: parseInt(price),
+        treatment_img: image,
+        treatment_desc: description,
+    };
+    fetch("http://localhost:3000/api/v1/treatment/create",{
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataTreatment),
+    })
+    .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        alert(res.message);
+        router.push("/admin/formtreatmentpages");
+        clearData();
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <div className="card author-box card-primary">
         <div className="card-body">
@@ -9,12 +70,13 @@ export default function InputTreatment() {
               <h2 className='col-12'>Tambahkan Treatment</h2>
             </div>
           </div>
-          <form >
+          <form onSubmit={handleAddTreatment} >
             <div className="author-box-left">
               <img
                 alt="image"
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
+
               />
               <div className="clearfix" />
               <div className="custom-file w-75 h-50 m-1">
@@ -22,6 +84,7 @@ export default function InputTreatment() {
                   type="file"
                   className="custom-file-input form-control-sm"
                   id="customFile"
+                  onChange={handleUploadImage}
                 />
                 <label className="custom-file-label" htmlFor="customFile">
                   Choose file
@@ -37,6 +100,8 @@ export default function InputTreatment() {
                       <input
                         type="text"
                         className="form-control form-control-sm"
+                        value={nameTreatment}
+                        onChange={(e)=>setNameTreatment(e.target.value)}
                       />
                     </div>
                     <div className="form-group col-sm-6">
@@ -49,6 +114,8 @@ export default function InputTreatment() {
                           type="text"
                           className="form-control form-control-sm"
                           aria-label="Rupiah"
+                          value={price}
+                          onChange={(e)=> setPrice(e.target.value)}
                         />
                         <div className="input-group-append">
                           <span className="form-control form-control-sm">.00</span>
@@ -61,6 +128,8 @@ export default function InputTreatment() {
                       <label>Deskripsi</label>
                       <textarea
                         class="form-control"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                       />
                     </div>
                   </div>

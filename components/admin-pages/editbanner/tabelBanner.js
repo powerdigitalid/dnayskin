@@ -1,6 +1,28 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 export default function TabelBanner() {
+  const [dataBanner, setDataBanner] = useState([]);
+
+
+  const fetchBanner = async () => {
+    fetch("http://localhost:3000/api/v1/banner/all",{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setDataBanner(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    fetchBanner();
+  }, []);
   return (
     <div>
       <div className="row">
@@ -73,10 +95,11 @@ export default function TabelBanner() {
                           </tr>
                         </thead>
                         <tbody className="overflow-auto">
+                        {/* {dataBanner.map(banner => ( */}
                           <tr role="row" className="odd">
                             <td>
                               <img
-                                src="/dist/img/logos.png"
+                                // src={`http://localhost:3000${image_path}`}
                                 alt="SourceImage"
                               />
                             </td>
@@ -88,6 +111,7 @@ export default function TabelBanner() {
                               </a>
                             </td>
                           </tr>
+                          {/* ))} */}
                         </tbody>
                       </table>
                     </div>
