@@ -16,5 +16,5 @@
 - [ ] apply login endpoint to login page (TEST NEEDED, with redirect to admin page)
 - [ ] dashboard counter endpoint
 - [x] add cookies utility (inside `utils` folder)
-- [ ] Hakim needs to add more TODO HERE... 👌
+- [x] Hakim needs to add more TODO HERE... 👌
 - [ ] Pangpang and Pram need to add more TODO HERE... 😁✌️
