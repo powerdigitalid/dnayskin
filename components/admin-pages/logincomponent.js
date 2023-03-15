@@ -1,5 +1,40 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { setCookie } from "../../utils/cookie.util";
 export default function LoginComponent() {
+  const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const user = { username: username, password: password };
+    fetch("http://localhost:3000/api/v1/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.token) {
+          setError(data.message);
+          alert(data.message);
+          setLoading(false);
+        } else {
+          setCookie("token", data.token, 1);
+          alert(data.message);
+          setLoading(false);
+          router.push("/admin");
+        }
+      })
+      .catch((err) => {
+        alert("Error occured, please contact admin for more information.");
+        console.error(err);
+        setLoading(false);
+      });
+  };
   return (
     <section className="section">
       <div className="container mt-5">
@@ -18,9 +53,7 @@ export default function LoginComponent() {
                 <h4>Login Administrator</h4>
               </div>
               <div className="card-body">
-                <form
-                  method="POST"
-                  action="#"
+                <div
                   className="needs-validation"
                   noValidate
                 >
@@ -33,7 +66,9 @@ export default function LoginComponent() {
                       name="username"
                       tabIndex={1}
                       required
-                      autofocus
+                      autoFocus
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                     <div className="invalid-feedback">
                       Please fill in your username
@@ -52,22 +87,25 @@ export default function LoginComponent() {
                       name="password"
                       tabIndex={2}
                       required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="invalid-feedback">
                       please fill in your password
                     </div>
                   </div>
                   <div className="form-group">
-                    <Link
+                    <button
                       type="submit"
                       className="btn btn-primary btn-lg btn-block"
                       tabIndex={4}
-                      href="/admin"
+                      href="#"
+                      onClick={handleSubmit}
                     >
-                      Login
-                    </Link>
+                      {loading ? "Loading..." : "Login"}
+                    </button>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="simple-footer">Copyright © Power Digital Technology</div>
