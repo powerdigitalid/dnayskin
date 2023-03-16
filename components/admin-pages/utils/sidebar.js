@@ -1,6 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { removeCookie } from "../../../utils/cookie.util";
 export default function Sidebar() {
+  const router = useRouter();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    let validate = confirm("Are you sure to logout?");
+    if (validate) {
+      removeCookie("token");
+      router.push("/login");
+    } 
+  };
   return (
     <div className="main-sidebar sidebar-style-2">
       <aside id="sidebar-wrapper">
@@ -58,13 +69,13 @@ export default function Sidebar() {
           </li>
         </ul>
         <div className="mt-4 mb-4 p-3">
-          <Link
-            href="/"
+          <button
+            onClick={handleLogout}
             className="btn btn-danger btn-lg btn-block btn-icon-split"
             style={{height: 40}}
           >
             <i className="fas fa-sign-out-alt"/><span className="hide-sidebar-mini">Close</span>
-          </Link>
+          </button>
         </div>
       </aside>
     </div>

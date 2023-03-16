@@ -13,7 +13,8 @@
 - [ ] checkup final
 
 ## backend side
-- [ ] apply login endpoint to login page (TEST NEEDED, with redirect to admin page)
+- [x] apply login endpoint to login page (TEST NEEDED, with redirect to admin page)
+- [x] apply logout logic inside sidebar
 - [ ] dashboard counter endpoint
 - [x] add cookies utility (inside `utils` folder)
 - [x] Hakim needs to add more TODO HERE... 👌
