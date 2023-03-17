@@ -2,8 +2,41 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { removeCookie } from "../../../utils/cookie.util";
+import { useEffect, useState } from "react";
 export default function Sidebar() {
   const router = useRouter();
+  const [activeMenu, setActiveMenu] = useState("dashboard");
+  const handleCheckActiveMenu = () => {
+    switch (router.pathname) {
+      case "/admin":
+        setActiveMenu("admin");
+        break;
+      case "/admin/editbannerpages":
+        setActiveMenu("editbannerpages");
+        break;
+      case "/admin/formprodukpages":
+        setActiveMenu("formprodukpages");
+        break;
+      case "/admin/formtreatmentpages":
+        setActiveMenu("formtreatmentpages");
+        break;
+      case "/admin/formcustomerpages":
+        setActiveMenu("formcustomerpages");
+        break;
+      case "/admin/reservationpages":
+        setActiveMenu("reservationpages");
+        break;
+      case "/admin/transaksipages":
+        setActiveMenu("transaksipages");
+        break;
+      case "/admin/settingpages":
+        setActiveMenu("settingpages");
+        break;
+      default:
+        setActiveMenu("admin");
+        break;
+    }
+  };
   const handleLogout = (e) => {
     e.preventDefault();
     let validate = confirm("Are you sure to logout?");
@@ -12,6 +45,9 @@ export default function Sidebar() {
       router.push("/login");
     } 
   };
+  useEffect(() => {
+    handleCheckActiveMenu();
+  }, [activeMenu]);
   return (
     <div className="main-sidebar sidebar-style-2">
       <aside id="sidebar-wrapper">
@@ -31,38 +67,38 @@ export default function Sidebar() {
         </div>
         <ul className="sidebar-menu">
           <li className="menu-header">Admin Menu</li>
-          <li>
+          <li className={activeMenu == "admin" ? "active" : ""}>
             <Link className="nav-link" href="/admin">
               <i className="fas fa-fire" /> <span>Dashboard</span>
             </Link>
           </li>
-          <li>
+          <li className={activeMenu == "editbannerpages" ? "active" : ""}>
             <Link className="nav-link" href="/admin/editbannerpages">
               <i className="fas fa-pencil-alt" /> <span>Edit Banner</span>
             </Link>
           </li>
-          <li>
+          <li className={activeMenu == "formprdukpages" ? "active" : ""}>
             <Link className="nav-link" href="/admin/formprodukpages">
               <i className="fas fa-store" /> <span>Input Products</span>
             </Link>
           </li>
-          <li>
+          <li className={activeMenu == "formtreatmentpages" ? "active" : ""}>
             <Link className="nav-link" href="/admin/formtreatmentpages">
               <i className="fas fa-female" /> <span>Input Treatments</span>
             </Link>
           </li>
-          <li>
+          <li className={activeMenu == "formcustomerpages" ? "active" : ""}>
             <Link className="nav-link" href="/admin/formcustomerpages">
               <i className="fas fa-users" /> <span>Customer</span>
             </Link>
           </li>
-          <li>
+          <li className={activeMenu == "reservationpages" ? "active" : ""}>
             <Link className="nav-link" href="/admin/reservationpages">
               <i className="fas fa-sticky-note" />
               <span>Tabel Reservation</span>
             </Link>
           </li>
-          <li>
+          <li className={activeMenu == "transaksipages" ? "active" : ""}>
             <Link className="nav-link" href="/admin/transaksipages">
               <i className="fas fa-book-open" /> <span>History Transaksi</span>
             </Link>
