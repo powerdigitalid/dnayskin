@@ -1,6 +1,54 @@
+import { useEffect, useState } from "react";
+
 export default function Dashboard() {
+  const [reservations, setReservations] = useState(0);
+  const [customers, setCusomers] = useState(0);
+  const [products, setProducts] = useState(0);
+  const [treatments, setTreatments] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const handleCounter = () => {
+    setLoading(true);
+    fetch("http://localhost:3000/api/v1/dashboard/counter/all",{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.data){
+          setReservations(data.data.currentReservations);
+          setCusomers(data.data.customerCount);
+          setProducts(data.data.productCount);
+          setTreatments(data.data.treatmentCount);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    handleCounter();
+  }, [reservations, customers, products, treatments]);
   return (
     <div className="row">
+      <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+        <div className="card card-statistic-1">
+          <div className="card-icon bg-danger">
+            <i className="fas fa-info-circle" />
+          </div>
+          <div className="card-wrap">
+            <div className="card-header">
+              <h4>Current Reservations</h4>
+            </div>
+            <div className="card-body">
+              {reservations}
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="col-lg-4 col-md-6 col-sm-6 col-12">
         <div className="card card-statistic-1">
           <div className="card-icon bg-primary">
@@ -8,25 +56,25 @@ export default function Dashboard() {
           </div>
           <div className="card-wrap">
             <div className="card-header">
-              <h4>Total User</h4>
+              <h4>Customers</h4>
             </div>
             <div className="card-body">
-              10
+              {customers}
             </div>
           </div>
         </div>
       </div>
       <div className="col-lg-4 col-md-6 col-sm-6 col-12">
         <div className="card card-statistic-1">
-          <div className="card-icon bg-danger">
-            <i className="fas fa-chalkboard-teacher" />
+          <div className="card-icon bg-success">
+            <i className="fas fa-box" />
           </div>
           <div className="card-wrap">
             <div className="card-header">
-              <h4>Total Guru</h4>
+              <h4>Products</h4>
             </div>
             <div className="card-body">
-              42
+              {products}
             </div>
           </div>
         </div>
@@ -34,14 +82,14 @@ export default function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-6 col-12">
         <div className="card card-statistic-1">
           <div className="card-icon bg-warning">
-            <i className="fas fa-school" />
+            <i className="fas fa-cubes" />
           </div>
           <div className="card-wrap">
             <div className="card-header">
-              <h4>Total Lab</h4>
+              <h4>Treatments</h4>
             </div>
             <div className="card-body">
-              1,201
+              {treatments}
             </div>
           </div>
         </div>
