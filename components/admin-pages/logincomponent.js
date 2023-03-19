@@ -11,7 +11,7 @@ export default function LoginComponent() {
     e.preventDefault();
     setLoading(true);
     const user = { username: username, password: password };
-    fetch("http://localhost:3000/api/v1/auth/login", {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -20,17 +20,19 @@ export default function LoginComponent() {
       .then((data) => {
         if (!data.token) {
           setError(data.message);
-          alert(data.message);
           setLoading(false);
         } else {
-          setCookie("token", data.token, 1);
-          alert(data.message);
           setLoading(false);
-          router.push("/admin");
+          setCookie("token", data.token, 1);
+          setError(data.message + " Redirecting in 3 seconds...")
+          setTimeout(() => {
+            router.push("/admin");
+          }, 3000);
         }
       })
       .catch((err) => {
         alert("Error occured, please contact admin for more information.");
+        setError(err.message);
         console.error(err);
         setLoading(false);
       });
@@ -38,6 +40,9 @@ export default function LoginComponent() {
   return (
     <section className="section">
       <div className="container mt-5">
+        <div className={`alert alert-${error.includes("successfully")?'success':'danger'} alert-dismissible fade ${error == '' ? '': 'show'}`} role="alert">
+          {error}
+        </div>
         <div className="row">
           <div className="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div className="login-brand">
