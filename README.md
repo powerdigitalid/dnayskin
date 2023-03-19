@@ -1,9 +1,9 @@
 # PROJECT TODO
 
 ## tampilan saja
-- [ ] slider
+- [x] slider (NEED REVIEW)
 - [x] editor content slider - admin pages
-- [ ] dashboard (NEED REVIEW)- admin pages
+- [x] dashboard (NEED REVIEW)- admin pages
 - [x] customer complete -admin pages
 - [x] product complete - admin pages
 - [x] treatment - admin pages
