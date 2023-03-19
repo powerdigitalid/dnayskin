@@ -13,7 +13,7 @@ export function getCookie(name) {
       cookie = cookie.substring(1);
     }
     if (cookie.indexOf(cookieName) == 0) {
-      return JSON.parse(cookie.substring(cookieName.length, cookie.length));
+      return cookie.substring(cookieName.length, cookie.length);
     }
   }
   return "";
