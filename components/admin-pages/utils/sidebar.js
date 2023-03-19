@@ -77,7 +77,7 @@ export default function Sidebar() {
               <i className="fas fa-pencil-alt" /> <span>Edit Banner</span>
             </Link>
           </li>
-          <li className={activeMenu == "formprdukpages" ? "active" : ""}>
+          <li className={activeMenu == "formprodukpages" ? "active" : ""}>
             <Link className="nav-link" href="/admin/formprodukpages">
               <i className="fas fa-store" /> <span>Input Products</span>
             </Link>
