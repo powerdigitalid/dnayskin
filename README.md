@@ -1,4 +1,6 @@
 # PROJECT TODO
+**NOTES**: `.env.local.example` added, please copy and rename to `.env.local`. 
+Change the ENV VALUES if needed.
 
 ## tampilan saja
 - [x] slider (NEED REVIEW)
@@ -10,6 +12,7 @@
 - [x] reservation complete - admin pages
 - [x] history transaksi - admin pages
 - [x] login pages - admin pages
+- [ ] banner create and delete (NEED REVIEW) - admin pages
 - [ ] checkup final
 
 ## backend side

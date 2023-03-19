@@ -1,12 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 export default function TabelBanner() {
   const [dataBanner, setDataBanner] = useState([]);
-
-
   const fetchBanner = async () => {
-    fetch("http://localhost:3000/api/v1/banner/all",{
+    fetch("http://localhost:3000/api/v1/banner/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -19,10 +18,41 @@ export default function TabelBanner() {
       })
       .catch((err) => console.log(err));
   };
-
+  const handleDeleteBanner = (e, id, banner_header) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Apakah Anda Yakin?",
+      text: `Data banner "${banner_header}" akan dihapus. Data yang dihapus tidak dapat dikembalikan!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Ya, hapus!'
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:3000/api/v1/banner/delete/${id}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              Swal.fire(
+                'Terhapus!',
+                res.message,
+                'success'
+              );
+              fetchBanner();
+            })
+            .catch((err) => console.log(err));
+        }
+      })
+  };
   useEffect(() => {
     fetchBanner();
-  }, []);
+  }, [dataBanner]);
   return (
     <div>
       <div className="row">
@@ -95,23 +125,23 @@ export default function TabelBanner() {
                           </tr>
                         </thead>
                         <tbody className="overflow-auto">
-                        {/* {dataBanner.map(banner => ( */}
-                          <tr role="row" className="odd">
-                            <td>
-                              <img
-                                // src={`http://localhost:3000${image_path}`}
-                                alt="SourceImage"
-                              />
-                            </td>
-                            <td>Judul Content</td>
-                            <td>Deskripsi Content</td>
-                            <td>
-                              <a href="#" className="btn btn-danger">
-                                Hapus
-                              </a>
-                            </td>
-                          </tr>
-                          {/* ))} */}
+                          {dataBanner.map((banner, i) => (
+                            <tr key={i} role="row" className="odd">
+                              <td>
+                                <img
+                                  src={`http://localhost:3000${banner.image_path}`}
+                                  alt="SourceImage"
+                                />
+                              </td>
+                              <td>{banner.text_header}</td>
+                              <td>{banner.text_desc}</td>
+                              <td>
+                                <button onClick={e => handleDeleteBanner(e, banner.id, banner.text_header)} className="btn btn-danger">
+                                  Hapus
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>

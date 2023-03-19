@@ -17,6 +17,7 @@
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sweetalert2": "^11.7.3",
     "tiny-slider": "^2.9.4",
     "tiny-slider-react": "^0.5.6"
   }
