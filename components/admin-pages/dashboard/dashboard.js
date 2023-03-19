@@ -1,6 +1,9 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { getCookie } from "../../../utils/cookie.util";
 
 export default function Dashboard() {
+  const router = useRouter();
   const [reservations, setReservations] = useState(0);
   const [customers, setCusomers] = useState(0);
   const [products, setProducts] = useState(0);
@@ -8,7 +11,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const handleCounter = () => {
     setLoading(true);
-    fetch("http://localhost:3000/api/v1/dashboard/counter/all",{
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}dashboard/counter/all`,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +33,7 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    handleCounter();
+    getCookie("token").length > 0 ? handleCounter() : router.push("/login");
   }, [reservations, customers, products, treatments]);
   return (
     <div className="row">
