@@ -41,7 +41,7 @@ export default function Navbar() {
               </a>
               {/* End Header Logo */}
             </div>
-            <div className="col-lg-5 col-md-7 d-xs-none">
+            {/* <div className="col-lg-5 col-md-7 d-xs-none">
               <div className="main-menu-search">
                 <div className="navbar-search search-style-5">
                   <div className="search-select">
@@ -64,9 +64,9 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-2 col-5">
-              <div className="middle-right-area">
+            </div> */}
+            <div className="col-lg-9 col-md-2 col-5">
+              <div className="middle-right-area float-right">
                 <div className="nav-hotline">
                   <i className="lni lni-phone" />
                   <h3>
@@ -170,17 +170,17 @@ export default function Navbar() {
       {/* End Header Middle */}
       {/* Start Header Bottom */}
       <div className="container">
-        <div className="row align-items-center">
+        <div className="row ">
           <div className="col-lg-8 col-md-6 col-12">
             <div className="nav-inner">
               {/* Start Mega Category Menu */}
-              <div className="mega-category-menu">
+              {/* <div className="mega-category-menu">
                 <span className="cat-button">
                   <i className="lni lni-menu" />
                   All Categories
                 </span>
                 <ul className="sub-category">
-                  {/* <li>
+                  <li>
                     <a href="product-grids.html">
                       Semua Produk <i className="lni lni-chevron-right" />
                     </a>
@@ -192,7 +192,7 @@ export default function Navbar() {
                         <a href="product-grids.html">Camcorders</a>
                       </li>
                     </ul>
-                  </li> */}
+                  </li>
                   <li>
                     <a href="product-grids.html">Semua Treatmen</a>
                   </li>
@@ -200,10 +200,11 @@ export default function Navbar() {
                     <a href="product-grids.html">Semua Produks</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               {/* End Mega Category Menu */}
               {/* Start Navbar */}
-              <nav className="navbar navbar-expand-lg  ">
+              
+              <nav className="navbar-expand-lg" style={{marginTop:"-10px",marginBottom:"-10px"}}>
                 <button
                   className="navbar-toggler mobile-menu-btn"
                   type="button"
@@ -334,9 +335,9 @@ export default function Navbar() {
           </div>
           <div className="col-lg-4 col-md-6 col-12">
             {/* Start Nav Social */}
-            <div className="nav-social">
+            <div className="nav-social ">
               <h5 className="title">Social Media Kami:</h5>
-              <ul>
+              <ul className="pt-2">
                 <li>
                   <a href="javascript:void(0)">
                     <i className="lni lni-facebook" />
