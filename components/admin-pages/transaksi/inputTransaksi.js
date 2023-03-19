@@ -1,6 +1,72 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+
+function SelectName({ className, options = [] }) {
+  return (
+    <select className={className}>
+      <option>Pilih ...</option>
+      {options.map((option) => (
+        <option key={option.id} value={option.id}>
+          {option.cust_name}
+        </option>
+      ))}
+    </select>
+  )
+}
+
+function SelectProduct({ className, options = [] }) {
+  return (
+    <select className={className}>
+      <option>Pilih ...</option>
+      {options.map((option) => (
+        <option key={option.id} value={option.id}>
+          {option.product_name}
+        </option>
+      ))}
+    </select>
+  )
+}
 
 export default function InputTransaksi() {
+  const [customers, setCustomers] = useState([]);
+  const [products, setProducts] = useState([]);
+  const handleFetchCustomers = () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.data) {
+          setCustomers([...data.data]);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleFetchProducts = () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}product/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.data) {
+          setProducts([...data.data]);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    handleFetchCustomers();
+    handleFetchProducts();
+    console.log(customers)
+  }, []);
   return (
     <>
       <div className="card author-box card-primary">
@@ -14,19 +80,11 @@ export default function InputTransaksi() {
           <div className="row">
             <div className="form-group col-6">
               <label>Nama Member</label>
-              <select className="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-              </select>
+              <SelectName className="form-control" options={customers} />
             </div>
             <div className="form-group col-4">
               <label>Product</label>
-              <select className="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-              </select>
+              <SelectProduct className="form-control" options={products}/>
             </div>
             <div className="form-group col-2 my-auto">
               <button className="btn btn-primary btn-block">Tambah</button>

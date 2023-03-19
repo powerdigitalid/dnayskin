@@ -1,6 +1,32 @@
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { getCookie } from '../../../utils/cookie.util';
 
 export default function CardCustomer() {
+  const router = useRouter();
+  const { customer } = router.query;
+  const [ customerData, setCustomerData ] = useState({})
+  const handleFetchCustomerData = (id) => {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/${customer}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if(data.data){
+        setCustomerData(data.data)
+      }
+    })
+    .catch(err => console.log(err))
+  };
+  useEffect(() => {
+    if(customer){
+      handleFetchCustomerData(customer)
+    }
+  }, []);
   return (
     <>
       <div className="card author-box card-primary">
@@ -27,6 +53,7 @@ export default function CardCustomer() {
                     <input
                       type="text"
                       className="form-control form-control-sm"
+                      value={customerData.cust_name}
                       disabled
                     />
                   </div>
@@ -40,6 +67,7 @@ export default function CardCustomer() {
                         type="text"
                         className="form-control form-control-sm"
                         aria-label="Nomer HP"
+                        value={customerData.cust_phone}
                         disabled
                       />
                     </div>
@@ -48,7 +76,7 @@ export default function CardCustomer() {
                 <div className="form-row">
                   <div className="form-group col-sm-12">
                     <label>Alamat</label>
-                    <textarea className="form-control" disabled></textarea>
+                    <textarea className="form-control" value={customerData.cust_address} disabled></textarea>
                   </div>
                 </div>
               </div>

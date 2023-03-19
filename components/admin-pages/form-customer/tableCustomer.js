@@ -154,25 +154,25 @@ export default function TableCustomer() {
                             </thead>
                             <tbody className="overflow-auto">
                               {dataCustomer.map((customer, i) => (
-                              <tr role="row" className="odd">
+                              <tr key={i} role="row" className="odd">
                                 <td className="sorting_1">{i+1}</td>
                                 <td>{customer.cust_name}</td>
                                 <td>{customer.cust_address}</td>
                                 <td>
                                   <Link
-                                    href="/admin/reservationpages/inputreservation"
+                                    href={`/admin/reservationpages/inputreservation?customer=${customer.id}`}
                                     className="btn btn-primary m-2"
                                   >
                                     Reservations
                                   </Link>
                                   <Link
-                                    href="/admin/transaksipages/inputtransaksi"
+                                    href={`/admin/transaksipages/inputtransaksi?customer=${customer.id}`}
                                     className="btn btn-warning m-2"
                                   >
                                     Input Transaksi
                                   </Link>
                                   <Link
-                                    href="/admin/formcustomerpages/edit"
+                                    href={`/admin/formcustomerpages/edit?customer=${customer.id}`}
                                     className="btn btn-info m-2"
                                   >
                                     Edit

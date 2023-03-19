@@ -52,7 +52,7 @@ export default function TabelBanner() {
   };
   useEffect(() => {
     fetchBanner();
-  }, [dataBanner]);
+  }, []);
   return (
     <div>
       <div className="row">
