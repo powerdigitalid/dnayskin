@@ -7,29 +7,31 @@ export default function Sidebar() {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = useState("dashboard");
   const handleCheckActiveMenu = () => {
-    switch (router.pathname) {
-      case "/admin":
+    let pathname = router.pathname;
+    const path = pathname.split("/").length > 2 ? pathname.split("/")[2] : pathname.split("/")[1]; 
+    switch (path) {
+      case "admin":
         setActiveMenu("admin");
         break;
-      case "/admin/editbannerpages":
+      case "editbannerpages":
         setActiveMenu("editbannerpages");
         break;
-      case "/admin/formprodukpages":
+      case "formprodukpages":
         setActiveMenu("formprodukpages");
         break;
-      case "/admin/formtreatmentpages":
+      case "formtreatmentpages":
         setActiveMenu("formtreatmentpages");
         break;
-      case "/admin/formcustomerpages":
+      case "formcustomerpages":
         setActiveMenu("formcustomerpages");
         break;
-      case "/admin/reservationpages":
+      case "reservationpages":
         setActiveMenu("reservationpages");
         break;
-      case "/admin/transaksipages":
+      case "transaksipages":
         setActiveMenu("transaksipages");
         break;
-      case "/admin/settingpages":
+      case "settingpages":
         setActiveMenu("settingpages");
         break;
       default:
