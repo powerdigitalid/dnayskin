@@ -1,33 +1,17 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-function SelectName({ className, options = [] }) {
-  return (
-    <select className={className}>
-      <option>Pilih ...</option>
-      {options.map((option) => (
-        <option key={option.id} value={option.id}>
-          {option.cust_name}
-        </option>
-      ))}
-    </select>
-  )
-}
-
-function SelectProduct({ className, options = [] }) {
-  return (
-    <select className={className}>
-      <option>Pilih ...</option>
-      {options.map((option) => (
-        <option key={option.id} value={option.id}>
-          {option.product_name}
-        </option>
-      ))}
-    </select>
-  )
-}
-
 export default function InputTransaksi() {
+  // transaction data
+  const [customerId, setCustomerId] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [addedProducts, setAddedProducts] = useState([]);
+  const [officeId, setOfficeId] = useState("");
+  const [date, setDate] = useState("");
+  const [anamnesia, setAnamnesia] = useState("");
+  const [diagnosis, setDiagnosis] = useState("");
+  const [total, setTotal] = useState(0);
+  // end of transaction data
   const [customers, setCustomers] = useState([]);
   const [products, setProducts] = useState([]);
   const handleFetchCustomers = () => {
@@ -39,7 +23,6 @@ export default function InputTransaksi() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.data) {
           setCustomers([...data.data]);
         }
@@ -55,17 +38,27 @@ export default function InputTransaksi() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.data) {
           setProducts([...data.data]);
         }
       })
       .catch((err) => console.log(err));
   };
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    setAddedProducts([...addedProducts, selectedProduct]);
+    setTotal(total + parseInt(selectedProduct.product_price));
+    setSelectedProduct({});
+  };
+  const handleClearProduct = (e) => {
+    e.preventDefault();
+    setAddedProducts([]);
+    setTotal(0);
+  };
+  const handleCreateTransaction = (e) => {};
   useEffect(() => {
     handleFetchCustomers();
     handleFetchProducts();
-    console.log(customers)
   }, []);
   return (
     <>
@@ -80,66 +73,101 @@ export default function InputTransaksi() {
           <div className="row">
             <div className="form-group col-6">
               <label>Nama Member</label>
-              <SelectName className="form-control" options={customers} />
+              <select onChange={(e) => setCustomerId(e.target.value)} className="form-control">
+                <option>Pilih ...</option>
+                {customers.map((customer) => (
+                  <option key={customer.id} value={customer.id}>
+                    {customer.cust_name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-group col-4">
               <label>Product</label>
-              <SelectProduct className="form-control" options={products}/>
+              <select onChange={(e) => {
+                setSelectedProduct({
+                  id: e.target.value.split(";")[0],
+                  product_name: e.target.value.split(";")[1],
+                  product_price: e.target.value.split(";")[2],
+                })
+              }}
+                className="form-control">
+                <option>Pilih ...</option>
+                {products.map((product) => (
+                  <option key={product.id} value={`${product.id};${product.product_name};${parseInt(product.product_price)}`}>
+                    {product.product_name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-group col-2 my-auto">
-              <button className="btn btn-primary btn-block">Tambah</button>
+              <button onClick={handleAddProduct} className="btn btn-primary btn-block">Tambah</button>
             </div>
           </div>
           <div className="row">
             <label className="form-group col-12 text-primary m-0">
               Product Added
+              <button className="btn btn-sm btn-danger float-right" onClick={handleClearProduct}>Bersihkan</button>
             </label>
             <div
               className="form-group col-12 overflow-auto w-auto"
               style={{ height: "100px" }}
             >
-              <label>1. Produk Nomor 1</label>
-              <br />
-              <label>1. Produk Nomor 1</label>
-              <br />
-              <label>1. Produk Nomor 1</label>
-              <br />
-              <label>1. Produk Nomor 1</label>
-              <br />
-              <label>1. Produk Nomor 1</label>
-              <br />
-              <label>1. Produk Nomor 1</label>
-              <br />
-              <label>1. Produk Nomor 1</label>
-              <br />
+              <table className="table table-sm table-hover" >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th className="text-center">Harga (Rp)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {addedProducts.length > 0 ? (addedProducts.map((product, i) => (
+                    <tr key={i}>
+                      <td>{i+1}</td>
+                      <td>{product.product_name}</td>
+                      <td className="text-right">{product.product_price}</td>
+                    </tr>
+                  ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada produk yang ditambahkan</td></tr>)}
+                </tbody>
+              </table>
             </div>
           </div>
           <div className="row">
             <div className="form-group col-6">
               <label>Kantor</label>
-              <select className="form-control">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
+              <select onChange={(e) => setOfficeId(e.target.value)} className="form-control">
+                <option value={'kantorA'}>Kantor A</option>
+                <option value={'kantorB'}>Kantor B</option>
+                <option value={'kantorC'}>Kantor C</option>
               </select>
             </div>
             <div className="form-group col-6">
               <label>Tanggal</label>
-              <input type="date" className="form-control" />
+              <input type="date" className="form-control" onChange={(e) => setDate(e.target.value)}/>
             </div>
           </div>
           <div className="row">
             <div className="form-group col-12">
               <div className="form-group">
                 <label>Anamnesia</label>
-                <textarea className="form-control" />
+                <textarea className="form-control" onChange={(e) => setAnamnesia(e.target.value)}/>
               </div>
               <div className="form-group">
                 <label>Diagnosis</label>
-                <textarea className="form-control" />
+                <textarea className="form-control" onChange={(e) => setDiagnosis(e.target.value)}/>
               </div>
               <div className="form-group">
-                <label>Total Pesanan : Rp. 500.000</label>
+                <label>Total Pesanan</label>
+                <div className="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Rp</span>
+                  </div>
+                  <input className="form-control text-right" type="number" value={total} disabled />
+                  <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
               </div>
               <div className="form-group">
                 <button className="btn btn-primary ">Simpan</button>
