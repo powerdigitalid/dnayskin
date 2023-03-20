@@ -23,6 +23,8 @@ export default function LoginComponent() {
           setLoading(false);
         } else {
           setLoading(false);
+          setCookie("username", data.data.username, 1);
+          setCookie("id", data.data.id, 1);
           setCookie("token", data.token, 1);
           setError(data.message + " Redirecting in 3 seconds...")
           setTimeout(() => {

@@ -44,6 +44,8 @@ export default function Sidebar() {
     let validate = confirm("Are you sure to logout?");
     if (validate) {
       removeCookie("token");
+      removeCookie("username");
+      removeCookie("id");
       router.push("/login");
     } 
   };
