@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function InputReservation() {
+  const [customers, setCustomers] = useState([]);
+  const [customerId, setCustomerId] = useState("");
+  const [officeId, setOfficeId] = useState("");
+  const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
+  const handleFetchCustomers = () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          setCustomers([...data.data]);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleCreateReservation = (e) => {};
+  useEffect(() => {
+    handleFetchCustomers();
+  }, []);
   return (
     <div>
       <form>
@@ -8,22 +32,24 @@ export default function InputReservation() {
           <div className="form-group col-6">
             <label>Pilih Member</label>
             <select className="form-control">
-              <option>Option 1</option>
-              <option>Option 2</option>
+              <option>Pilih ...</option>
+              {customers.length > 0 ? customers.map((customer, i) => (
+                <option key={i} value={customer.id}>{customer.cust_name}</option>
+              )):(<option></option>)}
             </select>
           </div>
           <div className="form-group col-6">
             <label>Pilih Kantor</label>
-            <select className="form-control">
-              <option>Kantor Songgon</option>
-              <option>Kantor Rogojampi</option>
+            <select onChange={(e) => setOfficeId(e.target.value)} className="form-control">
+              <option value={'kantorSonggon'}>Kantor Songgon</option>
+              <option value={'kantorRogojampi'}>Kantor Rogojampi</option>
             </select>
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col-sm-6">
             <label>Tanggal</label>
-            <input type="date" className="form-control" />
+            <input type="date" className="form-control" onChange={(e) => setDate(e.target.value)}/>
           </div>
           <div className="form-group col-sm-6">
             <div className="form-group">
@@ -79,6 +105,7 @@ export default function InputReservation() {
           <div className="form-group col-sm-12">
             <label>Deskripsi</label>
             <textarea
+              onChange={(e) => setDescription(e.target.value)}
               className="form-control"
               placeholder="Masukkan deskripsi"
             />
