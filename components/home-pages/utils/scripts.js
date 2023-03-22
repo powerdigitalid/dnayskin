@@ -2,11 +2,6 @@ import Script from "next/script";
 import { useEffect } from "react";
 export default function Scripts() {
   useEffect(() => {
-    window.JQuery = require("../../../public/dist/js/jquery.min.js");
-    window.$ = window.JQuery;
-    $('#pesanKantor').on('shown.bs.modal', function () {
-      $('#pesanKantor').trigger('focus')
-    });
     import("tiny-slider").then(tns => {
       tns.tns({
         container: ".hero-slider",
@@ -28,11 +23,11 @@ export default function Scripts() {
 
   return (
     <>
-      <Script src="../public/dist/js/bootstrap.bundle.min.js" />
-      <Script src="../public/dist/js/glightbox.min.js" />
-      <Script src="../public/dist/js/main.js" />
-      <Script src="../public/dist/js/tiny-slider.js" />
-      <Script src="../public/dist/js/jquery.min.js" />
+      {/* <Script defer src="../../../dist/js/jquery.min.js" /> */}
+      <Script defer src="../../../dist/js/bootstrap.bundle.min.js" />
+      <Script defer src="../../../dist/js/glightbox.min.js" />
+      {/* <Script defer src="../../../dist/js/main.js" /> */}
+      <Script defer src="../../../dist/js/tiny-slider.js" />
     </>
   );
 }

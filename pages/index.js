@@ -5,6 +5,7 @@ import About from '../components/home-pages/utils/about'
 import NewProduct from '../components/home-pages/utils/newProduct'
 import NewTreatment from '../components/home-pages/utils/newTreatment'
 import Scipts from '../components/home-pages/utils/scripts'
+import Modal from '../components/home-pages/utils/modalNewProduct'
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <About />
       <NewProduct />
       <NewTreatment />
+      <Modal />
       <Scipts />
       </Layout>
     </>
