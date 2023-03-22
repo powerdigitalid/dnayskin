@@ -5,7 +5,6 @@ import { getCookie } from "../../../utils/cookie.util";
 
 export default function AllProducts() {
   const [dataProduct, setDataProduct] = useState([]);
-
   const router = useRouter();
 
   const fetchProduct = async () => {
@@ -27,22 +26,6 @@ export default function AllProducts() {
   useEffect(() => {
     fetchProduct();
   }, []);
-
-  // useEffect(() => {
-  //   async function getImage() {
-  //     const data = await Promise.all(dataProduct.map(async (product) => {
-  //       const res = await fetch(`http://localhost:3000${product.product_img}`);
-  //       const imageData = await res.blob(); // ubah format respon ke dalam Blob
-  //       const imageURL = URL.createObjectURL(imageData); // buat URL objek untuk gambar
-  //       return{
-  //         ...product,
-  //         image: imageURL
-  //       }
-  //     }))
-  //     setDataProduct(data);
-  //   }
-  //   getImage();
-  // }, [dataProduct])
 
   async function deleteProduct(id) {
     try {
@@ -94,9 +77,9 @@ export default function AllProducts() {
                   <div className="row">
                     <div className="col text-white">
                       <div>
-                        <button type="button" className="btn btn-success">
+                        <Link href={`/admin/formprodukpages/edit?id=${product.id}&nameProduct=${product.product_name}&price=${product.product_price}&description=${product.product_desc}&image=${product.product_img}`} type="button" className="btn btn-success">
                           <i className="fas fa-edit" /> Edit
-                        </button>
+                        </Link>
                       </div>
                     </div>
                     <div className="col text-white">
