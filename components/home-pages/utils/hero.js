@@ -1,6 +1,6 @@
-import slider1 from "../../../public/dist/img/products/produkss.jpeg"
-import slider2 from "../../../public/dist/img/products/produkss1.jpeg"
-import slider from "../../../public/dist/img/products/ibuibu.jpeg"
+import slider1 from "../../../public/dist/img/products/produkss.jpeg";
+import slider2 from "../../../public/dist/img/products/produkss1.jpeg";
+import slider from "../../../public/dist/img/products/ibuibu.jpeg";
 
 export default function Hero() {
   return (
@@ -15,25 +15,19 @@ export default function Hero() {
                 <div
                   className="single-slider"
                   style={{
-                    backgroundImage:`url(${slider1.src})` ,
+                    backgroundImage: `url(${slider1.src})`,
                   }}
                 >
-                  <div className="content">
-                    <h2>
-                      <span>No restocking fee ($35 savings)</span>
-                      M75 Sport Watch
-                    </h2>
+                  <div className="content text-dark">
+                    <h2>Judul Content 1</h2>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua.
                     </p>
-                    <h3>
-                      <span>Now Only</span> $320.99
-                    </h3>
                     <div className="button">
-                      <a href="product-grids.html" className="btn">
-                        Shop Now
+                      <a href="#about" className="btn">
+                        Telusuri
                       </a>
                     </div>
                   </div>
@@ -43,25 +37,19 @@ export default function Hero() {
                 <div
                   className="single-slider"
                   style={{
-                    backgroundImage: `url(${slider2.src})` ,
+                    backgroundImage: `url(${slider2.src})`,
                   }}
                 >
-                  <div className="content">
-                    <h2>
-                      <span>Big Sale Offer</span>
-                      Get the Best Deal on CCTV Camera
-                    </h2>
+                  <div className="content text-dark">
+                    <h2>Judul Content 2</h2>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua.
                     </p>
-                    <h3>
-                      <span>Combo Only:</span> $590.00
-                    </h3>
                     <div className="button">
-                      <a href="product-grids.html" className="btn">
-                        Shop Now
+                      <a href="#about" className="btn">
+                        Telusuri
                       </a>
                     </div>
                   </div>
@@ -78,30 +66,25 @@ export default function Hero() {
                 <div
                   className="hero-small-banner"
                   style={{
-                    backgroundImage: `url(${slider.src})` ,
+                    backgroundImage: `url(${slider.src})`,
                   }}
-                >
-                  {/* <div className="content">
-                    <h2>
-                      <span>New line required</span>
-                      iPhone 12 Pro Max
-                    </h2>
-                    <h3>$259.99</h3>
-                  </div> */}
-                </div>
+                ></div>
                 {/* End Small Banner */}
               </div>
               <div className="col-lg-12 col-md-6 col-12">
                 {/* Start Small Banner */}
-                <div className="hero-small-banner style2">
+                <div
+                  className="hero-small-banner style2 text-dark"
+                  style={{
+                    backgroundImage: `url(/dist/img/banner/maps.PNG)`,
+                  }}
+                >
                   <div className="content">
-                    <h2>Weekly Sale!</h2>
-                    <p>
-                      Saving up to 50% off all online store items this week.
-                    </p>
+                    <h4 className="text-dark fs-1">Google Maps</h4>
+                    <p className="text-dark">Telusuri Kami Di Google Maps</p>
                     <div className="button">
-                      <a className="btn" href="product-grids.html">
-                        Shop Now
+                      <a className="btn btn-hover" href="#">
+                        Telusuri
                       </a>
                     </div>
                   </div>

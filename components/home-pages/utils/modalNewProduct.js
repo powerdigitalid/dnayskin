@@ -11,7 +11,7 @@ export default function Modal() {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="pesanKantorLabel">
-              Modal title
+              Pesan
             </h5>
             <button
               type="button"
@@ -22,21 +22,25 @@ export default function Modal() {
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div className="modal-body">...</div>
+          <div className="modal-body">
+            Silahkan Pilih Kantor Yang Akan Dihubungi..
+          </div>
           <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" className="btn btn-primary">
-              Save changes
-            </button>
+            <div className="row">
+              <div className="col">
+                <button type="button" className="btn btn-primary">
+                  Kantor 1
+                </button>
+              </div>
+              <div className="col">
+                <button type="button" className="btn btn-primary">
+                  Kantor 2
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

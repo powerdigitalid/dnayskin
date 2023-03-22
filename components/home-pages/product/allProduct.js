@@ -1,14 +1,14 @@
 import Product from "../../../public/dist/img/products/product-1.jpg";
 import Image from "next/image";
 
-export default function NewProduct() {
+export default function AllProduct() {
   return (
-    <section className="trending-product section" style={{ marginTop: 12 }} id="newProduct">
+    <section className="trending-product section" style={{ marginTop: 12 }} id="allproduk">
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="section-title">
-              <h2>Produk Terbaru</h2>
+              <h2>Semua Produk</h2>
               <p>
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form.

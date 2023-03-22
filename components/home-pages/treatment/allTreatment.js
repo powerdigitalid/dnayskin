@@ -1,14 +1,14 @@
 import Product from "../../../public/dist/img/products/product-1.jpg";
 import Image from "next/image";
 
-export default function NewTreatment() {
+export default function AllTreatment() {
   return (
-    <section className="trending-product section" id="newTreatment">
+    <section className="trending-product section" id="alltreatments">
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="section-title">
-              <h2>Treatment Terbaru</h2>
+              <h2>Semua Treatment</h2>
               <p>
                 There are many variations of passages of Lorem Ipsum available,
                 but the majority have suffered alteration in some form.
