@@ -87,10 +87,17 @@ export default function Footer() {
               <div className="row align-items-center">
                 <div className="col-lg-4 col-12">
                   <div className="payment-gateway">
-                    <span>Email For Our Projects:</span>
+                    <span>Contact Us For Your Projects:</span>
                     <li>
                       <a href="mailto:admin@powerdigital.id">
-                        <i className="fab fa-email" />admin@powerdigital.id
+                        <i className="fab fa-email" />
+                        admin@powerdigital.id
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://wa.me/+6281238368983?text=saya%20ingin%20bertanya%20atau%20membuat%20aplikasi%20dan%20saya">
+                        <i className="fab fa-email" />
+                        +62 812 5986 9041
                       </a>
                     </li>
                   </div>
