@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { getCookie } from '../../../utils/cookie.util';
  
 export default function InputTreatment() {
   const [image, setImage] = useState("");
@@ -50,6 +51,7 @@ export default function InputTreatment() {
       method:"POST",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
       body: JSON.stringify(dataTreatment),
     })

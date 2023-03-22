@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getCookie } from "../../../utils/cookie.util";
 
 export default function InputReservation() {
   const [customers, setCustomers] = useState([]);
@@ -11,6 +12,7 @@ export default function InputReservation() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
     })
       .then((res) => res.json())

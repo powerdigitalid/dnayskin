@@ -11,6 +11,7 @@ export default function CardCustomer() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       }
     })
     .then(res => res.json())

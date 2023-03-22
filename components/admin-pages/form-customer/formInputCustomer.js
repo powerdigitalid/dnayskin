@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { getCookie } from "../../../utils/cookie.util";
 
 export default function FormInputCustomer() {
   const [image, setImage] = useState("");
@@ -27,6 +28,7 @@ export default function FormInputCustomer() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
       body: JSON.stringify(dataCustomer),
     })

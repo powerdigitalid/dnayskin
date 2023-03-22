@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { getCookie } from "../../../utils/cookie.util";
 
 export default function InputTransaksi() {
   // transaction data
@@ -19,6 +20,7 @@ export default function InputTransaksi() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
     })
       .then((res) => res.json())
@@ -34,6 +36,7 @@ export default function InputTransaksi() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
     })
       .then((res) => res.json())

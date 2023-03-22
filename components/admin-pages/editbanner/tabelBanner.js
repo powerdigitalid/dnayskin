@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { getCookie } from "../../../utils/cookie.util";
 
 export default function TabelBanner() {
   const [dataBanner, setDataBanner] = useState([]);
@@ -9,6 +10,7 @@ export default function TabelBanner() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
     })
       .then((res) => res.json())
@@ -35,6 +37,7 @@ export default function TabelBanner() {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
+              "X-Access-Token": getCookie("token"),
             },
           })
             .then((res) => res.json())

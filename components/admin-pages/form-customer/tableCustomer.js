@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
+import { getCookie } from "../../../utils/cookie.util";
 export default function TableCustomer() {
   const [dataCustomer, setDataCustomer] = useState([]);
   const router = useRouter();
@@ -9,6 +10,7 @@ export default function TableCustomer() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
     })
       .then((res) => res.json())
@@ -26,6 +28,10 @@ export default function TableCustomer() {
     try{
       const res = await fetch(`http://localhost:3000/api/v1/customer/delete/${id}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Access-Token": getCookie("token"),
+        },
       })
       const data = await res.json();
       console.log(data);

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
+import { getCookie } from "../../../utils/cookie.util";
 
 export default function EditProduct() {
   const [dataProduct, setDataProduct] = useState([]);
@@ -39,6 +40,7 @@ export default function EditProduct() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
       },
       body: JSON.stringify(data)
     });
