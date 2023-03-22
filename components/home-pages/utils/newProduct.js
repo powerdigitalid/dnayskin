@@ -80,40 +80,6 @@ export default function NewProduct() {
                       </div>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-success"
-                    data-toggle="modal"
-                    data-target="#detailData"
-                  >
-                    <i className="fas fa-info"></i>
-                  </button>
-                  <div
-                    className="modal fade"
-                    id="detailData"
-                    tabIndex={-1}
-                    aria-labelledby="detailData"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title">Detail Data</h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">×</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          <span> tes</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
