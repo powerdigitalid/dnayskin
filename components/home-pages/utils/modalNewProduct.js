@@ -28,14 +28,14 @@ export default function Modal() {
           <div className="modal-footer">
             <div className="row">
               <div className="col">
-                <button type="button" className="btn btn-primary">
+                <a href="https://wa.me/+6281238368983?text=saya%20ingin%20bertanya%20atau%20membeli%20produk%20dan%20treatment%20RumahAthan" type="button" className="btn btn-primary">
                   Kantor 1
-                </button>
+                </a>
               </div>
               <div className="col">
-                <button type="button" className="btn btn-primary">
+                <a href="https://wa.me/+6281238368983?text=saya%20ingin%20bertanya%20atau%20membeli%20produk%20dan%20treatment%20RumahAthan" type="button" className="btn btn-primary">
                   Kantor 2
-                </button>
+                </a>
               </div>
             </div>
           </div>

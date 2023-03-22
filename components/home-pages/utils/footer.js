@@ -40,7 +40,7 @@ export default function Footer() {
                   {/* Single Widget */}
                   <div className="single-footer f-contact">
                     <h3>Hubungi Kami</h3>
-                    <p className="phone">Phone: +62 812 3456 7890</p>
+                    <p className="phone">Phone: +62 812 3836 8983</p>
                     <ul>
                       <li>
                         <span>Minggu-Jum'at: </span> 8.00 am - 8.00 pm

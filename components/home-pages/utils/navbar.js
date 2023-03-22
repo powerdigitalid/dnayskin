@@ -41,7 +41,7 @@ export default function Navbar() {
                   <i className="lni lni-phone" />
                   <h3>
                     Hubungi Kami:
-                    <span>(+628) 123 456 7890</span>
+                    <span>(+62) 812 3836 8983</span>
                   </h3>
                 </div>
               </div>
