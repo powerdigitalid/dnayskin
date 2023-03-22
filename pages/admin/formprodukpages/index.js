@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import AllProduct from "../../../components/admin-pages/form-produk/allProduct";
 import FormInputProduk from "../../../components/admin-pages/form-produk/formInputProduct";
 import Layout from "../../../components/admin-pages/utils/layout";
 import { getCookie } from "../../../utils/cookie.util";
@@ -13,6 +14,7 @@ export default function Index(){
     <>
     <Layout>
       <FormInputProduk/>
+      <AllProduct/>
     </Layout>
     </>
   )

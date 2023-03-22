@@ -18,8 +18,8 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="navbar-bg"></div>
-      <nav className="navbar main-navbar">
+      <div className="navbar navbar-bg sticky-top"></div>
+      <nav className="navbar main-navbar ">
         <form className="form-inline mr-auto">
           <ul className="navbar-nav mr-3">
             <li>

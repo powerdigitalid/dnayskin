@@ -1,7 +1,12 @@
 import Script from "next/script";
 import { useEffect } from "react";
-export default function Scipts() {
+export default function Scripts() {
   useEffect(() => {
+    window.JQuery = require("../../../public/dist/js/jquery.min.js");
+    window.$ = window.JQuery;
+    $('#pesanKantor').on('shown.bs.modal', function () {
+      $('#pesanKantor').trigger('focus')
+    });
     import("tiny-slider").then(tns => {
       tns.tns({
         container: ".hero-slider",
@@ -18,30 +23,6 @@ export default function Scipts() {
           '<i class="lni lni-chevron-right"></i>',
         ],
       });
-      //======== Brand Slider
-      // let brand_slider = tns.tns({
-      //   container: ".brands-logo-carousel",
-      //   autoplay: true,
-      //   autoplayButtonOutput: false,
-      //   mouseDrag: true,
-      //   gutter: 15,
-      //   nav: false,
-      //   controls: false,
-      //   responsive: {
-      //     0: {
-      //       items: 1,
-      //     },
-      //     540: {
-      //       items: 3,
-      //     },
-      //     768: {
-      //       items: 5,
-      //     },
-      //     992: {
-      //       items: 6,
-      //     },
-      //   },
-      // });
     });
   });
 
@@ -51,6 +32,7 @@ export default function Scipts() {
       <Script src="../public/dist/js/glightbox.min.js" />
       <Script src="../public/dist/js/main.js" />
       <Script src="../public/dist/js/tiny-slider.js" />
+      <Script src="../public/dist/js/jquery.min.js" />
     </>
   );
 }

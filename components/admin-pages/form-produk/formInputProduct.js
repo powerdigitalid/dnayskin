@@ -1,4 +1,3 @@
-import AllProducts from "../utils/allProducts";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -148,9 +147,6 @@ export default function FormInputProduct() {
             </div>
           </form>
         </div>
-      </div>
-      <div className="container">
-        <AllProducts />
       </div>
     </>
   );
