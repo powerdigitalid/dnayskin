@@ -49,7 +49,7 @@ export default function AllTreatment() {
     router.push("/admin/formtreatmentpages");
   }
   return (
-    <section className="trending-product section">
+    <section className="trending-treatment section">
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -60,20 +60,20 @@ export default function AllTreatment() {
         </div>
         <div className="row">
           {dataTreatment.map((treatment, i) => (
-          <div key={i} className="col-lg-auto">
-            {/* Start Single Product */}
-            <div className="single-product">
+          <div key={i} className="col">
+            {/* Start Single treatment */}
+            <div className="single-treatment">
               <div className="row">
                 <div className="col">
-                  <div className="product-image">
+                  <div className="treatment-image">
                     <img src={`http://localhost:3000${treatment.treatment_img}`} height={150}
-                    width={50}/>
+                    width={200}/>
                   </div>
                 </div>
                 <div className="col">
-                  <div className="product-info">
+                  <div className="treatment-info">
                     <h4 className="title">
-                      <a href="product-grids.html">{treatment.treatment_name}</a>
+                      <a href="treatment-grids.html">{treatment.treatment_name}</a>
                     </h4>
                     <span className="category">
                       {treatment.treatment_desc}
@@ -83,12 +83,14 @@ export default function AllTreatment() {
                     </div>
                     <div className="row">
                       <div>
-                        <button type="button" className="btn btn-success m-2">
+                        {/* <button type="button" className="btn btn-success m-2"> */}
+                        <Link href={`/admin/formtreatmentpages/edit?id=${treatment.id}&nametreatment=${treatment.treatment_name}&price=${treatment.treatment_price}&description=${treatment.treatment_desc}&image=${treatment.treatment_img}`} type="button" className="btn btn-success">
                           <i className="fas fa-edit" /> Edit
-                        </button>
+                        </Link>
+                        {/* </button> */}
                       </div>
                       <div>
-                        <button className="btn btn-danger m-2" onClick={()=> deleteTreatment(treatment.id)}>
+                        <button className="btn btn-danger p-1" onClick={()=> deleteTreatment(treatment.id)}>
                           <i className="fas fa-trash" /> Hapus
                         </button>
                       </div>
@@ -97,7 +99,7 @@ export default function AllTreatment() {
                 </div>
               </div>
             </div>
-            {/* End Single Product */}
+            {/* End Single treatment */}
           </div>
           ))}
         </div>

@@ -1,6 +1,55 @@
 import React from 'react'
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router";
+import { getCookie } from "../../../utils/cookie.util";
+import Swal from "sweetalert2";
 
 export default function EditTreatment() {
+  const [dataTreatment, setDataTreatment] = useState([]);
+  const [_nameTreatment, setNameTreatment] = useState("");
+  const [_price, setPrice] = useState("");
+  const [_description, setDescription] = useState("");
+  const [_image, setImage] = useState("");
+
+  const router = useRouter();
+  const { id, nameTreatment, price, description, image } = router.query;
+
+  useEffect(() => {
+    if (typeof nameTreatment === "string") {
+      setNameTreatment(nameTreatment);
+    }
+    if (typeof price === "string") {
+      setPrice(price);
+    }
+    if (typeof description === "string") {
+      setDescription(description);
+    }
+    if (typeof image === "string") {
+      setImage(image);
+    }
+  }, [nameTreatment, price, description, image]);
+
+  const submitUpdate = async (e) => {
+    e.preventDefault();
+    const data = {
+      treatment_name: _nameTreatment,
+      treatment_price: parseInt(_price),
+      treatment_desc: _description,
+      treatment_img: _image,
+    };
+    const res = await fetch("http://localhost:3000/api/v1/treatment/update/"+id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
+      },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    console.log(result);
+    Swal.fire('Update', 'Data berhasil diupdate', 'success');
+    router.push("/admin/formtreatmentpages");
+  }
   return (
     <div className="card author-box card-primary">
         <div className="card-body">
@@ -9,10 +58,11 @@ export default function EditTreatment() {
               <h2 className='col-12'>Tambahkan Treatment</h2>
             </div>
           </div>
-          <form >
+          <form onSubmit={submitUpdate} >
             <div className="author-box-left">
               <img
                 alt="image"
+                src={`http://localhost:3000${_image}`}
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
               />
@@ -37,6 +87,8 @@ export default function EditTreatment() {
                       <input
                         type="text"
                         className="form-control form-control-sm"
+                        value={_nameTreatment}
+                        onChange={(e) => setNameTreatment(e.target.value)}
                       />
                     </div>
                     <div className="form-group col-sm-6">
@@ -49,6 +101,8 @@ export default function EditTreatment() {
                           type="text"
                           className="form-control form-control-sm"
                           aria-label="Rupiah"
+                          value={_price}
+                          onChange={(e) => setPrice(e.target.value)}
                         />
                         <div className="input-group-append">
                           <span className="form-control form-control-sm">.00</span>
@@ -61,6 +115,9 @@ export default function EditTreatment() {
                       <label>Deskripsi</label>
                       <textarea
                         class="form-control"
+                        rows="3"
+                        value={_description}
+                        onChange={(e) => setDescription(e.target.value)}
                       />
                     </div>
                   </div>
@@ -68,7 +125,7 @@ export default function EditTreatment() {
               </div>
               <div className="mb-2 mt-3">
                 <div className="row float-right">
-                  <button className="btn btn-success">
+                  <button className="btn btn-success" type="submit">
                     <i className="fas fa-plus fa-fw "></i> Tambah
                   </button>
                 </div>
