@@ -1,6 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { getCookie } from "../../../utils/cookie.util";
 export default function TabelTransaksi() {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const handleFetchOrders = () => {
+    setLoading(true);
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}order/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) {
+          setOrders(res.data);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    handleFetchOrders();
+  }, []);
   return (
     <div>
       <div>
@@ -145,19 +171,23 @@ export default function TabelTransaksi() {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr role="row" className="odd">
-                                    <td className="sorting_1">1</td>
-                                    <td>Nama Aku</td>
-                                    <td>Kantor Songgon</td>
-                                    <td>mengalami kerutan wajah</td>
-                                    <td>ada tuma</td>
-                                    <td>2018-01-20</td>
-                                    <td>
-                                      <Link href="/admin/transaksipages/detailtransaksi" className="btn btn-success">
-                                        Detail
-                                      </Link>
-                                    </td>
-                                  </tr>
+                                  {orders.length > 0 ? (orders.map((order, i) => (
+                                    <tr key={i+1} role="row" className={(i+1) % 2 == 0 ? "even":"odd"}>
+                                      <td className="sorting_1">{i+1}</td>
+                                      <td>{order.customerName}</td>
+                                      <td>{order.officeId}</td>
+                                      <td>{order.anamnesa}</td>
+                                      <td>{order.diagnosa}</td>
+                                      <td>{new Date(order.order_date).toLocaleDateString()}</td>
+                                      <td>
+                                        <Link href={`/admin/transaksipages/detailtransaksi?id=${order.id}`} className="btn btn-success">
+                                          Detail
+                                        </Link>
+                                      </td>
+                                    </tr>
+                                  ))) : (
+                                    <tr><td colSpan={7} className="text-center text-warning">Data Order Kosong!</td></tr>
+                                  )}
                                 </tbody>
                               </table>
                             </div>

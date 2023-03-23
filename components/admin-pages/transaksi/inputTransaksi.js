@@ -1,10 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { getCookie } from "../../../utils/cookie.util";
 
 export default function InputTransaksi() {
+  const router = useRouter();
   // transaction data
   const [customerId, setCustomerId] = useState("");
+  const [customerName, setCustomerName] = useState("");
   const [selectedProduct, setSelectedProduct] = useState({});
   const [addedProducts, setAddedProducts] = useState([]);
   const [officeId, setOfficeId] = useState("");
@@ -50,7 +53,7 @@ export default function InputTransaksi() {
   const handleAddProduct = (e) => {
     e.preventDefault();
     setAddedProducts([...addedProducts, selectedProduct]);
-    setTotal(total + parseInt(selectedProduct.product_price));
+    setTotal(total + parseInt(selectedProduct.price));
     setSelectedProduct({});
   };
   const handleClearProduct = (e) => {
@@ -58,7 +61,42 @@ export default function InputTransaksi() {
     setAddedProducts([]);
     setTotal(0);
   };
-  const handleCreateTransaction = (e) => {};
+  const handleCreateTransaction = (e) => {
+    e.preventDefault();
+    const data = {
+      customerId: customerId,
+      customerName: customerName,
+      userId: getCookie("id"),
+      officeId: officeId,
+      order_detail: addedProducts,
+      order_date: date,
+      order_desc: "-",
+      order_total: total,
+      order_payment: "-",
+      anamnesa: anamnesia,
+      diagnosa: diagnosis,
+      terapi: "-"
+    };
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}order/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          Swal.fire("Info", data.message, "success");
+          router.push("/admin/transaksipages");
+        } else {
+          Swal.fire("Error", "Transaksi gagal dibuat!", "error");
+          console.error(data.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     handleFetchCustomers();
     handleFetchProducts();
@@ -76,10 +114,10 @@ export default function InputTransaksi() {
           <div className="row">
             <div className="form-group col-6">
               <label>Nama Member</label>
-              <select onChange={(e) => setCustomerId(e.target.value)} className="form-control">
+              <select onChange={(e) => {setCustomerId(e.target.value.split(';')[0]); setCustomerName(e.target.value.split(';')[1])}} className="form-control">
                 <option>Pilih ...</option>
                 {customers.map((customer) => (
-                  <option key={customer.id} value={customer.id}>
+                  <option key={customer.id} value={`${customer.id};${customer.cust_name}`}>
                     {customer.cust_name}
                   </option>
                 ))}
@@ -89,9 +127,10 @@ export default function InputTransaksi() {
               <label>Product</label>
               <select onChange={(e) => {
                 setSelectedProduct({
-                  id: e.target.value.split(";")[0],
+                  productId: e.target.value.split(";")[0],
                   product_name: e.target.value.split(";")[1],
-                  product_price: e.target.value.split(";")[2],
+                  quantity: 1,
+                  price: parseInt(e.target.value.split(";")[2]),
                 })
               }}
                 className="form-control">
@@ -129,7 +168,7 @@ export default function InputTransaksi() {
                     <tr key={i}>
                       <td>{i+1}</td>
                       <td>{product.product_name}</td>
-                      <td className="text-right">{product.product_price}</td>
+                      <td className="text-right">{product.price}</td>
                     </tr>
                   ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada produk yang ditambahkan</td></tr>)}
                 </tbody>
@@ -173,7 +212,7 @@ export default function InputTransaksi() {
                 </div>
               </div>
               <div className="form-group">
-                <button className="btn btn-primary ">Simpan</button>
+                <button onClick={handleCreateTransaction} className="btn btn-primary ">Simpan</button>
               </div>
             </div>
           </div>
