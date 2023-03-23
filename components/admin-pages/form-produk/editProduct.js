@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
 import Swal from "sweetalert2";
-
+ 
 export default function EditProduct() {
   const [dataProduct, setDataProduct] = useState([]);
   const [_nameProduct, setNameProduct] = useState("");
@@ -129,7 +129,7 @@ export default function EditProduct() {
               >
                 <i className="fas fa-edit" /> Edit Product
               </a> */}
-                <button className="btn btn-success" type="submit" ><i className="fas fa-plus fa-fw"></i> Tambah</button>
+                <button className="btn btn-success" type="submit" ><i className="fas fa-plus fa-fw"></i> Edit</button>
               </div>
             </div>
           </form>

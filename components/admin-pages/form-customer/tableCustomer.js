@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
 export default function TableCustomer() {
   const [dataCustomer, setDataCustomer] = useState([]);
   const router = useRouter();
   const fetchCustomer = async () => {
-    fetch("http://localhost:3000/api/v1/customer/all",{
+    fetch("http://localhost:3000/api/v1/customer/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -24,20 +24,22 @@ export default function TableCustomer() {
     fetchCustomer();
   }, []);
 
-  async function deleteCustomer (id){
-    try{
-      const res = await fetch(`http://localhost:3000/api/v1/customer/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Access-Token": getCookie("token"),
-        },
-      })
+  async function deleteCustomer(id) {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/v1/customer/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Access-Token": getCookie("token"),
+          },
+        }
+      );
       const data = await res.json();
       console.log(data);
       alert("Data berhasil dihapus");
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
       alert("Data gagal dihapus");
     }
@@ -160,36 +162,42 @@ export default function TableCustomer() {
                             </thead>
                             <tbody className="overflow-auto">
                               {dataCustomer.map((customer, i) => (
-                              <tr key={i} role="row" className="odd">
-                                <td className="sorting_1">{i+1}</td>
-                                <td>{customer.cust_name}</td>
-                                <td>{customer.cust_address}</td>
-                                <td>
-                                  <Link
-                                    href={`/admin/reservationpages/inputreservation?customer=${customer.id}`}
-                                    className="btn btn-primary m-2"
-                                  >
-                                    Reservations
-                                  </Link>
-                                  <Link
-                                    href={`/admin/transaksipages/inputtransaksi?customer=${customer.id}`}
-                                    className="btn btn-warning m-2"
-                                  >
-                                    Input Transaksi
-                                  </Link>
-                                  <Link
-                                    href={`/admin/formcustomerpages/edit?customer=${customer.id}`}
-                                    className="btn btn-info m-2"
-                                  >
-                                    Edit
-                                  </Link>
-                                  <button className="btn btn-danger m-2" onClick={() => deleteCustomer(customer.cust_id)}>
-                                    Hapus
-                                  </button>
-                                </td>
-                              </tr>
+                                <tr key={i} role="row" className="odd">
+                                  <td className="sorting_1">{i + 1}</td>
+                                  <td>{customer.cust_name}</td>
+                                  <td>{customer.cust_address}</td>
+                                  <td>
+                                    <Link
+                                      href={`/admin/reservationpages/inputreservation?customer=${customer.id}`}
+                                      className="btn btn-primary m-2"
+                                    >
+                                      Reservations
+                                    </Link>
+                                    <Link
+                                      href={`/admin/transaksipages/inputtransaksi?customer=${customer.id}`}
+                                      className="btn btn-warning m-2"
+                                    >
+                                      Input Transaksi
+                                    </Link>
+                                    <Link
+                                      href={`/admin/formcustomerpages/edit?id=${customer.id}&namecustomer=${customer.cust_name}&phone=${customer.cust_phone}&address=${customer.cust_address}&image=${customer.cust_img}`}
+                                      type="button"
+                                      className="btn btn-success"
+                                    >
+                                      <i className="fas fa-edit" /> Edit
+                                    </Link>
+                                    <button
+                                      className="btn btn-danger m-2"
+                                      onClick={() =>
+                                        deleteCustomer(customer.id)
+                                      }
+                                    >
+                                      Hapus
+                                    </button>
+                                  </td>
+                                </tr>
                               ))}
-                            
+
                               {/* <tr role="row" className="odd">
                                 <td className="sorting_1">1</td>
                                 <td>Dian Ahmad</td>
