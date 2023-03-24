@@ -73,7 +73,7 @@ export default function AllProducts() {
                     height={150}
                     width={50}
                     alt="#"
-                  />
+                  /> 
                   <div className="row">
                     <div className="col text-white">
                       <div>

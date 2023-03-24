@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
-
+ 
 export default function AllTreatment() {
   const [dataTreatment, setDataTreatment] = useState([]);
   const router = useRouter();
