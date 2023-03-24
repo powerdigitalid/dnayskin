@@ -3,6 +3,7 @@
 Change the ENV VALUES if needed.
 
 ## tampilan saja
+
 - [x] slider (NEED REVIEW)
 - [x] editor content slider - admin pages
 - [x] dashboard (NEED REVIEW)- admin pages
@@ -12,10 +13,13 @@ Change the ENV VALUES if needed.
 - [x] reservation complete - admin pages
 - [x] history transaksi - admin pages
 - [x] login pages - admin pages
-- [ ] banner create and delete (NEED REVIEW) - admin pages
+- [x] banner create and delete (NEED REVIEW) - admin pages
+- [x] histori transaksi (NEED REVIEW)
+- [x] reservasi + konfirmasi (NEED REVIEW)
 - [ ] checkup final
 
 ## backend side
+
 - [x] apply login endpoint to login page (TEST NEEDED, with redirect to admin page)
 - [x] apply logout logic inside sidebar
 - [x] dashboard counter endpoint
