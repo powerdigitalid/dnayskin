@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getCookie } from "../../../utils/cookie.util";
 
 export default function TabelReservation() {
+  const [reservations, setReservations] = useState([]);
+  const handleFetchReservations = () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}reservation/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          setReservations([...data.data]);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    handleFetchReservations();
+  }, []);
   return (
     <div>
       <div>
@@ -127,17 +148,19 @@ export default function TabelReservation() {
                                   </tr>
                                 </thead>
                                 <tbody className="overflow-auto">
-                                  <tr role="row" className="odd">
-                                    <td className="sorting_1">1</td>
-                                    <td>Nama aku</td>
-                                    <td>Kantor Songgon</td>
-                                    <td>2018-01-20</td>
+                                  {reservations.length < 1 ? (<tr role="row" className="odd"></tr>) : (reservations.map((reservation, i) => (
+                                    <tr key={i} role="row" className={ (i+1) % 2 == 0 ? "even":"odd"}>
+                                    <td className="sorting_1">{i+1}</td>
+                                    <td>{reservation.customerName}</td>
+                                    <td>{reservation.officeId.charAt(0).toUpperCase() + reservation.officeId.slice(1)}</td>
+                                    <td>{new Date(reservation.reservation_date).toLocaleDateString()}</td>
                                     <td>
                                       <a href="#" className="btn btn-success">
                                         Konfirmasi
                                       </a>
                                     </td>
                                   </tr>
+                                  )))}
                                 </tbody>
                               </table>
                             </div>
