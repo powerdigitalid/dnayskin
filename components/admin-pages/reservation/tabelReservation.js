@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { getCookie } from "../../../utils/cookie.util";
 
 export default function TabelReservation() {
@@ -18,6 +19,41 @@ export default function TabelReservation() {
         }
       })
       .catch((err) => console.log(err));
+  };
+  const handleConfirmReservation = (e, id) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Konfirmasi",
+      text: "Apakah anda yakin ingin mengkonfirmasi reservasi ini?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya",
+      cancelButtonText: "Tidak",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${process.env.NEXT_PUBLIC_API_DEV}reservation/confirm/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Access-Token": getCookie("token"),
+          },
+          body: JSON.stringify({ reservation_status: "confirmed" }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.data) {
+              Swal.fire("Info", "Berhasil Konfirmasi", "success");
+              setReservations([]);
+              handleFetchReservations();
+            } else {
+              Swal.fire("Info", "Gagal Konfirmasi", "error");
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    })
   };
   useEffect(() => {
     handleFetchReservations();
@@ -155,9 +191,9 @@ export default function TabelReservation() {
                                     <td>{reservation.officeId.charAt(0).toUpperCase() + reservation.officeId.slice(1)}</td>
                                     <td>{new Date(reservation.reservation_date).toLocaleDateString()}</td>
                                     <td>
-                                      <a href="#" className="btn btn-success">
-                                        Konfirmasi
-                                      </a>
+                                      <button onClick={(e) => handleConfirmReservation(e, reservation.id)} className={`btn ${reservation.reservation_status == "confirmed" ? "btn-success" : "btn-primary"}`} disabled={reservation.reservation_status == "confirmed" ? true : false}>
+                                        {reservation.reservation_status == "confirmed" ? "Terkonfirmasi" : "Konfirmasi"}
+                                      </button>
                                     </td>
                                   </tr>
                                   )))}
