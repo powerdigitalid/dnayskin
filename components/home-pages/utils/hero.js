@@ -1,8 +1,27 @@
 import slider1 from "../../../public/dist/img/products/produkss.jpeg";
 import slider2 from "../../../public/dist/img/products/produkss1.jpeg";
 import slider from "../../../public/dist/img/products/ibuibu.jpeg";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const [dataBanner, setDataBanner] = useState([]);
+  const fetchBanner = async () => {
+    fetch("http://localhost:3000/api/v1/banner/landing", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setDataBanner(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    fetchBanner();
+  }, []);
   return (
     <section className="hero-area">
       <div className="container">

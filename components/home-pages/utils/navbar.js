@@ -11,7 +11,7 @@ export default function Navbar() {
               <div className="top-start">
                 <div className="user">
                   <i className="lni lni-user" />
-                  Hallo Friends | Selamat Datang di Website D'Nayskin | Terimakasih Telah Berkunjung
+                  Hallo Gais | Selamat Datang di Website Rumah Athan | Terimakasih Telah Berkunjung dan Membeli Produk Kami
                 </div>
               </div>
             </div>

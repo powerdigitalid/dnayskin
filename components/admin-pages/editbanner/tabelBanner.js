@@ -142,6 +142,9 @@ export default function TabelBanner() {
                                 <button onClick={e => handleDeleteBanner(e, banner.id, banner.text_header)} className="btn btn-danger">
                                   Hapus
                                 </button>
+                                <button  className="btn btn-success">
+                                  Edit
+                                </button>
                               </td>
                             </tr>
                           ))}

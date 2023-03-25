@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
+import Swal from "sweetalert2";
 
-export default function EditBanner() {
+export default function CreateBanner() {
   const [textHeader, setTextHeader] = useState("");
   const [textDesc, setTextDesc] = useState("");
   const [image, setImage] = useState("");
@@ -28,6 +29,12 @@ export default function EditBanner() {
       .catch((err) => console.log(err));
   };
 
+  const clearData =()=>{
+    setTextHeader("");
+    setImage("");
+    setTextDesc("");
+  }
+
   const handleAddBanner = (e) => {
     e.preventDefault();
     const dataTreatment = {
@@ -46,8 +53,16 @@ export default function EditBanner() {
       .then((res) => res.json())
       .then((res) => {
         // console.log(res);
-        alert(res.message);
-        // router.push("/admin/formtreatmentpages");
+        Swal.fire({
+            title: "Apakah Anda Yakin?",
+            text: "akan membuat banner baru ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Create!'
+          })
+        router.push("/admin/editbannerpages");
         clearData();
       })
       .catch((err) => console.log(err));
@@ -58,7 +73,7 @@ export default function EditBanner() {
         <div className="card-body">
           <div className="col-12">
             <div className="section-title">
-              <h2>Edit Banner 1</h2>
+              <h2>Create Banner 1</h2>
             </div>
           </div>
           <form onSubmit={handleAddBanner}>

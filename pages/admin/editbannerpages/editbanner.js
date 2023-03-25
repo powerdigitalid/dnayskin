@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import CreateBanner from "../../../components/admin-pages/editbanner/createBanner";
+import EditBanner from "../../../components/admin-pages/editbanner/editBanner";
 import TabelBanner from "../../../components/admin-pages/editbanner/tabelBanner";
 import Layout from "../../../components/admin-pages/utils/layout";
 import { getCookie } from "../../../utils/cookie.util";
@@ -13,8 +13,8 @@ export default function Index() {
   return (
     <>
       <Layout>
-        <CreateBanner />
-        <TabelBanner />
+        <EditBanner />
+        {/* <TabelBanner /> */}
       </Layout>
     </>
   );
