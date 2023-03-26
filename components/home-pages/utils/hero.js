@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 export default function Hero() {
   const [dataBanner, setDataBanner] = useState([]);
   const fetchBanner = async () => {
-    fetch("http://localhost:3000/api/v1/banner/landing", {
+    fetch("http://localhost:3000/api/v1/banner/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -21,6 +21,25 @@ export default function Hero() {
   };
   useEffect(() => {
     fetchBanner();
+    setTimeout(() => {
+      import("tiny-slider").then(tns => {
+        tns.tns({
+          container: ".hero-slider",
+          slideBy: "page",
+          autoplay: true,
+          autoplayButtonOutput: false,
+          mouseDrag: true,
+          gutter: 0,
+          items: 1,
+          nav: false,
+          controls: true,
+          controlsText: [
+            '<i class="lni lni-chevron-left"></i>',
+            '<i class="lni lni-chevron-right"></i>',
+          ],
+        });
+      });
+    }, 500);
   }, []);
   return (
     <section className="hero-area">
@@ -30,8 +49,27 @@ export default function Hero() {
             <div className="slider-head">
               {/* Start Hero Slider */}
               <div className="hero-slider">
+                {dataBanner.length > 0 ? (dataBanner.map((banner, i) => (
+                  <div
+                    key={i}
+                    className="single-slider"
+                    style={{
+                      backgroundImage: `url("http://localhost:3000${banner.image_path}")`,
+                    }}
+                  >
+                    <div className="content text-dark">
+                      <h2>{banner.text_header}</h2>
+                      <p>{banner.text_desc} </p>
+                      <div className="button">
+                        <a href="#about" className="btn">
+                          Telusuri
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))) : (<>Loading...</>)}
                 {/* Start Single Slider */}
-                <div
+                {/* <div
                   className="single-slider"
                   style={{
                     backgroundImage: `url(${slider1.src})`,
@@ -50,10 +88,10 @@ export default function Hero() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* End Single Slider */}
                 {/* Start Single Slider */}
-                <div
+                {/* <div
                   className="single-slider"
                   style={{
                     backgroundImage: `url(${slider2.src})`,
@@ -72,7 +110,7 @@ export default function Hero() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* End Single Slider */}
               </div>
               {/* End Hero Slider */}

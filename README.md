@@ -1,5 +1,6 @@
 # PROJECT TODO
-**NOTES**: `.env.local.example` added, please copy and rename to `.env.local`. 
+
+**NOTES**: `.env.local.example` added, please copy and rename to `.env.local`.
 Change the ENV VALUES if needed.
 
 ## tampilan saja
