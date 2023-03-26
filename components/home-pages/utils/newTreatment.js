@@ -2,6 +2,7 @@ import Product from "../../../public/dist/img/products/product-1.jpg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function NewTreatment() {
   const [dataTreatment, setDataTreatment] = useState([]);
@@ -33,9 +34,9 @@ export default function NewTreatment() {
             <div className="section-title">
               <h2>Treatment Terbaru</h2>
               <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
+                Berikut adalah beberapa treatment terbaru yang kami, silahkan klik link dibawah ini untuk melihat semua treatment kami.
               </p>
+              <Link href="/alltreatment#alltreatments" className="btn btn-primary btn-hover-light">Semua Treatment</Link>
             </div>
           </div>
         </div>

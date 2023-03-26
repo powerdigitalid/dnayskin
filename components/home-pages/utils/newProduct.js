@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
+import Link from "next/link";
 
 export default function NewProduct() {
   const [dataProduct, setDataProduct] = useState([]);
@@ -29,16 +30,16 @@ export default function NewProduct() {
   }, []);
 
   return (
-    <section className="trending-product section" style={{ marginTop: 12 }} id="newproduk">
+    <section className="trending-product section" style={{ marginTop: 12 }} id="newProduct">
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="section-title">
-              <h2>Semua Produk</h2>
+              <h2>Produk Terbaru</h2>
               <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
+                Berikut adalah beberapa produk terbaru yang kami, silahkan klik link dibawah ini untuk melihat semua produk kami.
               </p>
+              <Link href="/allproduk#allproduk" className="btn btn-primary btn-hover-light">Semua Produk</Link>
             </div>
           </div>
         </div>

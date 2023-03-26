@@ -62,7 +62,7 @@ export default function AllTreatment() {
           {dataTreatment.map((treatment, i) => (
           <div key={i} className="col">
             {/* Start Single treatment */}
-            <div className="single-treatment">
+            <div className="single-product">
               <div className="row">
                 <div className="col">
                   <div className="treatment-image">
@@ -71,7 +71,7 @@ export default function AllTreatment() {
                   </div>
                 </div>
                 <div className="col">
-                  <div className="treatment-info">
+                  <div className="product-info">
                     <h4 className="title">
                       <a href="treatment-grids.html">{treatment.treatment_name}</a>
                     </h4>
@@ -84,13 +84,13 @@ export default function AllTreatment() {
                     <div className="row">
                       <div>
                         {/* <button type="button" className="btn btn-success m-2"> */}
-                        <Link href={`/admin/formtreatmentpages/edit?id=${treatment.id}&nametreatment=${treatment.treatment_name}&price=${treatment.treatment_price}&description=${treatment.treatment_desc}&image=${treatment.treatment_img}`} type="button" className="btn btn-success">
+                        <Link href={`/admin/formtreatmentpages/edit?id=${treatment.id}&nametreatment=${treatment.treatment_name}&price=${treatment.treatment_price}&description=${treatment.treatment_desc}&image=${treatment.treatment_img}`} type="button" className="btn btn-success m-2">
                           <i className="fas fa-edit" /> Edit
                         </Link>
                         {/* </button> */}
                       </div>
                       <div>
-                        <button className="btn btn-danger p-1" onClick={()=> deleteTreatment(treatment.id)}>
+                        <button className="btn btn-danger p-1 m-2" onClick={()=> deleteTreatment(treatment.id)}>
                           <i className="fas fa-trash" /> Hapus
                         </button>
                       </div>
