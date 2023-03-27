@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { getCookie } from "../../../utils/cookie.util";
-
+ 
 export default function InputTransaksi() {
   const router = useRouter();
   // transaction data
@@ -10,6 +10,8 @@ export default function InputTransaksi() {
   const [customerName, setCustomerName] = useState("");
   const [selectedProduct, setSelectedProduct] = useState({});
   const [addedProducts, setAddedProducts] = useState([]);
+  const [selectedTreatment, setSelectedTreatment] = useState({});
+  const [addedTreatment, setAddedTreatment] = useState([]);
   const [officeId, setOfficeId] = useState("");
   const [date, setDate] = useState("");
   const [anamnesia, setAnamnesia] = useState("");
@@ -18,6 +20,7 @@ export default function InputTransaksi() {
   // end of transaction data
   const [customers, setCustomers] = useState([]);
   const [products, setProducts] = useState([]);
+  const [treatments, setTreatments] = useState([]);
   const handleFetchCustomers = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/all`, {
       method: "GET",
@@ -61,6 +64,34 @@ export default function InputTransaksi() {
     setAddedProducts([]);
     setTotal(0);
   };
+  
+  const handleFetchTreatment = () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}treatment/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
+          setTreatments([...data.data]);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleAddTreatment = (e) => {
+    e.preventDefault();
+    setAddedTreatment([...addedTreatment, selectedTreatment]);
+    setTotal(total + parseInt(selectedTreatment.price));
+    setSelectedTreatment({});
+  };
+  const handleClearTreatment = (e) => {
+    e.preventDefault();
+    setAddedTreatment([]);
+    setTotal(0);
+  };
   const handleCreateTransaction = (e) => {
     e.preventDefault();
     const data = {
@@ -100,6 +131,7 @@ export default function InputTransaksi() {
   useEffect(() => {
     handleFetchCustomers();
     handleFetchProducts();
+    handleFetchTreatment();
   }, []);
   return (
     <>
@@ -123,7 +155,7 @@ export default function InputTransaksi() {
                 ))}
               </select>
             </div>
-            <div className="form-group col-4">
+            <div className="form-group col-2">
               <label>Product</label>
               <select onChange={(e) => {
                 setSelectedProduct({
@@ -142,14 +174,33 @@ export default function InputTransaksi() {
                 ))}
               </select>
             </div>
+            <div className="form-group col-2">
+              <label>Product</label>
+              <select onChange={(e) => {
+                setSelectedTreatment({
+                  treatmentId: e.target.value.split(";")[0],
+                  treatment_name: e.target.value.split(";")[1],
+                  quantity: 1,
+                  price: parseInt(e.target.value.split(";")[2]),
+                })
+              }}
+                className="form-control">
+                <option>Pilih ...</option>
+                {treatments.map((treatment) => (
+                  <option key={treatment.id} value={`${treatment.id};${treatment.treatment_name};${parseInt(treatment.treatment_price)}`}>
+                    {treatment.treatment_name}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="form-group col-2 my-auto">
-              <button onClick={handleAddProduct} className="btn btn-primary btn-block">Tambah</button>
+              <button onClick={(e)=> {handleAddProduct(e); handleAddTreatment(e);}} className="btn btn-primary btn-block">Tambah</button>
             </div>
           </div>
           <div className="row">
             <label className="form-group col-12 text-primary m-0">
               Product Added
-              <button className="btn btn-sm btn-danger float-right" onClick={handleClearProduct}>Bersihkan</button>
+              <button className="btn btn-sm btn-danger float-right" onClick={handleClearProduct} >Bersihkan</button>
             </label>
             <div
               className="form-group col-12 overflow-auto w-auto"
@@ -158,7 +209,7 @@ export default function InputTransaksi() {
               <table className="table table-sm table-hover" >
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>Product</th>
                     <th className="text-center">Harga (Rp)</th>
                   </tr>
@@ -174,14 +225,41 @@ export default function InputTransaksi() {
                 </tbody>
               </table>
             </div>
+            <label className="form-group col-12 text-primary m-0">
+              Treatment Added
+              <button className="btn btn-sm btn-danger float-right" onClick={handleClearTreatment} >Bersihkan</button>
+            </label>
+            <div
+              className="form-group col-12 overflow-auto w-auto"
+              style={{ height: "100px" }}
+            >
+              <table className="table table-sm table-hover" >
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Treatment</th>
+                    <th className="text-center">Harga (Rp)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {addedTreatment.length > 0 ? (addedTreatment.map((treatment, i) => (
+                    <tr key={i}>
+                      <td>{i+1}</td>
+                      <td>{treatment.treatment_name}</td>
+                      <td className="text-right">{treatment.price}</td>
+                    </tr>
+                  ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada produk yang ditambahkan</td></tr>)}
+                </tbody>
+              </table>
+            </div>
           </div>
           <div className="row">
             <div className="form-group col-6">
               <label>Kantor</label>
               <select onChange={(e) => setOfficeId(e.target.value)} className="form-control">
-                <option value={'kantorA'}>Kantor A</option>
-                <option value={'kantorB'}>Kantor B</option>
-                <option value={'kantorC'}>Kantor C</option>
+                <option value={'kantor_Rogojampi'}>Kantor Rogojampi</option>
+                <option value={'kantor_Songgon'}>Kantor Songgon</option>
+                {/* <option value={'kantorC'}>Kantor C</option> */}
               </select>
             </div>
             <div className="form-group col-6">

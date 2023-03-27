@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { getCookie } from "../../../utils/cookie.util";
+import { useRouter } from "next/router";
 export default function TabelTransaksi() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleFetchOrders = () => {
     setLoading(true);
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}order/all`, {
@@ -27,6 +29,28 @@ export default function TabelTransaksi() {
   useEffect(() => {
     handleFetchOrders();
   }, []);
+
+  async function deleteOrder(id) {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/v1/order/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Access-Token": getCookie("token"),
+          },
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      alert("Data History berhasil dihapus");
+    } catch (err) {
+      console.log(err);
+      alert("Data History gagal dihapus");
+    }
+    router.push("/admin/transaksipages");
+  }
   return (
     <div>
       <div>
@@ -171,22 +195,62 @@ export default function TabelTransaksi() {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {orders.length > 0 ? (orders.map((order, i) => (
-                                    <tr key={i+1} role="row" className={(i+1) % 2 == 0 ? "even":"odd"}>
-                                      <td className="sorting_1">{i+1}</td>
-                                      <td>{order.customerName}</td>
-                                      <td>{order.officeId}</td>
-                                      <td>{order.anamnesa}</td>
-                                      <td>{order.diagnosa}</td>
-                                      <td>{new Date(order.order_date).toLocaleDateString()}</td>
-                                      <td>
-                                        <Link href={`/admin/transaksipages/detailtransaksi?id=${order.id}`} className="btn btn-success">
-                                          Detail
-                                        </Link>
+                                  {orders.length > 0 ? (
+                                    orders.map((order, i) => (
+                                      <tr
+                                        key={i + 1}
+                                        role="row"
+                                        className={
+                                          (i + 1) % 2 == 0 ? "even" : "odd"
+                                        }
+                                      >
+                                        <td className="sorting_1">{i + 1}</td>
+                                        <td>{order.customerName}</td>
+                                        <td>{order.officeId}</td>
+                                        <td>{order.anamnesa}</td>
+                                        <td>{order.diagnosa}</td>
+                                        <td>
+                                          {new Date(
+                                            order.order_date
+                                          ).toLocaleDateString()}
+                                        </td>
+                                        <td>
+                                          <div className="row">
+                                            <div>
+                                              {/* <button type="button" className="btn btn-success m-2"> */}
+                                              <Link
+                                                href={`/admin/transaksipages/detailtransaksi?id=${order.id}`}
+                                                className="btn btn-success"
+                                              >
+                                                <i className="fas fa-edit" />{" "}
+                                                Detail
+                                              </Link>
+                                              {/* </button> */}
+                                            </div>
+                                            <div>
+                                              <button
+                                                className="btn btn-danger"
+                                                onClick={() =>
+                                                  deleteOrder(order.id)
+                                                }
+                                              >
+                                                <i className="fas fa-trash" />{" "}
+                                                Hapus
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    ))
+                                  ) : (
+                                    <tr>
+                                      <td
+                                        colSpan={7}
+                                        className="text-center text-warning"
+                                      >
+                                        Data Order Kosong!
                                       </td>
                                     </tr>
-                                  ))) : (
-                                    <tr><td colSpan={7} className="text-center text-warning">Data Order Kosong!</td></tr>
                                   )}
                                 </tbody>
                               </table>
