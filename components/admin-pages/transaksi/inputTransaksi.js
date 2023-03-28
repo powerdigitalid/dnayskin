@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { getCookie } from "../../../utils/cookie.util";
- 
+
 export default function InputTransaksi() {
   const router = useRouter();
   // transaction data
@@ -21,6 +21,8 @@ export default function InputTransaksi() {
   const [customers, setCustomers] = useState([]);
   const [products, setProducts] = useState([]);
   const [treatments, setTreatments] = useState([]);
+
+  // fetch data
   const handleFetchCustomers = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/all`, {
       method: "GET",
@@ -53,18 +55,6 @@ export default function InputTransaksi() {
       })
       .catch((err) => console.log(err));
   };
-  const handleAddProduct = (e) => {
-    e.preventDefault();
-    setAddedProducts([...addedProducts, selectedProduct]);
-    setTotal(total + parseInt(selectedProduct.price));
-    setSelectedProduct({});
-  };
-  const handleClearProduct = (e) => {
-    e.preventDefault();
-    setAddedProducts([]);
-    setTotal(0);
-  };
-  
   const handleFetchTreatment = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}treatment/all`, {
       method: "GET",
@@ -81,10 +71,35 @@ export default function InputTransaksi() {
       })
       .catch((err) => console.log(err));
   };
+  // end of fetch data
+
+  // handle add product event
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    if (selectedProduct.productId !== undefined) {
+      if (!selectedProduct.productId.substring(0, 6).includes("Pilih")) {
+        setAddedProducts([...addedProducts, selectedProduct]);
+        setTotal(total + parseInt(selectedProduct.price));
+      }
+    }
+    setSelectedProduct({});
+  };
+  const handleClearProduct = (e) => {
+    e.preventDefault();
+    setAddedProducts([]);
+    setTotal(0);
+  };
+  // end of handle add product event
+
+  // handle add treatment event
   const handleAddTreatment = (e) => {
     e.preventDefault();
-    setAddedTreatment([...addedTreatment, selectedTreatment]);
-    setTotal(total + parseInt(selectedTreatment.price));
+    if (selectedTreatment.treatmentId !== undefined) {
+      if (!selectedTreatment.treatmentId.substring(0, 6).includes("Pilih")) {
+        setAddedTreatment([...addedTreatment, selectedTreatment]);
+        setTotal(total + parseInt(selectedTreatment.price));
+      }
+    }
     setSelectedTreatment({});
   };
   const handleClearTreatment = (e) => {
@@ -92,6 +107,8 @@ export default function InputTransaksi() {
     setAddedTreatment([]);
     setTotal(0);
   };
+  // end of handle add treatment event
+  // handle create transaction
   const handleCreateTransaction = (e) => {
     e.preventDefault();
     const data = {
@@ -99,7 +116,7 @@ export default function InputTransaksi() {
       customerName: customerName,
       userId: getCookie("id"),
       officeId: officeId,
-      order_detail: addedProducts,
+      order_detail: [...addedProducts, ...addedTreatment],
       order_date: date,
       order_desc: "-",
       order_total: total,
@@ -128,11 +145,13 @@ export default function InputTransaksi() {
       })
       .catch((err) => console.log(err));
   };
+  // end of handle create transaction
   useEffect(() => {
     handleFetchCustomers();
     handleFetchProducts();
     handleFetchTreatment();
   }, []);
+
   return (
     <>
       <div className="card author-box card-primary">
@@ -146,7 +165,7 @@ export default function InputTransaksi() {
           <div className="row">
             <div className="form-group col-6">
               <label>Nama Member</label>
-              <select onChange={(e) => {setCustomerId(e.target.value.split(';')[0]); setCustomerName(e.target.value.split(';')[1])}} className="form-control">
+              <select onChange={(e) => { setCustomerId(e.target.value.split(';')[0]); setCustomerName(e.target.value.split(';')[1]) }} className="form-control">
                 <option>Pilih ...</option>
                 {customers.map((customer) => (
                   <option key={customer.id} value={`${customer.id};${customer.cust_name}`}>
@@ -158,7 +177,7 @@ export default function InputTransaksi() {
             <div className="form-group col-2">
               <label>Product</label>
               <select onChange={(e) => {
-                setSelectedProduct({
+                if (e.target.value !== '') setSelectedProduct({
                   productId: e.target.value.split(";")[0],
                   product_name: e.target.value.split(";")[1],
                   quantity: 1,
@@ -175,9 +194,9 @@ export default function InputTransaksi() {
               </select>
             </div>
             <div className="form-group col-2">
-              <label>Product</label>
+              <label>Treatment</label>
               <select onChange={(e) => {
-                setSelectedTreatment({
+                if (e.target.value !== '') setSelectedTreatment({
                   treatmentId: e.target.value.split(";")[0],
                   treatment_name: e.target.value.split(";")[1],
                   quantity: 1,
@@ -194,7 +213,7 @@ export default function InputTransaksi() {
               </select>
             </div>
             <div className="form-group col-2 my-auto">
-              <button onClick={(e)=> {handleAddProduct(e); handleAddTreatment(e);}} className="btn btn-primary btn-block">Tambah</button>
+              <button onClick={(e) => { handleAddProduct(e); handleAddTreatment(e); }} className="btn btn-primary btn-block">Tambah</button>
             </div>
           </div>
           <div className="row">
@@ -210,18 +229,18 @@ export default function InputTransaksi() {
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Product</th>
+                    <th>Products</th>
                     <th className="text-center">Harga (Rp)</th>
                   </tr>
                 </thead>
                 <tbody>
                   {addedProducts.length > 0 ? (addedProducts.map((product, i) => (
                     <tr key={i}>
-                      <td>{i+1}</td>
+                      <td>{i + 1}</td>
                       <td>{product.product_name}</td>
                       <td className="text-right">{product.price}</td>
                     </tr>
-                  ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada produk yang ditambahkan</td></tr>)}
+                  ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada product yang ditambahkan</td></tr>)}
                 </tbody>
               </table>
             </div>
@@ -237,18 +256,18 @@ export default function InputTransaksi() {
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Treatment</th>
+                    <th>Treatments</th>
                     <th className="text-center">Harga (Rp)</th>
                   </tr>
                 </thead>
                 <tbody>
                   {addedTreatment.length > 0 ? (addedTreatment.map((treatment, i) => (
                     <tr key={i}>
-                      <td>{i+1}</td>
+                      <td>{i + 1}</td>
                       <td>{treatment.treatment_name}</td>
                       <td className="text-right">{treatment.price}</td>
                     </tr>
-                  ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada produk yang ditambahkan</td></tr>)}
+                  ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada treatment yang ditambahkan</td></tr>)}
                 </tbody>
               </table>
             </div>
@@ -257,6 +276,7 @@ export default function InputTransaksi() {
             <div className="form-group col-6">
               <label>Kantor</label>
               <select onChange={(e) => setOfficeId(e.target.value)} className="form-control">
+                <option>Pilih ...</option>
                 <option value={'kantor_Rogojampi'}>Kantor Rogojampi</option>
                 <option value={'kantor_Songgon'}>Kantor Songgon</option>
                 {/* <option value={'kantorC'}>Kantor C</option> */}
@@ -264,18 +284,18 @@ export default function InputTransaksi() {
             </div>
             <div className="form-group col-6">
               <label>Tanggal</label>
-              <input type="date" className="form-control" onChange={(e) => setDate(e.target.value)}/>
+              <input type="date" className="form-control" onChange={(e) => setDate(e.target.value)} />
             </div>
           </div>
           <div className="row">
             <div className="form-group col-12">
               <div className="form-group">
                 <label>Anamnesia</label>
-                <textarea className="form-control" onChange={(e) => setAnamnesia(e.target.value)}/>
+                <textarea className="form-control" onChange={(e) => setAnamnesia(e.target.value)} />
               </div>
               <div className="form-group">
                 <label>Diagnosis</label>
-                <textarea className="form-control" onChange={(e) => setDiagnosis(e.target.value)}/>
+                <textarea className="form-control" onChange={(e) => setDiagnosis(e.target.value)} />
               </div>
               <div className="form-group">
                 <label>Total Pesanan</label>

@@ -18,7 +18,6 @@ export default function DetailTransaksi() {
       .then((res) => {
         if(res.data){
           setOrder(res.data);
-          console.log(res.data)
         }
       })
       .catch((err) => {
@@ -71,7 +70,7 @@ export default function DetailTransaksi() {
                   {order.order_detail ? (order.order_detail.map((product, i) => (
                     <tr key={i}>
                       <td>{i+1}</td>
-                      <td>{product.product_name}</td>
+                      <td>{product.product_name ? product.product_name : product.treatment_name}</td>
                       <td className="text-right">{product.price}</td>
                     </tr>
                   ))) : (<tr><td className="text-center text-warning" colSpan={3}>Belum ada produk yang ditambahkan</td></tr>)}
