@@ -113,7 +113,7 @@ export default function TabelTransaksi() {
                           <div className="row">
                             <div className="col-sm-12">
                               <table
-                                className="table table-striped dataTable no-footer"
+                                className="table table-responsive dataTable no-footer"
                                 id="table-1"
                                 role="grid"
                                 aria-describedby="table-1_info"
@@ -148,7 +148,7 @@ export default function TabelTransaksi() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Progress"
-                                      style={{ width: "78.7344px" }}
+                                      style={{ width: "30px" }}
                                     >
                                       Kantor
                                     </th>
@@ -157,7 +157,7 @@ export default function TabelTransaksi() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Members"
-                                      style={{ width: "208.203px" }}
+                                      style={{ width: "100px" }}
                                     >
                                       Anamnesia
                                     </th>
@@ -166,7 +166,7 @@ export default function TabelTransaksi() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Members"
-                                      style={{ width: "208.203px" }}
+                                      style={{ width: "30px" }}
                                     >
                                       Diagnosis
                                     </th>
@@ -177,7 +177,7 @@ export default function TabelTransaksi() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Due Date: activate to sort column ascending"
-                                      style={{ width: "89.0938px" }}
+                                      style={{ width: "px" }}
                                     >
                                       Due Date
                                     </th>
@@ -188,7 +188,7 @@ export default function TabelTransaksi() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Action: activate to sort column ascending"
-                                      style={{ width: "73.1875px" }}
+                                      style={{ width: "px" }}
                                     >
                                       Action
                                     </th>
@@ -213,7 +213,7 @@ export default function TabelTransaksi() {
                                           {new Date(
                                             order.order_date
                                           ).toLocaleDateString()}
-                                        </td>
+                                        </td> 
                                         <td>
                                           <div className="row">
                                             <div>

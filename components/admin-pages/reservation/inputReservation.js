@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { getCookie } from "../../../utils/cookie.util";
+import { useRouter } from "next/router";
 
 export default function InputReservation() {
+  const router = useRouter();
   const [customers, setCustomers] = useState([]);
   const [customerId, setCustomerId] = useState("");
   const [customerName, setCustomerName] = useState("");
@@ -49,6 +51,7 @@ export default function InputReservation() {
       .then((data) => {
         if (data.data) {
           Swal.fire("Info", "Berhasil membuat reservasi", "success");
+          router.push("/admin/reservationpages");
           handleClearForm();
         } else {
           Swal.fire("Info", "Gagal membuat reservasi", "error");
@@ -82,17 +85,17 @@ export default function InputReservation() {
           <div className="form-group col-6">
             <label>Pilih Kantor</label>
             <select onChange={(e) => setOfficeId(e.target.value)} className="form-control">
-              <option value={'kantorSonggon'}>Kantor Songgon</option>
-              <option value={'kantorRogojampi'}>Kantor Rogojampi</option>
+              <option value={'Kantor_Songgon'}>Kantor Songgon</option>
+              <option value={'Kantor_Rogojampi'}>Kantor Rogojampi</option>
             </select>
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col-sm-6">
             <label>Tanggal</label>
-            <input type="date" className="form-control" onChange={(e) => setDate(e.target.value)} />
+            <input type="datetime-local" className="form-control" onChange={(e) => setDate(e.target.value)} />
           </div>
-          <div className="form-group col-sm-6">
+          {/* <div className="form-group col-sm-6">
             <div className="form-group">
               <label className="d-block">Pilih Jasa</label>
               <div className="form-check form-check-inline">
@@ -140,7 +143,7 @@ export default function InputReservation() {
                 </label>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="form-row">
           <div className="form-group col-sm-12">

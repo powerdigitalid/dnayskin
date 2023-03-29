@@ -277,14 +277,14 @@ export default function InputTransaksi() {
               <label>Kantor</label>
               <select onChange={(e) => setOfficeId(e.target.value)} className="form-control">
                 <option>Pilih ...</option>
-                <option value={'kantor_Rogojampi'}>Kantor Rogojampi</option>
-                <option value={'kantor_Songgon'}>Kantor Songgon</option>
+                <option value={'Kantor_Rogojampi'}>Kantor Rogojampi</option>
+                <option value={'Kantor_Songgon'}>Kantor Songgon</option>
                 {/* <option value={'kantorC'}>Kantor C</option> */}
               </select>
             </div>
             <div className="form-group col-6">
               <label>Tanggal</label>
-              <input type="date" className="form-control" onChange={(e) => setDate(e.target.value)} />
+              <input type="datetime-local" className="form-control" onChange={(e) => setDate(e.target.value)} />
             </div>
           </div>
           <div className="row">

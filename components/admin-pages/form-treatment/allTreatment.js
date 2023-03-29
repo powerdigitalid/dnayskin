@@ -60,7 +60,7 @@ export default function AllTreatment() {
         </div>
         <div className="row">
           {dataTreatment.map((treatment, i) => (
-          <div key={i} className="col">
+          <div key={i} className="col-lg-6 col-md-12 col-sm-12">
             {/* Start Single treatment */}
             <div className="single-product">
               <div className="row">
@@ -69,7 +69,7 @@ export default function AllTreatment() {
                     <img src={`http://localhost:3000${treatment.treatment_img}`} height={150}
                     width={200}/>
                   </div>
-                </div>
+                </div> 
                 <div className="col">
                   <div className="product-info">
                     <h4 className="title">
