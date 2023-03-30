@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
+import Swal from "sweetalert2";
 
 export default function AllProducts() {
   const [dataProduct, setDataProduct] = useState([]);
@@ -30,7 +31,7 @@ export default function AllProducts() {
   async function deleteProduct(id) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/v1/product/delete/${id}`,
+        `${process.env.NEXT_PUBLIC_API_DEV}product/delete/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -41,12 +42,13 @@ export default function AllProducts() {
       );
       const data = await res.json();
       console.log(data);
-      alert("Data berhasil dihapus");
+      Swal.fire("Error", "Data gagal dibuat!", "error");
+      router.push("/admin/formprodukpages");
     } catch (err) {
       console.log(err);
       alert("Data gagal dihapus");
     }
-    router.push("/admin/formprodukpages");
+    
   }
 
   return (

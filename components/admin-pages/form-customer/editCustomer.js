@@ -48,7 +48,26 @@ export default function EditCustomer() {
     Swal.fire('Update', 'Data berhasil diupdate', 'success');
     router.push("/admin/formcustomerpages");
   }
-
+  const handleUpdateImage = (e) => {
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("image", file);
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}upload/image`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) {
+          setImage(res.data);
+          alert(res.message);
+        } else {
+          alert(res.message);
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <div className="card author-box card-primary">
@@ -68,11 +87,12 @@ export default function EditCustomer() {
             />
             <div className="clearfix" />
             <div className="custom-file w-75 h-50 m-1">
-              <input
-                type="file"
-                className="custom-file-input"
-                id="customFile"
-              />
+            <input
+                  type="file"
+                  className="custom-file-input form-control-sm"
+                  id="customFile"
+                  onChange={handleUpdateImage}
+                />
               <label className="custom-file-label" htmlFor="customFile">
                 Upload
               </label>

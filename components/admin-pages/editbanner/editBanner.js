@@ -1,13 +1,50 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
+import Swal from "sweetalert2";
 
 export default function EditBanner() {
-  const [textHeader, setTextHeader] = useState("");
-  const [textDesc, setTextDesc] = useState("");
-  const [image, setImage] = useState("");
+  const [_textHeader, setTextHeader] = useState("");
+  const [_textDesc, setTextDesc] = useState("");
+  const [_image, setImage] = useState("");
 
-  const handleUploadImage = (e) => {
+  const router = useRouter();
+  const {id,textHeader,textDesc,image} = router.query;
+
+  useEffect(()=>{
+    if (typeof textHeader === "string"){
+      setTextHeader(textHeader);
+    }
+    if (typeof textDesc === "string"){
+      setTextDesc(textDesc);
+    }
+    if (typeof image === "string"){
+      setImage(image);
+    }
+  },[textHeader,textDesc,image]);
+
+  const submitUpdate = async (e)=>{
+    e.preventDefault();
+    const data ={
+      text_header: _textHeader,
+  text_desc: _textDesc,
+  img_path: _image,
+    };
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_DEV}banner/update/`+id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Access-Token": getCookie("token"),
+      },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    console.log(result);
+    Swal.fire('Update', 'Data berhasil diupdate', 'success');
+    router.push("/admin/editbannerpages");
+  }
+
+  const handleUpdateImage = (e) => {
     let file = e.target.files[0];
     let formData = new FormData();
     formData.append("image", file);
@@ -28,30 +65,32 @@ export default function EditBanner() {
       .catch((err) => console.log(err));
   };
 
-  const handleAddBanner = (e) => {
-    e.preventDefault();
-    const dataTreatment = {
-      text_header: textHeader,
-      text_desc: textDesc,
-      img_path: image,
-    };
-    fetch("http://localhost:3000/api/v1/banner/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Access-Token": getCookie("token"),
-      },
-      body: JSON.stringify(dataTreatment),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        // console.log(res);
-        alert(res.message);
-        // router.push("/admin/formtreatmentpages");
-        clearData();
-      })
-      .catch((err) => console.log(err));
-  }
+
+
+  // const handleAddBanner = (e) => {
+  //   e.preventDefault();
+  //   const dataTreatment = {
+  //     text_header: textHeader,
+  //     text_desc: textDesc,
+  //     img_path: image,
+  //   };
+  //   fetch("http://localhost:3000/api/v1/banner/create", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "X-Access-Token": getCookie("token"),
+  //     },
+  //     body: JSON.stringify(dataTreatment),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       // console.log(res);
+  //       alert(res.message);
+  //       // router.push("/admin/formtreatmentpages");
+  //       clearData();
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
   return (
     <>
       <div className="card author-box card-primary">
@@ -61,11 +100,11 @@ export default function EditBanner() {
               <h2>Edit Banner 1</h2>
             </div>
           </div>
-          <form onSubmit={handleAddBanner}>
+          <form onSubmit={submitUpdate}>
             <div className="author-box-left">
               <img
                 alt="image"
-                src="/dist/img/products/product-1.jpg"
+                src={`http://localhost:3000${_image}`}
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
               />
@@ -75,7 +114,7 @@ export default function EditBanner() {
                   type="file"
                   className="custom-file-input"
                   id="customFile"
-                  onChange={handleUploadImage}
+                  onChange={handleUpdateImage}
                 />
                 <label className="custom-file-label" htmlFor="customFile">
                   Upload
@@ -91,6 +130,7 @@ export default function EditBanner() {
                       <input
                         type="text"
                         className="form-control form-control-sm"
+                        value={_textHeader}
                         onChange={(e) => setTextHeader(e.target.value)}
                       />
                     </div>
@@ -98,14 +138,16 @@ export default function EditBanner() {
                   <div className="form-row">
                     <div className="form-group col-sm-12">
                       <label>Deskripsi</label>
-                      <textarea className="form-control" onChange={(e) => setTextDesc(e.target.value)}></textarea>
+                      <textarea className="form-control"
+                      value={_textDesc}
+                       onChange={(e) => setTextDesc(e.target.value)}/>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="mb-2 mt-3">
                 <div className="row float-right">
-                  <button className="btn btn-success">
+                  <button className="btn btn-success" type="submit">
                     <i className="fas fa-pencil-alt" /> Edit
                   </button>
                 </div>

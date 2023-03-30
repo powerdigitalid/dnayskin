@@ -42,7 +42,7 @@ export default function CardCustomer() {
               alt="image"
               src="/dist/img/products/product-1.jpg"
               className="rounded author-box-picture"
-            />
+            /> 
             <div className="clearfix" />
           </div>
           <div className="author-box-details">

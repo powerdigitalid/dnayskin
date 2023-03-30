@@ -37,7 +37,7 @@ export default function EditProduct() {
       product_desc: _description,
       product_img: _image,
     };
-    const res = await fetch("http://localhost:3000/api/v1/product/update/"+id, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_DEV}product/update/`+id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -50,6 +50,27 @@ export default function EditProduct() {
     Swal.fire('Update', 'Data berhasil diupdate', 'success');
     router.push("/admin/formprodukpages");
   }
+
+  const handleUpdateImage = (e) => {
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("image", file);
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}upload/image`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) {
+          setImage(res.data);
+          alert(res.message);
+        } else {
+          alert(res.message);
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -70,14 +91,17 @@ export default function EditProduct() {
                 className="rounded author-box-picture"
               />
               <div className="clearfix" />
-              <a
-                href="#"
-                className="btn btn-primary mt-3 follow-btn"
-                data-follow-action="alert('follow clicked');"
-                data-unfollow-action="alert('unfollow clicked');"
-              >
-                Upload Gambar
-              </a>
+              <div className="custom-file w-75 h-50 m-1">
+                <input
+                  type="file"
+                  className="custom-file-input form-control-sm"
+                  id="customFile"
+                  onChange={handleUpdateImage}
+                />
+                <label className="custom-file-label" htmlFor="customFile">
+                  Choose file
+                </label>
+              </div>
             </div>
             <div className="author-box-details">
               <div className="author-box-name">

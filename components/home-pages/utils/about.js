@@ -1,4 +1,4 @@
-import slider1 from "../../../public/dist/img/hero/slider-bg1.jpg";
+import slider1 from "../../../public/dist/img/products/vita.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,21 +13,16 @@ export default function About() {
           <div className="row">
             <div className="col">
               <div className="hero-slider">
-                <Image src={slider1} className="h-50" alt="#" />
+                <Image src={slider1} className="h-50 w-50" alt="#" />
               </div>
             </div>
             <div className="col">
               <div className="text-justify ">
                 <h2 className="text-primary">Rumah Athan</h2>
                 <p>
-                  Rumah Athan adalah rumah skincare dan Treatment untuk ibu -
-                  ibu atau mama- mama muda yang ingin melakukan perawatan untuk
-                  kulitnya. Kami menyediakan produk - produk skincare yang
-                  berkualitas dan aman untuk kulit. Kami juga menyediakan
-                  treatment untuk kulit yang sudah rusak atau mengalami masalah
-                  kulit. Kami juga menyediakan produk - produk untuk bayi dan
-                  anak - anak. Buruan mama mama kepoin produk kami dan jangan
-                  lupa untuk melakukan treatment untuk kulit mama - mama muda.
+                  Rumah Athan Skincare and Treatment merupakan tempat perawatan untuk wajah dan badan yang sangat terpercaya. Untuk anda yang menginkan kulit cantik yang mempesona. <br/>
+                  Dengan pengalaman lebih dari 8 tahun kami berusaha selalu menjaga kualitas pelayanan dan memastikan anda mendapatkan kenyamanan yang tidak akan ditemukan ditempat perawatan manapun.<br/>
+                  Untuk menambah kepuasan anda kami menawarkan produk andalan D'Nayskin sebagai pelengkap perjalanan untuk kulit sehat dan terawat.  
                 </p>
 
                 <div className="tombol">

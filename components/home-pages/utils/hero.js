@@ -1,6 +1,4 @@
-import slider1 from "../../../public/dist/img/products/produkss.jpeg";
-import slider2 from "../../../public/dist/img/products/produkss1.jpeg";
-import slider from "../../../public/dist/img/products/ibuibu.jpeg";
+import slider from "../../../public/dist/img/products/duo.jpeg";
 import { useState, useEffect } from "react";
 
 export default function Hero() {
@@ -140,7 +138,7 @@ export default function Hero() {
                     <h4 className="text-dark fs-1">Google Maps</h4>
                     <p className="text-dark">Telusuri Kami Di Google Maps</p>
                     <div className="button">
-                      <a className="btn btn-hover" href="#">
+                      <a className="btn btn-hover" href="https://www.google.com/maps/place/Rumah+Athan+Beauty+Center/@-8.3132303,114.2968239,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd15782bd063b8b:0xf6bb980d265ec90d!8m2!3d-8.3132356!4d114.2990126!16s%2Fg%2F11rf4lv095?authuser=0">
                         Telusuri
                       </a>
                     </div>

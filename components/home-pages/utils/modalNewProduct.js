@@ -28,13 +28,18 @@ export default function Modal() {
           <div className="modal-footer">
             <div className="row">
               <div className="col">
-                <a href="https://wa.me/+6281238368983?text=saya%20ingin%20bertanya%20atau%20membeli%20produk%20dan%20treatment%20RumahAthan" type="button" className="btn btn-primary">
-                  Kantor 1
+                <a href="https://wa.me/+6285784678830?text=saya%20ingin%20bertanya%20atau%20membeli%20produk%20dan%20treatment%20RumahAthan" type="button" className="btn btn-primary">
+                  Kantor Rogojampi
                 </a>
               </div>
               <div className="col">
-                <a href="https://wa.me/+6281238368983?text=saya%20ingin%20bertanya%20atau%20membeli%20produk%20dan%20treatment%20RumahAthan" type="button" className="btn btn-primary">
-                  Kantor 2
+                <a href="https://wa.me/+6285880956067?text=saya%20ingin%20bertanya%20atau%20membeli%20produk%20dan%20treatment%20RumahAthan" type="button" className="btn btn-primary">
+                  Kantor Songgon
+                </a>
+              </div>
+              <div className="col">
+                <a href="https://wa.me/+6281944605887?text=saya%20ingin%20bertanya%20atau%20membeli%20produk%20dan%20treatment%20RumahAthan" type="button" className="btn btn-primary">
+                  Kantor Melaya
                 </a>
               </div>
             </div>

@@ -16,6 +16,7 @@ export default function Index(){
     <Layout>
       <FormInputCustomer />
       <TableCustomer />
+      {/* <CardCustomer /> */}
     </Layout>
     </>
   )

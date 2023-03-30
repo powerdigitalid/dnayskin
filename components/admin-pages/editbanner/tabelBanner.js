@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
@@ -142,9 +143,11 @@ export default function TabelBanner() {
                                 <button onClick={e => handleDeleteBanner(e, banner.id, banner.text_header)} className="btn btn-danger">
                                   Hapus
                                 </button>
-                                <button  className="btn btn-success">
-                                  Edit
-                                </button>
+                                {/* <button  className="btn btn-success"> */}
+                                <Link href={`/admin/editbannerpages/editbanner?id=${banner.id}&textheader=${banner.text_header}&description=${banner.text_desc}&image=${banner.image_path}`} type="button" className="btn btn-success">
+                          <i className="fas fa-edit" /> Edit
+                        </Link>
+                                {/* </button> */}
                               </td>
                             </tr>
                           ))}

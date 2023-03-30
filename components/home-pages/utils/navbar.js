@@ -41,7 +41,9 @@ export default function Navbar() {
                   <i className="lni lni-phone" />
                   <h3>
                     Hubungi Kami:
-                    <span>(+62) 812 3836 8983</span>
+                    <span>Rogojampi : (+62) 857 8467 8830</span> 
+                    <span>Songgon : (+62) 858 8095 6067</span>
+                    <span>Melaya : (+62) 819 4460 5887</span>
                   </h3>
                 </div>
               </div>
@@ -149,18 +151,23 @@ export default function Navbar() {
               <h5 className="title">Social Media Kami:</h5>
               <ul className="pt-2">
                 <li>
-                  <a href="#">
+                  <a href="https://www.facebook.com/profile.php?id=100073799137068">
                   <i className="fab fa-facebook" />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="https://www.instagram.com/rumahathan/">
                   <i className="fab fa-instagram" />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                  <i className="fab fa-youtube" />
+                  <a href="https://www.tiktok.com/@rumahathanbeautycenter">
+                  <i className="fab fa-tiktok" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://shopee.co.id/dnayskin_official">
+                  <i className="fab fa-bag" />
                   </a>
                 </li>
               </ul>
