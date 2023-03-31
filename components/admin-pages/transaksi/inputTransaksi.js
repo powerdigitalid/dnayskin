@@ -279,7 +279,7 @@ export default function InputTransaksi() {
                 <option>Pilih ...</option>
                 <option value={'Kantor_Rogojampi'}>Kantor Rogojampi</option>
                 <option value={'Kantor_Songgon'}>Kantor Songgon</option>
-                {/* <option value={'kantorC'}>Kantor C</option> */}
+                <option value={'Kantor_Melaya'}>Kantor Melaya Bali</option>
               </select>
             </div>
             <div className="form-group col-6">

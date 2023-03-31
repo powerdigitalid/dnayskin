@@ -37,7 +37,7 @@ export default function EditTreatment() {
       treatment_desc: _description,
       treatment_img: _image,
     };
-    const res = await fetch("http://localhost:3000/api/v1/treatment/update/"+id, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_DEV}treatment/update/`+id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -50,6 +50,26 @@ export default function EditTreatment() {
     Swal.fire('Update', 'Data berhasil diupdate', 'success');
     router.push("/admin/formtreatmentpages");
   }
+  const handleUpdateImage = (e) => {
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("image", file);
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}upload/image`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data) {
+          setImage(res.data);
+          alert(res.message);
+        } else {
+          alert(res.message);
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="card author-box card-primary">
         <div className="card-body">
@@ -72,6 +92,7 @@ export default function EditTreatment() {
                   type="file"
                   className="custom-file-input form-control-sm"
                   id="customFile"
+                  onChange={handleUpdateImage}
                 />
                 <label className="custom-file-label" htmlFor="customFile">
                   Choose file

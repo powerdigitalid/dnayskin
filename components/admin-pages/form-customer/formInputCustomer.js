@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
+import Swal from "sweetalert2";
 
 export default function FormInputCustomer() {
   const [image, setImage] = useState("");
@@ -24,7 +25,7 @@ export default function FormInputCustomer() {
       cust_address: address,
       cust_img: image,
     };
-    fetch("http://localhost:3000/api/v1/customer/create", {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +36,7 @@ export default function FormInputCustomer() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        alert(res.message);
+        Swal.fire('Create', 'Data berhasil diupdate', 'success');
         router.push("/admin/formcustomerpages");
         clearData();
       })
@@ -47,7 +48,7 @@ export default function FormInputCustomer() {
     let file = e.target.files[0];
     let formData = new FormData();
     formData.append("image", file);
-    fetch("http://localhost:3000/api/v1/upload/image", {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}upload/image`, {
       method: "POST",
       body: formData,
     })

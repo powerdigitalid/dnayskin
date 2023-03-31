@@ -9,7 +9,7 @@ export default function AllProducts() {
   const router = useRouter();
 
   const fetchProduct = async () => {
-    fetch("http://localhost:3000/api/v1/product/all", {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}product/all`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export default function AllProducts() {
       );
       const data = await res.json();
       console.log(data);
-      Swal.fire("Error", "Data gagal dibuat!", "error");
+      Swal.fire("Hapus", "Data Berhasil dihapus!", "error");
       router.push("/admin/formprodukpages");
     } catch (err) {
       console.log(err);

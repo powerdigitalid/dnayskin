@@ -58,15 +58,9 @@ export default function FormInputProduct() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (res.res) {
-          Swal.fire("Info", res.message, "success");
-          router.push("/admin/formprodukpages");
-          clearData();
-        } else {
-          Swal.fire("Error", "Data gagal dibuat!", "error");
-          console.error(res.message);
-        }
-        
+        Swal.fire('Create', 'Data berhasil diupdate', 'success');
+        router.push("/admin/formprodukpages");
+        clearData();
       })
       .catch((err) => console.log(err));
   };

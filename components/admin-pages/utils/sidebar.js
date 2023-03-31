@@ -46,7 +46,7 @@ export default function Sidebar() {
       removeCookie("token");
       removeCookie("username");
       removeCookie("id");
-      router.push("/login");
+      router.push("/");
     } 
   };
   useEffect(() => {

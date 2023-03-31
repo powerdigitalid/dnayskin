@@ -35,7 +35,7 @@ export default function EditCustomer() {
       cust_address: _address,
       cust_img: _image,
     };
-    const res = await fetch("http://localhost:3000/api/v1/customer/update/"+id, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/update/`+id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

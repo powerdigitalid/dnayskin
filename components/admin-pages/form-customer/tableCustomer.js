@@ -2,11 +2,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
+import Swal from "sweetalert2";
+
 export default function TableCustomer() {
   const [dataCustomer, setDataCustomer] = useState([]);
   const router = useRouter();
   const fetchCustomer = async () => {
-    fetch("http://localhost:3000/api/v1/customer/all", {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/all`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +29,7 @@ export default function TableCustomer() {
   async function deleteCustomer(id) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/v1/customer/delete/${id}`,
+        `${process.env.NEXT_PUBLIC_API_DEV}customer/delete/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -38,7 +40,7 @@ export default function TableCustomer() {
       );
       const data = await res.json();
       console.log(data);
-      alert("Data berhasil dihapus");
+      Swal.fire('Hapus', 'Data berhasil dihapus', 'error');
     } catch (err) {
       console.log(err);
       alert("Data gagal dihapus");

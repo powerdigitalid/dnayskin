@@ -167,7 +167,7 @@ export default function Navbar() {
                 </li>
                 <li>
                   <a href="https://shopee.co.id/dnayskin_official">
-                  <i className="fab fa-bag" />
+                  <i className="fab fa-solid fa-bag-shopping" />
                   </a>
                 </li>
               </ul>
