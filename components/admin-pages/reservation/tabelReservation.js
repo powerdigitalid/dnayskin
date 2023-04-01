@@ -4,6 +4,8 @@ import { getCookie } from "../../../utils/cookie.util";
 
 export default function TabelReservation() {
   const [reservations, setReservations] = useState([]);
+  const [search, setSearch] = useState("");
+  const searched = reservations.filter((reservation) => reservation.customerName != null ? reservation.customerName.toLowerCase().includes(search.toLowerCase()): []);
   const handleFetchReservations = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}reservation/all`, {
       method: "GET",
@@ -112,6 +114,8 @@ export default function TabelReservation() {
                                     className="form-control form-control-sm"
                                     placeholder
                                     aria-controls="table-1"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
                                   />
                                 </label>
                               </div>
@@ -184,7 +188,7 @@ export default function TabelReservation() {
                                   </tr>
                                 </thead>
                                 <tbody className="overflow-auto">
-                                  {reservations.length < 1 ? (<tr role="row" className="odd"></tr>) : (reservations.map((reservation, i) => (
+                                  {searched.length < 1 ? (<tr role="row" className="odd"></tr>) : (searched.map((reservation, i) => (
                                     <tr key={i} role="row" className={ (i+1) % 2 == 0 ? "even":"odd"}>
                                     <td className="sorting_1">{i+1}</td>
                                     <td>{reservation.customerName}</td>

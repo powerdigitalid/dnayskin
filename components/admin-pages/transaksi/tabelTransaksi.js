@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 export default function TabelTransaksi() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const searched = orders.filter((order) => order.customerName !== null ? order.customerName.toLowerCase().includes(search.toLowerCase()) : []);
   const router = useRouter();
   const handleFetchOrders = () => {
     setLoading(true);
@@ -33,7 +35,7 @@ export default function TabelTransaksi() {
   async function deleteOrder(id) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/v1/order/delete/${id}`,
+        `${process.env.NEXT_PUBLIC_API_DEV}order/delete/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -105,6 +107,8 @@ export default function TabelTransaksi() {
                                     className="form-control form-control-sm"
                                     placeholder
                                     aria-controls="table-1"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
                                   />
                                 </label>
                               </div>
@@ -195,8 +199,8 @@ export default function TabelTransaksi() {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {orders.length > 0 ? (
-                                    orders.map((order, i) => (
+                                  {searched.length > 0 ? (
+                                    searched.map((order, i) => (
                                       <tr
                                         key={i + 1}
                                         role="row"

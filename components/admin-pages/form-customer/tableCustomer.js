@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 
 export default function TableCustomer() {
   const [dataCustomer, setDataCustomer] = useState([]);
+  const [search, setSearch] = useState('');
+  const searched = dataCustomer.filter((customer) => customer.cust_name !== null ? customer.cust_name.toLowerCase().includes(search.toLowerCase()) : []);
   const router = useRouter();
   const fetchCustomer = async () => {
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/all`, {
@@ -100,6 +102,8 @@ export default function TableCustomer() {
                                 className="form-control form-control-sm"
                                 placeholder
                                 aria-controls="table-1"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
                               />
                             </label>
                           </div>
@@ -163,7 +167,7 @@ export default function TableCustomer() {
                               </tr>
                             </thead>
                             <tbody className="overflow-auto">
-                              {dataCustomer.map((customer, i) => (
+                              {searched.map((customer, i) => (
                                 <tr key={i} role="row" className="odd">
                                   <td className="sorting_1">{i + 1}</td>
                                   <td>{customer.cust_name}</td>
