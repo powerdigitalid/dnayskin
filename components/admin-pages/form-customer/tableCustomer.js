@@ -74,20 +74,6 @@ export default function TableCustomer() {
                             className="dataTables_length"
                             id="table-1_length"
                           >
-                            <label>
-                              Show{" "}
-                              <select
-                                name="table-1_length"
-                                aria-controls="table-1"
-                                className="form-control form-control-sm"
-                              >
-                                <option value={10}>10</option>
-                                <option value={25}>25</option>
-                                <option value={50}>50</option>
-                                <option value={100}>100</option>
-                              </select>{" "}
-                              entries
-                            </label>
                           </div>
                         </div>
                         <div className="col-sm-12 col-md-6">
@@ -237,67 +223,6 @@ export default function TableCustomer() {
                               </tr> */}
                             </tbody>
                           </table>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-sm-12 col-md-5">
-                          <div
-                            className="dataTables_info"
-                            id="table-1_info"
-                            role="status"
-                            aria-live="polite"
-                          >
-                            Showing 1 to 1 of 1 entries (filtered from 4 total
-                            entries)
-                          </div>
-                        </div>
-                        <div className="col-sm-12 col-md-7">
-                          <div
-                            className="dataTables_paginate paging_simple_numbers"
-                            id="table-1_paginate"
-                          >
-                            <ul className="pagination">
-                              <li
-                                className="paginate_button page-item previous disabled"
-                                id="table-1_previous"
-                              >
-                                <a
-                                  href="#"
-                                  aria-controls="table-1"
-                                  data-dt-idx={0}
-                                  tabIndex={0}
-                                  className="page-link"
-                                >
-                                  Previous
-                                </a>
-                              </li>
-                              <li className="paginate_button page-item active">
-                                <a
-                                  href="#"
-                                  aria-controls="table-1"
-                                  data-dt-idx={1}
-                                  tabIndex={0}
-                                  className="page-link"
-                                >
-                                  1
-                                </a>
-                              </li>
-                              <li
-                                className="paginate_button page-item next disabled"
-                                id="table-1_next"
-                              >
-                                <a
-                                  href="#"
-                                  aria-controls="table-1"
-                                  data-dt-idx={2}
-                                  tabIndex={0}
-                                  className="page-link"
-                                >
-                                  Next
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
                         </div>
                       </div>
                     </div>
