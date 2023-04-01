@@ -58,7 +58,7 @@ export default function FormInputProduct() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        Swal.fire('Create', 'Data berhasil diupdate', 'success');
+        Swal.fire('Create', 'Data berhasil dibuat', 'success');
         router.push("/admin/formprodukpages");
         clearData();
       })
@@ -76,10 +76,10 @@ export default function FormInputProduct() {
           </div>
           <form onSubmit={handleAddProduct}>
             <div className="author-box-left">
-              <img
+              <div
                 alt="image"
                 // src={`http://localhost:3000${product.product_img}`}
-                value={image}
+                // value={image}
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
               />

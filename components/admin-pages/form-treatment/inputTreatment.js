@@ -75,9 +75,9 @@ export default function InputTreatment() {
           </div>
           <form onSubmit={handleAddTreatment} >
             <div className="author-box-left">
-              <img
-                alt="image"
-                className="rounded author-box-picture"
+              <div
+                // alt="image"
+                // className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
 
               />

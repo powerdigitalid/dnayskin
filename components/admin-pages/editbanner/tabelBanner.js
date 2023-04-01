@@ -140,9 +140,9 @@ export default function TabelBanner() {
                               <td>{banner.text_header}</td>
                               <td>{banner.text_desc}</td>
                               <td>
-                                <button onClick={e => handleDeleteBanner(e, banner.id, banner.text_header)} className="btn btn-danger">
+                                {/* <button onClick={e => handleDeleteBanner(e, banner.id, banner.text_header)} className="btn btn-danger">
                                   Hapus
-                                </button>
+                                </button> */}
                                 {/* <button  className="btn btn-success"> */}
                                 <Link href={`/admin/editbannerpages/editbanner?id=${banner.id}&textheader=${banner.text_header}&description=${banner.text_desc}&image=${banner.image_path}`} type="button" className="btn btn-success">
                           <i className="fas fa-edit" /> Edit

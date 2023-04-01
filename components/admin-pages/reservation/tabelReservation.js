@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { getCookie } from "../../../utils/cookie.util";
+import { useRouter } from "next/router";
 
 export default function TabelReservation() {
   const [reservations, setReservations] = useState([]);
   const [search, setSearch] = useState("");
+  const router = useRouter();
   const searched = reservations.filter((reservation) => reservation.customerName != null ? reservation.customerName.toLowerCase().includes(search.toLowerCase()): []);
   const handleFetchReservations = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}reservation/all`, {
@@ -60,6 +62,28 @@ export default function TabelReservation() {
   useEffect(() => {
     handleFetchReservations();
   }, []);
+
+  async function deleteReservation(id) {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_DEV}reservation/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Access-Token": getCookie("token"),
+          },
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      Swal.fire('Hapus', 'Data berhasil dihapus', 'error');
+    } catch (err) {
+      console.log(err);
+      alert("Data gagal dihapus");
+    }
+    router.push("/admin/reservationpages");
+  }
   return (
     <div>
       <div>
@@ -125,7 +149,7 @@ export default function TabelReservation() {
                                       colSpan={1}
                                       aria-sort="ascending"
                                       aria-label="#activate to sort column descending"
-                                      style={{ width: "24.4375px" }}
+                                      style={{ width: "10px" }}
                                     >
                                       #
                                     </th>
@@ -136,7 +160,7 @@ export default function TabelReservation() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Task Name: activate to sort column ascending"
-                                      style={{ width: "149.078px" }}
+                                      style={{ width: "70px" }}
                                     >
                                       Nama Member
                                     </th>
@@ -145,7 +169,7 @@ export default function TabelReservation() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Progress"
-                                      style={{ width: "78.7344px" }}
+                                      style={{ width: "40px" }}
                                     >
                                       Kantor
                                     </th>
@@ -156,7 +180,7 @@ export default function TabelReservation() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Due Date: activate to sort column ascending"
-                                      style={{ width: "89.0938px" }}
+                                      style={{ width: "30px" }}
                                     >
                                       Tanggal
                                     </th>
@@ -167,7 +191,7 @@ export default function TabelReservation() {
                                       rowSpan={1}
                                       colSpan={1}
                                       aria-label="Action: activate to sort column ascending"
-                                      style={{ width: "73.1875px" }}
+                                      style={{ width: "90px" }}
                                     >
                                       Action
                                     </th>
@@ -184,6 +208,14 @@ export default function TabelReservation() {
                                       <button onClick={(e) => handleConfirmReservation(e, reservation.id)} className={`btn btn-sm ${reservation.reservation_status == "confirmed" ? "btn-success" : "btn-primary"}`} disabled={reservation.reservation_status == "confirmed" ? true : false}>
                                         {reservation.reservation_status == "confirmed" ? "Terkonfirmasi" : "Konfirmasi"}
                                       </button>
+                                      <button
+                                      className="btn btn-sm btn-danger ml-2"
+                                      onClick={() =>
+                                        deleteReservation(reservation.id)
+                                      }
+                                    >
+                                      <i className="fas fa-trash fa-fw" /> Hapus
+                                    </button>
                                     </td>
                                   </tr>
                                   )))}

@@ -35,14 +35,16 @@ export default function CardCustomer() {
         <div className="card-body">
           <div className="col-12">
             <div className="text-center text-dark ">
-              <h2>Data Member</h2><hr className='mx-auto rounded custom-hr'></hr>
+              <h2>Detail Member</h2><hr className='mx-auto rounded custom-hr'></hr>
             </div>
           </div>
           <div className="author-box-left">
             <img
               alt="image"
-              src={customerData.cust_image ? customerData.cust_image : '/dist/img/avatar.webp'}
-              className="rounded author-box-picture"
+              // src={customerData.cust_image ? customerData.cust_image : '/dist/img/avatar.webp'}
+              src={customerData.cust_img ? `http://localhost:3000${customerData.cust_img}` : '/dist/img/avatar.webp'}
+              // src={`http://localhost:3000${customerData.cust_image}`}
+              className="rounded author-box-picture "
             /> 
             <div className="clearfix" />
           </div>

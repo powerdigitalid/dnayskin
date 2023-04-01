@@ -51,11 +51,11 @@ export default function Footer() {
                       </li>
                     </ul>
                     <p className="mail">
-                      <a href="mailto:admin@dnayskin.com">admin@dnayskin.com</a>
+                      <a href="admin@rumahathan.com">admin@rumahathan.com</a>
                     </p>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6 col-12">
+                <div className="col-lg-4 col-md-6 col-12">
                   <div className="single-footer f-link">
                     <h3>Informasi</h3>
                     <ul>

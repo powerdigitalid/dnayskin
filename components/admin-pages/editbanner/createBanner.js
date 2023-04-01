@@ -12,7 +12,7 @@ export default function CreateBanner() {
     let file = e.target.files[0];
     let formData = new FormData();
     formData.append("image", file);
-    fetch("http://localhost:3000/api/v1/upload/image", {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}upload/image`, {
       method: "POST",
       body: formData,
     })
@@ -42,7 +42,7 @@ export default function CreateBanner() {
       text_desc: textDesc,
       img_path: image,
     };
-    fetch("http://localhost:3000/api/v1/banner/create", {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}banner/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -36,7 +36,7 @@ export default function FormInputCustomer() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        Swal.fire('Create', 'Data berhasil diupdate', 'success');
+        Swal.fire('Create', 'Data berhasil dibuat', 'success');
         router.push("/admin/formcustomerpages");
         clearData();
       })
@@ -77,7 +77,7 @@ export default function FormInputCustomer() {
           <div className="author-box-left">
             <img
               alt="image"
-              src="/dist/img/products/product-1.jpg"
+              src="/dist/img/avatar.webp"
               className="rounded author-box-picture"
               style={{ width: "100px", height: "100px" }}
             />
