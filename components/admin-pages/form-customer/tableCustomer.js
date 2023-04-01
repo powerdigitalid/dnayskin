@@ -186,7 +186,7 @@ export default function TableCustomer() {
                                       Input Transaksi
                                     </Link>
                                     <Link
-                                      href={`/admin/formcustomerpages/edit?id=${customer.id}&namecustomer=${customer.cust_name}&phone=${customer.cust_phone}&address=${customer.cust_address}&image=${customer.cust_img}`}
+                                      href={`/admin/formcustomerpages/edit?id=${customer.id}&nameCustomer=${customer.cust_name}&phone=${customer.cust_phone}&address=${customer.cust_address}&image=${customer.cust_img}`}
                                       type="button"
                                       className="btn btn-success"
                                     >

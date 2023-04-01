@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import TableTransaksi from "../../../components/admin-pages/transaksi/tabelTransaksi";
@@ -12,6 +13,9 @@ export default function Index(){
   return(
     <>
     <Layout>
+      <Head>
+        <title>Transaksi</title>
+      </Head>
       <TableTransaksi />
     </Layout>
     </>

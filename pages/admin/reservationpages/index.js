@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 import InputTreatment from '../../../components/admin-pages/form-treatment/inputTreatment'
@@ -13,6 +14,9 @@ export default function Index() {
   return (
     <div>
       <Layout>
+        <Head>
+          <title>Reservation</title>
+        </Head>
         <TabelReservation/>
       </Layout>
     </div>

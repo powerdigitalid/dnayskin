@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import CreateBanner from "../../../components/admin-pages/editbanner/createBanner";
@@ -13,6 +14,9 @@ export default function Index() {
   return (
     <>
       <Layout>
+        <Head>
+          <title>Banner</title>
+        </Head>
         <CreateBanner />
         <TabelBanner />
       </Layout>

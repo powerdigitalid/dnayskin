@@ -1,9 +1,13 @@
 import Layout from "../../components/admin-pages/utils/layout";
 import Dashboard from "../../components/admin-pages/dashboard/dashboard";
+import Head from "next/head";
 export default function Home() {
   return (
     <>
       <Layout>
+        <Head>
+          <title>Dashboard</title>
+        </Head>
         <div>
           <div className="section-header">
             <h1>Dashboard</h1>

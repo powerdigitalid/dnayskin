@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import AllTreatment from "../../../components/admin-pages/form-treatment/allTreatment";
@@ -13,6 +14,9 @@ export default function Index(){
   return(
     <>
     <Layout>
+      <Head>
+        <title>Treatment</title>
+      </Head>
       <InputTreatment/>
       <AllTreatment/>
     </Layout>

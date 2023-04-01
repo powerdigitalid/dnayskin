@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { removeCookie } from "../../../utils/cookie.util";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 export default function Sidebar() {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = useState("dashboard");
@@ -41,13 +42,22 @@ export default function Sidebar() {
   };
   const handleLogout = (e) => {
     e.preventDefault();
-    let validate = confirm("Are you sure to logout?");
-    if (validate) {
-      removeCookie("token");
-      removeCookie("username");
-      removeCookie("id");
-      router.push("/");
-    } 
+    Swal.fire({
+      title: "Are you sure to logout?",
+      text: "You will be logged out from this page!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeCookie("token");
+        removeCookie("username");
+        removeCookie("id");
+        router.push("/");
+      }
+    });
   };
   useEffect(() => {
     handleCheckActiveMenu();

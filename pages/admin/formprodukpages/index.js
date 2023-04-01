@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import AllProduct from "../../../components/admin-pages/form-produk/allProduct";
@@ -13,6 +14,9 @@ export default function Index(){
   return(
     <>
     <Layout>
+      <Head>
+        <title>Product</title>
+      </Head>
       <FormInputProduk/>
       <AllProduct/>
     </Layout>

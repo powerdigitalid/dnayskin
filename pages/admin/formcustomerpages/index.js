@@ -5,6 +5,7 @@ import Layout from "../../../components/admin-pages/utils/layout";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { getCookie } from "../../../utils/cookie.util";
+import Head from "next/head";
 
 export default function Index(){
   const router = useRouter();
@@ -14,6 +15,9 @@ export default function Index(){
   return(
     <>
     <Layout>
+      <Head>
+        <title>Customer</title>
+      </Head>
       <FormInputCustomer />
       <TableCustomer />
       {/* <CardCustomer /> */}

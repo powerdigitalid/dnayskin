@@ -67,7 +67,7 @@ export default function AllTreatment() {
                 <div className="col">
                   <div className="treatment-image">
                     <img src={`http://localhost:3000${treatment.treatment_img}`} height={150}
-                    width={200}/>
+                    width={200} alt={""}/>
                   </div>
                 </div> 
                 <div className="col">
@@ -84,7 +84,7 @@ export default function AllTreatment() {
                     <div className="row">
                       <div>
                         {/* <button type="button" className="btn btn-success m-2"> */}
-                        <Link href={`/admin/formtreatmentpages/edit?id=${treatment.id}&nametreatment=${treatment.treatment_name}&price=${treatment.treatment_price}&description=${treatment.treatment_desc}&image=${treatment.treatment_img}`} type="button" className="btn btn-success m-2">
+                        <Link href={`/admin/formtreatmentpages/edit?id=${treatment.id}&nameTreatment=${treatment.treatment_name}&price=${treatment.treatment_price}&description=${treatment.treatment_desc}&image=${treatment.treatment_img}`} type="button" className="btn btn-success m-2">
                           <i className="fas fa-edit" /> Edit
                         </Link>
                         {/* </button> */}
