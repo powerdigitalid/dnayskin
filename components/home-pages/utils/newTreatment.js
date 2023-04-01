@@ -41,7 +41,7 @@ export default function NewTreatment() {
           </div>
         </div>
         <div className="row">
-        {dataTreatment.map((treatment, i) => (
+        {dataTreatment.slice(0, 2).map((treatment, i) => (
           <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
             {/* Start Single Product */}
             <div className="single-product">

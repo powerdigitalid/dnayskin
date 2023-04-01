@@ -181,7 +181,7 @@ export default function TabelReservation() {
                                     <td>{reservation.officeId.charAt(0).toUpperCase() + reservation.officeId.slice(1)}</td>
                                     <td>{new Date(reservation.reservation_date).toLocaleDateString()}</td>
                                     <td>
-                                      <button onClick={(e) => handleConfirmReservation(e, reservation.id)} className={`btn ${reservation.reservation_status == "confirmed" ? "btn-success" : "btn-primary"}`} disabled={reservation.reservation_status == "confirmed" ? true : false}>
+                                      <button onClick={(e) => handleConfirmReservation(e, reservation.id)} className={`btn btn-sm ${reservation.reservation_status == "confirmed" ? "btn-success" : "btn-primary"}`} disabled={reservation.reservation_status == "confirmed" ? true : false}>
                                         {reservation.reservation_status == "confirmed" ? "Terkonfirmasi" : "Konfirmasi"}
                                       </button>
                                     </td>

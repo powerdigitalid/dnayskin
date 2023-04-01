@@ -44,7 +44,7 @@ export default function NewProduct() {
           </div>
         </div>
         <div className="row">
-        {dataProduct.map((product, i) => (
+        {dataProduct.slice(0, 4).map((product, i) => (
           <div className="col-lg-3 col-md-6 col-12" key={i}>
             {/* Start Single Product */}
             <div className="single-product">

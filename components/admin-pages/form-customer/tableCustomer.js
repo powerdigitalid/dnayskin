@@ -161,66 +161,41 @@ export default function TableCustomer() {
                                   <td>
                                     <Link
                                       href={`/admin/reservationpages/inputreservation?customer=${customer.id}`}
-                                      className="btn btn-primary m-2"
+                                      className="btn btn-sm btn-primary ml-2"
                                     >
-                                      Reservations
+                                      <i className="fas fa-calendar-check fa-fw" />Reservations
                                     </Link>
                                     <Link
                                       href={`/admin/transaksipages/inputtransaksi?customer=${customer.id}`}
-                                      className="btn btn-warning m-2"
+                                      className="btn btn-sm btn-warning ml-2"
                                     >
-                                      Input Transaksi
+                                      <i className="fas fa-shopping-basket fa-fw"></i> Input Transaksi
                                     </Link>
                                     <Link
                                       href={`/admin/formcustomerpages/edit?id=${customer.id}&nameCustomer=${customer.cust_name}&phone=${customer.cust_phone}&address=${customer.cust_address}&image=${customer.cust_img}`}
                                       type="button"
-                                      className="btn btn-success"
+                                      className="btn btn-sm btn-success ml-2"
                                     >
-                                      <i className="fas fa-edit" /> Edit
+                                      <i className="fas fa-edit fa-fw" /> Edit
                                     </Link>
                                     <button
-                                      className="btn btn-danger m-2"
+                                      className="btn btn-sm btn-danger ml-2"
                                       onClick={() =>
                                         deleteCustomer(customer.id)
                                       }
                                     >
-                                      Hapus
+                                      <i className="fas fa-trash fa-fw" /> Hapus
                                     </button>
+                                    <Link
+                                      href={`/admin/formcustomerpages/details?id=${customer.id}`}
+                                      type="button"
+                                      className="btn btn-sm btn-info ml-2"
+                                    >
+                                      <i className="fas fa-info-circle fa-fw" /> Details
+                                    </Link>
                                   </td>
                                 </tr>
                               ))}
-
-                              {/* <tr role="row" className="odd">
-                                <td className="sorting_1">1</td>
-                                <td>Dian Ahmad</td>
-                                <td>
-                                  Desa Sragi Kecamatan Songgon Kabupaten
-                                  Banyuwangi{" "}
-                                </td>
-                                <td>
-                                  <Link
-                                    href="/admin/reservationpages/inputreservation"
-                                    className="btn btn-primary m-2"
-                                  >
-                                    Reservations
-                                  </Link>
-                                  <Link
-                                    href="/admin/transaksipages/inputtransaksi"
-                                    className="btn btn-warning m-2"
-                                  >
-                                    Input Transaksi
-                                  </Link>
-                                  <Link
-                                    href="/admin/formcustomerpages/edit"
-                                    className="btn btn-info m-2"
-                                  >
-                                    Edit
-                                  </Link>
-                                  <a href="#" className="btn btn-danger m-2">
-                                    Hapus
-                                  </a>
-                                </td>
-                              </tr> */}
                             </tbody>
                           </table>
                         </div>

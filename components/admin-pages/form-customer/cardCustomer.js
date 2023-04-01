@@ -1,13 +1,14 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { getCookie } from '../../../utils/cookie.util';
 
 export default function CardCustomer() {
   const router = useRouter();
-  const { customer } = router.query;
+  const { id } = router.query;
   const [ customerData, setCustomerData ] = useState({})
   const handleFetchCustomerData = (id) => {
-    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/${customer}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -24,8 +25,8 @@ export default function CardCustomer() {
     .catch(err => console.log(err))
   };
   useEffect(() => {
-    if(customer){
-      handleFetchCustomerData(customer)
+    if(id){
+      handleFetchCustomerData(id)
     }
   }, []);
   return (
@@ -40,7 +41,7 @@ export default function CardCustomer() {
           <div className="author-box-left">
             <img
               alt="image"
-              src="/dist/img/products/product-1.jpg"
+              src={customerData.cust_image ? customerData.cust_image : '/dist/img/avatar.webp'}
               className="rounded author-box-picture"
             /> 
             <div className="clearfix" />
@@ -83,6 +84,9 @@ export default function CardCustomer() {
               </div>
             </div>
           </div>
+          <Link href="/admin/formcustomerpages">
+            <button className="btn btn-primary btn-sm">Kembali</button>
+          </Link>
         </div>
       </div>
     </>

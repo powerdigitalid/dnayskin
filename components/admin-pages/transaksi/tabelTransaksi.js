@@ -210,21 +210,21 @@ export default function TabelTransaksi() {
                                               {/* <button type="button" className="btn btn-success m-2"> */}
                                               <Link
                                                 href={`/admin/transaksipages/detailtransaksi?id=${order.id}`}
-                                                className="btn btn-success"
+                                                className="btn btn-primary btn-sm ml-2"
                                               >
-                                                <i className="fas fa-edit" />{" "}
+                                                <i className="fas fa-info-circle fa-fw" />{" "}
                                                 Detail
                                               </Link>
                                               {/* </button> */}
                                             </div>
                                             <div>
                                               <button
-                                                className="btn btn-danger"
+                                                className="btn btn-danger btn-sm ml-2"
                                                 onClick={() =>
                                                   deleteOrder(order.id)
                                                 }
                                               >
-                                                <i className="fas fa-trash" />{" "}
+                                                <i className="fas fa-trash fa-fw" />{" "}
                                                 Hapus
                                               </button>
                                             </div>
