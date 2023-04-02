@@ -12,14 +12,14 @@ export default function About() {
           </div>
           <div className="row">
             <div className="col">
-              <div className="hero-slider">
+              <div className="hero-slider d-flex justify-content-end">
                 <Image src={slider1} className="h-50 w-50" alt="#" />
               </div>
             </div>
             <div className="col">
               <div className="text-justify ">
                 <h2 className="text-primary">Rumah Athan</h2>
-                <p>
+                <p style={{ height: "300px" }}>
                   Rumah Athan Skincare and Treatment merupakan tempat perawatan untuk wajah dan badan yang sangat terpercaya. Untuk anda yang menginkan kulit cantik yang mempesona. <br/>
                   Dengan pengalaman lebih dari 8 tahun kami berusaha selalu menjaga kualitas pelayanan dan memastikan anda mendapatkan kenyamanan yang tidak akan ditemukan ditempat perawatan manapun.<br/>
                   Untuk menambah kepuasan anda kami menawarkan produk andalan D'Nayskin sebagai pelengkap perjalanan untuk kulit sehat dan terawat.  

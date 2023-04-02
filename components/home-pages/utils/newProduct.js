@@ -47,7 +47,7 @@ export default function NewProduct() {
         {dataProduct.slice(0, 4).map((product, i) => (
           <div className="col-lg-3 col-md-6 col-12" key={i}>
             {/* Start Single Product */}
-            <div className="single-product">
+            <div className="single-product" style={{height: "450px"}}>
               <div className="product-image">
                 <img src={`http://localhost:3000${product.product_img}`} className=""  alt="#" width={40} height={160}/>
               </div>
@@ -55,7 +55,7 @@ export default function NewProduct() {
                 <h4 className="title">
                   <a href="product-grids.html">{product.product_name}</a>
                 </h4>
-                <span className="category">{product.product_desc}</span>
+                <span className="category overflow-auto" style={{ height: "110px" }}>{product.product_desc}</span>
                 <div className="price">
                   <span>Rp {product.product_price}</span>
                 </div>
