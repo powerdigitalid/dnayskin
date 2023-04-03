@@ -1,4 +1,4 @@
-import slider1 from "../../../public/dist/img/products/vita.jpeg";
+import slider1 from "../../../public/dist/img/products/vita.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export default function About() {
             <div className="col">
               <div className="text-justify ">
                 <h2 className="text-primary">Rumah Athan</h2>
-                <p style={{ height: "300px" }}>
+                <p style={{ height: "210px" }}>
                   Rumah Athan Skincare and Treatment merupakan tempat perawatan untuk wajah dan badan yang sangat terpercaya. Untuk anda yang menginkan kulit cantik yang mempesona. <br/>
                   Dengan pengalaman lebih dari 8 tahun kami berusaha selalu menjaga kualitas pelayanan dan memastikan anda mendapatkan kenyamanan yang tidak akan ditemukan ditempat perawatan manapun.<br/>
                   Untuk menambah kepuasan anda kami menawarkan produk andalan D'Nayskin sebagai pelengkap perjalanan untuk kulit sehat dan terawat.  

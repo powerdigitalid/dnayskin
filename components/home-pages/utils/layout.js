@@ -3,6 +3,9 @@ import React from "react";
 import Favicon from "../../../public/dist/img/logo/logo.svg";
 import Footer from "./footer";
 import Navbar from "./navbar";
+//coba next-seo wkwkqk
+import {NextSeo} from 'next-seo';
+
 
 export default function Layout({ children }) {
   return (
@@ -14,6 +17,11 @@ export default function Layout({ children }) {
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" type="image/x-icon" href={Favicon} />
+        <NextSeo
+      title="Rumah Athan"
+      description="Beauty Center Banyuwangi"
+      canonical="https://rumahathan.com/"
+    />
       </Head>
       <Navbar />
       {children}
