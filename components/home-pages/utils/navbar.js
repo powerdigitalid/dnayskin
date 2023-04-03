@@ -100,7 +100,7 @@ export default function Navbar() {
                       </a>
                       <ul className="sub-menu collapse" id="submenu-1-2">
                         <li className="nav-item">
-                          <Link href="#newProduct">Produk Terbaru</Link>
+                          <Link href="/#newProduct">Produk Terbaru</Link>
                         </li>
                         <li className="nav-item">
                           <Link href="/allproduk/#allproduk">Semua Produk</Link>
@@ -121,7 +121,7 @@ export default function Navbar() {
                       </a>
                       <ul className="sub-menu collapse" id="submenu-1-3">
                         <li className="nav-item">
-                          <Link href="#newTreatment">Treatment Terbaru</Link>
+                          <Link href="/#newTreatment">Treatment Terbaru</Link>
                         </li>
                         <li className="nav-item">
                           <Link href="/alltreatment/#alltreatments">Semua Treatment</Link>
