@@ -87,7 +87,7 @@ export default function EditProduct() {
             <div className="author-box-left">
               <img
                 alt="image"
-                src={`http://localhost:3000${_image}`}
+                src={`https://powerdigital.id/rumahatha-backend${_image}`}
                 className="rounded author-box-picture"
               />
               <div className="clearfix" />

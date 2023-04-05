@@ -13,7 +13,7 @@ export default function Footer() {
                 <div className="col-lg-3 col-md-4 col-12 ">
                   <div className="footer-logo ">
                     <a className="navbar-brand fs-1" href="index.html">
-                      <img src="/dist/img/logo/logos.png" alt="Logo" />
+                      <Image src="/dist/img/logo/logos.png" alt="Logo" />
                     </a>
                   </div>
                 </div>

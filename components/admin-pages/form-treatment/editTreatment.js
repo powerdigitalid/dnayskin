@@ -82,7 +82,7 @@ export default function EditTreatment() {
             <div className="author-box-left">
               <img
                 alt="image"
-                src={`http://localhost:3000${_image}`}
+                src={`https://powerdigital.id/rumahatha-backend${_image}`}
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
               />

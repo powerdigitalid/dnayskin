@@ -16,7 +16,7 @@ export default function Layout({ children }) {
         <title>Rumah Athan | Beauty Center</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" type="image/x-icon" href={Favicon} />
+        <link rel="shortcut icon" type="image/x-icon" href="/dist/img/logo/logo.svg" />
         <NextSeo
       title="Rumah Athan"
       description="Beauty Center Banyuwangi"

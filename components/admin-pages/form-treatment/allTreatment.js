@@ -2,13 +2,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
+import Image from "next/image";
  
 export default function AllTreatment() {
   const [dataTreatment, setDataTreatment] = useState([]);
   const router = useRouter();
 
   const fetchTreatment = async () => {
-    fetch("http://localhost:3000/api/v1/treatment/all", {
+    fetch("https://powerdigital.id/rumahatha-backend/api/v1/treatment/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +31,7 @@ export default function AllTreatment() {
   async function deleteTreatment(id) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/v1/treatment/delete/${id}`,
+        `https://powerdigital.id/rumahatha-backend/api/v1/treatment/delete/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -66,7 +67,7 @@ export default function AllTreatment() {
               <div className="row">
                 <div className="col">
                   <div className="treatment-image">
-                    <img src={`http://localhost:3000${treatment.treatment_img}`} height={150}
+                    <Image src={`https://powerdigital.id/rumahatha-backend${treatment.treatment_img}`} height={150}
                     width={200} alt={""}/>
                   </div>
                 </div> 

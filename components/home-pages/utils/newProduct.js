@@ -10,7 +10,7 @@ export default function NewProduct() {
   // const router = useRouter();
 
   const fetchProduct = async () => {
-    fetch("http://localhost:3000/api/v1/product/landing", {
+    fetch("https://powerdigital.id/rumahatha-backend/api/v1/product/landing", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export default function NewProduct() {
             {/* Start Single Product */}
             <div className="single-product" style={{height: "450px"}}>
               <div className="product-image">
-                <img src={`http://localhost:3000${product.product_img}`} className=""  alt="#" width={40} height={160}/>
+                <Image src={`https://powerdigital.id/rumahatha-backend${product.product_img}`} className=""  alt="#" width={40} height={160}/>
               </div>
               <div className="product-info">
                 <h4 className="title">
