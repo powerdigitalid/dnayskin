@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
-import InputReserv from '../../../components/admin-pages/reservation/inputreservation'
+import InputReserv from '../../../components/admin-pages/reservation/inputReservation'
 import Layout from '../../../components/admin-pages/utils/layout'
 
 
