@@ -22,7 +22,7 @@ export default function About() {
                 <p style={{ height: "210px" }}>
                   Rumah Athan Skincare and Treatment merupakan tempat perawatan untuk wajah dan badan yang sangat terpercaya. Untuk anda yang menginkan kulit cantik yang mempesona. <br/>
                   Dengan pengalaman lebih dari 8 tahun kami berusaha selalu menjaga kualitas pelayanan dan memastikan anda mendapatkan kenyamanan yang tidak akan ditemukan ditempat perawatan manapun.<br/>
-                  Untuk menambah kepuasan anda kami menawarkan produk andalan D'Nayskin sebagai pelengkap perjalanan untuk kulit sehat dan terawat.  
+                  Untuk menambah kepuasan anda kami menawarkan produk andalan D`Nayskin sebagai pelengkap perjalanan untuk kulit sehat dan terawat.  
                 </p>
 
                 <div className="tombol">

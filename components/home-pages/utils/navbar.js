@@ -25,14 +25,14 @@ export default function Navbar() {
           <div className="row align-items-center">
             <div className="col-lg-3 col-md-3 col-7">
               {/* Start Header Logo */}
-              <a className="navbar-brand fs-1" href="/">
+              <Link className="navbar-brand fs-1" href="/">
                 <img
                   src="dist/img/logo/logos.png"
                   className="w-100"
                   alt="Logo"
                 />
                 {/* <span className="span-navbar">D'Nayskin</span> */}
-              </a>
+              </Link>
               {/* End Header Logo */}
             </div>
             <div className="col-lg-9 col-md-2 col-5">

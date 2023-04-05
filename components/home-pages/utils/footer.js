@@ -22,7 +22,7 @@ export default function Footer() {
                     <h4 className="title">
                       Terimakasih Telah Berkunjung
                       <span>
-                        Kedatangan Anda sangat berarti bagi kami | D'Nayskin sahabat Glow-up mu
+                        Kedatangan Anda sangat berarti bagi kami | D`Nayskin sahabat Glow-up mu
                       </span>
                     </h4>
                   </div>
@@ -62,7 +62,7 @@ export default function Footer() {
                       <li>
                         <a href="#about">Tentang Kami</a> : Rumah Athan Skincare and Treatment merupakan tempat perawatan untuk wajah dan badan yang sangat terpercaya. Untuk anda yang menginkan kulit cantik yang mempesona. <br/>
                   Dengan pengalaman lebih dari 8 tahun kami berusaha selalu menjaga kualitas pelayanan dan memastikan anda mendapatkan kenyamanan yang tidak akan ditemukan ditempat perawatan manapun.<br/>
-                  Untuk menambah kepuasan anda kami menawarkan produk andalan D'Nayskin sebagai pelengkap perjalanan untuk kulit sehat dan terawat. 
+                  Untuk menambah kepuasan anda kami menawarkan produk andalan D`Nayskin sebagai pelengkap perjalanan untuk kulit sehat dan terawat. 
                       </li>
                     </ul>
                   </div>
@@ -111,7 +111,7 @@ export default function Footer() {
                       Designed and Developed by
                       <a
                         href="https://powerdigital.id"
-                        rel="nofollow"
+                        rel="noreferrer noopener"
                         target="_blank"
                       >
                         Power Digital Technolgy
