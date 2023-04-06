@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 export default function Hero() {
   const [dataBanner, setDataBanner] = useState([]);
   const fetchBanner = async () => {
-    fetch("https://powerdigital.id/rumahatha-backend/api/v1/banner/all", {
+    fetch("http://localhost:3000/api/v1/banner/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export default function Hero() {
                     key={i}
                     className="single-slider"
                     style={{
-                      backgroundImage: `url("https://powerdigital.id/rumahatha-backend${banner.image_path}")`,
+                      backgroundImage: `url("http://localhost:3000${banner.image_path}")`,
                     }}
                   >
                     <div className="content text-dark">

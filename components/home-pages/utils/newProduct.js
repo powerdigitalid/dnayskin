@@ -1,5 +1,3 @@
-import Product from "../../../public/dist/img/products/product-1.jpg";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
@@ -10,7 +8,7 @@ export default function NewProduct() {
   // const router = useRouter();
 
   const fetchProduct = async () => {
-    fetch("https://powerdigital.id/rumahatha-backend/api/v1/product/landing", {
+    fetch("http://localhost:3000/api/v1/product/landing", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -47,9 +45,9 @@ export default function NewProduct() {
         {dataProduct.slice(0, 4).map((product, i) => (
           <div className="col-lg-3 col-md-6 col-12" key={i}>
             {/* Start Single Product */}
-            <div className="single-product" style={{height: "450px"}}>
+            <div className="single-product">
               <div className="product-image">
-                <Image src={`https://powerdigital.id/rumahatha-backend${product.product_img}`} className=""  alt="#" width={40} height={160}/>
+                <img src={`http://localhost:3000${product.product_img}`} className=""  alt="#"/>
               </div>
               <div className="product-info">
                 <h4 className="title">

@@ -1,5 +1,3 @@
-import Product from "../../../public/dist/img/products/product-1.jpg";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -8,7 +6,7 @@ export default function AllTreatment() {
   const router = useRouter();
 
   const fetchTreatment = async () => {
-    fetch("https://powerdigital.id/rumahatha-backend/api/v1/treatment/landingg", {
+    fetch("http://localhost:3000/api/v1/treatment/landingg", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -46,18 +44,16 @@ export default function AllTreatment() {
             {/* Start Single Product */}
             <div className="single-product" style={{ height: "350px" }}>
               <div className="row">
-                <div className="col">
+                <div className="col-lg-6 col-md-6 col-sm-12">
                   <div className="product-image">
-                    <Image src={`https://powerdigital.id/rumahatha-backend${treatment.treatment_img}`} className="" alt="#" height={210}
-                    width={200} />
+                    <img src={`http://localhost:3000${treatment.treatment_img}`} className="" alt="#" />
                   </div>
                 </div>
-                <div className="col">
+                <div className="col-lg-6 col-md-6 col-sm-12">
                   <div className="product-info">
                     <h4 className="title">{treatment.treatment_name}
                     </h4>
-                    <span className="category overflow-auto"
-                        style={{ height: "150px" }}>
+                    <span className="category overflow-auto">
                     {treatment.treatment_desc}
                     </span>
                     <div className="price">

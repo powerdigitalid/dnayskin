@@ -70,7 +70,7 @@ export default function AllProducts() {
               <div className="single-product" style={{ height: "500px" }}>
                 <div className="product-image">
                   <img
-                    src={`https://powerdigital.id/rumahatha-backend${product.product_img}`}
+                    src={`http://localhost:3000${product.product_img}`}
                     className=""
                     height={150}
                     width={50}

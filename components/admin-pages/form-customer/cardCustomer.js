@@ -42,8 +42,8 @@ export default function CardCustomer() {
             <img
               alt="image"
               // src={customerData.cust_image ? customerData.cust_image : '/dist/img/avatar.webp'}
-              src={customerData.cust_img ? `https://powerdigital.id/rumahatha-backend${customerData.cust_img}` : '/dist/img/avatar.webp'}
-              // src={`https://powerdigital.id/rumahatha-backend${customerData.cust_image}`}
+              src={customerData.cust_img ? `http://localhost:3000${customerData.cust_img}` : '/dist/img/avatar.webp'}
+              // src={`http://localhost:3000${customerData.cust_image}`}
               className="rounded author-box-picture "
             /> 
             <div className="clearfix" />

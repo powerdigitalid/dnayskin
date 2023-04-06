@@ -48,7 +48,7 @@ export default function EditBanner() {
     let file = e.target.files[0];
     let formData = new FormData();
     formData.append("image", file);
-    fetch("https://powerdigital.id/rumahatha-backend/api/v1/upload/image", {
+    fetch("http://localhost:3000/api/v1/upload/image", {
       method: "POST",
       body: formData,
     })
@@ -74,7 +74,7 @@ export default function EditBanner() {
   //     text_desc: textDesc,
   //     img_path: image,
   //   };
-  //   fetch("https://powerdigital.id/rumahatha-backend/api/v1/banner/create", {
+  //   fetch("http://localhost:3000/api/v1/banner/create", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -104,7 +104,7 @@ export default function EditBanner() {
             <div className="author-box-left">
               <img
                 alt="image"
-                src={`https://powerdigital.id/rumahatha-backend${_image}`}
+                src={`http://localhost:3000${_image}`}
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}
               />

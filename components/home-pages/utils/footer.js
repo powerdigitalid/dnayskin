@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Creditcard from "../../../public/dist/img/footer/credit-cards-footer.png";
 
 export default function Footer() {
   return (
@@ -13,7 +11,7 @@ export default function Footer() {
                 <div className="col-lg-3 col-md-4 col-12 ">
                   <div className="footer-logo ">
                     <a className="navbar-brand fs-1" href="index.html">
-                      <Image src="/dist/img/logo/logos.png" alt="Logo" />
+                      <img src="/dist/img/logo/logos.png" alt="Logo" />
                     </a>
                   </div>
                 </div>

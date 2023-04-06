@@ -78,7 +78,7 @@ export default function FormInputProduct() {
             <div className="author-box-left">
               <div
                 alt="image"
-                // src={`https://powerdigital.id/rumahatha-backend${product.product_img}`}
+                // src={`http://localhost:3000${product.product_img}`}
                 // value={image}
                 className="rounded author-box-picture"
                 style={{ width: "100px", height: "100px" }}

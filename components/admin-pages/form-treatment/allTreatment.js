@@ -9,7 +9,7 @@ export default function AllTreatment() {
   const router = useRouter();
 
   const fetchTreatment = async () => {
-    fetch("https://powerdigital.id/rumahatha-backend/api/v1/treatment/all", {
+    fetch("http://localhost:3000/api/v1/treatment/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export default function AllTreatment() {
   async function deleteTreatment(id) {
     try {
       const res = await fetch(
-        `https://powerdigital.id/rumahatha-backend/api/v1/treatment/delete/${id}`,
+        `http://localhost:3000/api/v1/treatment/delete/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -67,7 +67,7 @@ export default function AllTreatment() {
               <div className="row">
                 <div className="col">
                   <div className="treatment-image">
-                    <Image src={`https://powerdigital.id/rumahatha-backend${treatment.treatment_img}`} height={150}
+                    <Image src={`http://localhost:3000${treatment.treatment_img}`} height={150}
                     width={200} alt={""}/>
                   </div>
                 </div> 
