@@ -6,7 +6,7 @@ export default function AllTreatment() {
   const router = useRouter();
 
   const fetchTreatment = async () => {
-    fetch("http://localhost:3000/api/v1/treatment/landingg", {
+    fetch("https://powerdigital.id/rumahatha-backend/api/v1/treatment/landingg", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export default function AllTreatment() {
               <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12">
                   <div className="product-image">
-                    <img src={`http://localhost:3000${treatment.treatment_img}`} className="" alt="#" />
+                    <img src={`https://powerdigital.id/rumahatha-backend${treatment.treatment_img}`} className="" alt="#" />
                   </div>
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-12">

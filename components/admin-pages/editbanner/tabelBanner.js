@@ -7,7 +7,7 @@ import { getCookie } from "../../../utils/cookie.util";
 export default function TabelBanner() {
   const [dataBanner, setDataBanner] = useState([]);
   const fetchBanner = async () => {
-    fetch("http://localhost:3000/api/v1/banner/all", {
+    fetch("https://powerdigital.id/rumahatha-backend/api/v1/banner/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export default function TabelBanner() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:3000/api/v1/banner/delete/${id}`, {
+          fetch(`https://powerdigital.id/rumahatha-backend/api/v1/banner/delete/${id}`, {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
@@ -133,7 +133,7 @@ export default function TabelBanner() {
                             <tr key={i} role="row" className="odd">
                               <td>
                                 <img
-                                  src={`http://localhost:3000${banner.image_path}`}
+                                  src={`https://powerdigital.id/rumahatha-backend${banner.image_path}`}
                                   alt="SourceImage"
                                 />
                               </td>
