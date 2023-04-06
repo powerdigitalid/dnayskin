@@ -12,7 +12,7 @@ export default function Hero() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        
         setDataBanner(res.data);
       })
       .catch((err) => console.log(err));

@@ -60,7 +60,7 @@ export default function EditBanner() {
         } else {
           alert(res.message);
         }
-        console.log(res);
+        
       })
       .catch((err) => console.log(err));
   };
@@ -84,7 +84,7 @@ export default function EditBanner() {
   //   })
   //     .then((res) => res.json())
   //     .then((res) => {
-  //       // console.log(res);
+  //       // 
   //       alert(res.message);
   //       // router.push("/admin/formtreatmentpages");
   //       clearData();

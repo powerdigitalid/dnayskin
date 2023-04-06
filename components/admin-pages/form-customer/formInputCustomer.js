@@ -35,7 +35,7 @@ export default function FormInputCustomer() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        
         Swal.fire('Create', 'Data berhasil dibuat', 'success');
         router.push("/admin/formcustomerpages");
         clearData();
@@ -60,7 +60,7 @@ export default function FormInputCustomer() {
         } else {
           alert(res.message);
         }
-        console.log(res);
+        
       })
       .catch((err) => console.log(err));
   };

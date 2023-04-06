@@ -17,7 +17,7 @@ export default function NewProduct() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        
         setDataProduct(res.data);
       })
       .catch((err) => console.log(err));

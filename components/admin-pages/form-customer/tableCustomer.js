@@ -19,7 +19,7 @@ export default function TableCustomer() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        
         setDataCustomer(res.data);
       })
       .catch((err) => console.log(err));

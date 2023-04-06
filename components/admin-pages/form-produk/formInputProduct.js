@@ -27,7 +27,7 @@ export default function FormInputProduct() {
         } else {
           alert(res.message);
         }
-        console.log(res);
+        
       })
       .catch((err) => console.log(err));
   };
@@ -57,7 +57,7 @@ export default function FormInputProduct() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        
         Swal.fire('Create', 'Data berhasil dibuat', 'success');
         router.push("/admin/formprodukpages");
         clearData();

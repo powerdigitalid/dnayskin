@@ -15,7 +15,7 @@ export default function NewTreatment() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        
         setDataTreatment(res.data);
       })
       .catch((err) => console.log(err));

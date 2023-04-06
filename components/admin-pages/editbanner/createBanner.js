@@ -24,7 +24,7 @@ export default function CreateBanner() {
         } else {
           alert(res.message);
         }
-        console.log(res);
+        
       })
       .catch((err) => console.log(err));
   };
@@ -52,7 +52,7 @@ export default function CreateBanner() {
     })
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res);
+        // 
         Swal.fire({
             title: "Apakah Anda Yakin?",
             text: "akan membuat banner baru ?",

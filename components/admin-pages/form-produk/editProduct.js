@@ -67,7 +67,7 @@ export default function EditProduct() {
         } else {
           alert(res.message);
         }
-        console.log(res);
+        
       })
       .catch((err) => console.log(err));
   };

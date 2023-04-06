@@ -35,7 +35,7 @@ export default function InputTreatment() {
         } else {
           alert(res.message);
         }
-        console.log(res);
+        
       })
       .catch((err) => console.log(err));
   };
@@ -58,7 +58,7 @@ export default function InputTreatment() {
     })
     .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        
         Swal.fire('Create', 'Data berhasil diupdate', 'success');
         router.push("/admin/formtreatmentpages");
         clearData();

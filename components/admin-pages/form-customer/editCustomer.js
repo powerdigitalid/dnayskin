@@ -64,7 +64,7 @@ export default function EditCustomer() {
         } else {
           alert(res.message);
         }
-        console.log(res);
+        
       })
       .catch((err) => console.log(err));
   };
