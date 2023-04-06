@@ -63,12 +63,11 @@ export default function AllTreatment() {
           {dataTreatment.map((treatment, i) => (
           <div key={i} className="col-lg-6 col-md-12 col-sm-12">
             {/* Start Single treatment */}
-            <div className="single-product" style={{ height: "350px" }}>
+            <div className="single-product">
               <div className="row">
                 <div className="col">
                   <div className="treatment-image">
-                    <Image src={`http://localhost:3000${treatment.treatment_img}`} height={150}
-                    width={200} alt={""}/>
+                    <img src={`http://localhost:3000${treatment.treatment_img}`} alt={""} />
                   </div>
                 </div> 
                 <div className="col">
@@ -76,8 +75,7 @@ export default function AllTreatment() {
                     <h4 className="title">
                       <a href="#">{treatment.treatment_name}</a>
                     </h4>
-                    <span className="category overflow-auto"
-                        style={{ height: "150px" }}>
+                    <span className="category overflow-auto">
                       {treatment.treatment_desc}
                     </span>
                     <div className="price">

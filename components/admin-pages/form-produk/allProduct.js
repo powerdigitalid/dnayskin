@@ -67,13 +67,11 @@ export default function AllProducts() {
           {dataProduct.map((product, i) => (
             <div key={i} className="col-lg-3 col-md-6 col-12">
               {/* Start Single Product */}
-              <div className="single-product" style={{ height: "500px" }}>
+              <div className="single-product">
                 <div className="product-image">
                   <img
                     src={`http://localhost:3000${product.product_img}`}
                     className=""
-                    height={150}
-                    width={50}
                     alt="#"
                   /> 
                   <div className="row">
