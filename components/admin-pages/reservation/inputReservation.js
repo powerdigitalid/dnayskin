@@ -85,7 +85,7 @@ export default function InputReservation() {
           <div className="form-group col-6">
             <label>Pilih Kantor</label>
             <select onChange={(e) => setOfficeId(e.target.value)} className="form-control">
-              <option value={''} disabled>Pilih Kantor...</option>
+              <option value={''}>Pilih Kantor...</option>
               <option value={'Kantor_Songgon'}>Kantor Songgon</option>
               <option value={'Kantor_Rogojampi'}>Kantor Rogojampi</option>
               <option value={'Kantor_Melaya'}>Kantor Melaya Bali</option>
