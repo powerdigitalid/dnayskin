@@ -4,12 +4,13 @@ import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
 import Swal from "sweetalert2";
 
-export default function TableCustomer() {
+export default function TableCustomer(props) {
   const [dataCustomer, setDataCustomer] = useState([]);
   const [search, setSearch] = useState('');
   const searched = dataCustomer.filter((customer) => customer.cust_name !== null ? customer.cust_name.toLowerCase().includes(search.toLowerCase()) : []);
   const router = useRouter();
   const fetchCustomer = async () => {
+    setDataCustomer([]);
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/all`, {
       method: "GET",
       headers: {
@@ -19,35 +20,44 @@ export default function TableCustomer() {
     })
       .then((res) => res.json())
       .then((res) => {
-        
         setDataCustomer(res.data);
       })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     fetchCustomer();
-  }, []);
+  }, [props.onTriggered]);
 
   async function deleteCustomer(id) {
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_DEV}customer/delete/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Access-Token": getCookie("token"),
-          },
-        }
-      );
-      const data = await res.json();
-      console.log(data);
-      Swal.fire('Hapus', 'Data berhasil dihapus', 'error');
-    } catch (err) {
-      console.log(err);
-      alert("Data gagal dihapus");
-    }
-    router.push("/admin/formcustomerpages");
+    Swal.fire({
+      title: 'Apakah anda yakin?',
+      text: "Data yang dihapus tidak dapat dikembalikan!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/delete/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "X-Access-Token": getCookie("token"),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status === 204) {
+            Swal.fire('Deleted!', 'Data berhasil dihapus', 'success');
+            fetchCustomer();
+          } else {
+            Swal.fire('Failed!', 'Data gagal dihapus', 'error');
+          }
+        })
+        .catch((err) => console.log(err));
+      }
+    })
   }
 
   return (
@@ -86,7 +96,6 @@ export default function TableCustomer() {
                               <input
                                 type="search"
                                 className="form-control form-control-sm"
-                                placeholder
                                 aria-controls="table-1"
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
