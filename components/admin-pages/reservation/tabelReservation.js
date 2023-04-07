@@ -208,14 +208,14 @@ export default function TabelReservation() {
                                       <button onClick={(e) => handleConfirmReservation(e, reservation.id)} className={`btn btn-sm ${reservation.reservation_status == "confirmed" ? "btn-success" : "btn-primary"}`} disabled={reservation.reservation_status == "confirmed" ? true : false}>
                                         {reservation.reservation_status == "confirmed" ? "Terkonfirmasi" : "Konfirmasi"}
                                       </button>
-                                      <button
+                                      <a type="button"
                                       className="btn btn-sm btn-danger ml-2"
                                       onClick={() =>
                                         deleteReservation(reservation.id)
                                       }
                                     >
                                       <i className="fas fa-trash fa-fw" /> Hapus
-                                    </button>
+                                    </a>
                                     </td>
                                   </tr>
                                   )))}

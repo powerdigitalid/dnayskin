@@ -84,12 +84,12 @@ export default function AllProducts() {
                     </div>
                     <div className="col text-white">
                       <div>
-                        <button
+                        <a type="button"
                           className="btn btn-danger"
                           onClick={() => deleteProduct(product.id)}
                         >
                           <i className="fas fa-trash" /> Hapus
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>

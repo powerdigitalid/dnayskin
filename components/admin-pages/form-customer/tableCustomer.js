@@ -178,14 +178,14 @@ export default function TableCustomer() {
                                     >
                                       <i className="fas fa-edit fa-fw" /> Edit
                                     </Link>
-                                    <button
+                                    <a type="button"
                                       className="btn btn-sm btn-danger ml-2"
                                       onClick={() =>
                                         deleteCustomer(customer.id)
                                       }
                                     >
                                       <i className="fas fa-trash fa-fw" /> Hapus
-                                    </button>
+                                    </a>
                                     <Link
                                       href={`/admin/formcustomerpages/details?id=${customer.id}`}
                                       type="button"

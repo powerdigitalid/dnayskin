@@ -90,9 +90,9 @@ export default function AllTreatment() {
                         {/* </button> */}
                       </div>
                       <div>
-                        <button className="btn btn-danger p-1 m-2" onClick={()=> deleteTreatment(treatment.id)}>
+                        <a type="button" className="btn btn-danger p-1 m-2" onClick={()=> deleteTreatment(treatment.id)}>
                           <i className="fas fa-trash" /> Hapus
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
