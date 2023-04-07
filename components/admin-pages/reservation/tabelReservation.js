@@ -78,6 +78,7 @@ export default function TabelReservation() {
       const data = await res.json();
       console.log(data);
       Swal.fire('Hapus', 'Data berhasil dihapus', 'error');
+      router.push("/admin/reservationpages");
     } catch (err) {
       console.log(err);
       alert("Data gagal dihapus");
