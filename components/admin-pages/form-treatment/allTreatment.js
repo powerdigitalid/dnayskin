@@ -42,7 +42,8 @@ export default function AllTreatment() {
       );
       const data = await res.json();
       console.log(data);
-      alert("Data berhasil dihapus");
+      Swal.fire("Hapus", "Data Berhasil dihapus!", "error");
+      router.push("/admin/formtreatmentpages");
     } catch (err) {
       console.log(err);
       alert("Data gagal dihapus");

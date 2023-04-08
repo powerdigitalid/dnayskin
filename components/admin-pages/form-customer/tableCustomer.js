@@ -58,6 +58,7 @@ export default function TableCustomer(props) {
         .catch((err) => console.log(err));
       }
     })
+    router.push("/admin/formcustomerpages");
   }
 
   return (
