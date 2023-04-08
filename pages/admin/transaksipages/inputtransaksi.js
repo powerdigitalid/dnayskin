@@ -11,7 +11,7 @@ export default function index() {
       <Head>
         <title>Input Transaksi</title>
       </Head>
-      <CardCustomer/>
+      {/* <CardCustomer/> */}
       <InputTransaksi/>
     </Layout>
     </>
