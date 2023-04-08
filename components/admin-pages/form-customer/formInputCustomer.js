@@ -3,12 +3,11 @@ import { useRouter } from "next/router";
 import { getCookie } from "../../../utils/cookie.util";
 import Swal from "sweetalert2";
 
-export default function FormInputCustomer() {
+export default function FormInputCustomer(props) {
   const [image, setImage] = useState("");
   const [nameCustomer, setNameCustomer] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const router = useRouter();
 
   const clearData=()=>{
     setNameCustomer("");
@@ -35,14 +34,12 @@ export default function FormInputCustomer() {
     })
       .then((res) => res.json())
       .then((res) => {
-        
         Swal.fire('Create', 'Data berhasil dibuat', 'success');
-        router.push("/admin/formcustomerpages");
+        props.onTriggered();
         clearData();
       })
       .catch((err) => console.log(err));
   };
-
 
   const handleUploadImageCust = (e) => {
     let file = e.target.files[0];
