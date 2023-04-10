@@ -76,7 +76,7 @@ export default function FormInputProduct() {
           </div>
           <form onSubmit={handleAddProduct}>
             <div className="author-box-left">
-              <div
+              <div 
                 alt="image"
                 // src={`https://powerdigital.id/rumahatha-backend${product.product_img}`}
                 // value={image}
