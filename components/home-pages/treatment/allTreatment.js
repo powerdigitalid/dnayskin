@@ -53,7 +53,7 @@ export default function AllTreatment() {
                   <div className="product-info">
                     <h4 className="title">{treatment.treatment_name}
                     </h4>
-                    <span className="category overflow-auto">
+                    <span className="category overflow-auto" style={{height:"120px"}}>
                     {treatment.treatment_desc}
                     </span>
                     <div className="price">
