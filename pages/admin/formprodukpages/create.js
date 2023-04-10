@@ -8,7 +8,7 @@ export default function CreateProductPages() {
       <Layout>
         <Head>
           <title>Create Product</title>
-        </Head>
+        </Head> 
         <CerateProduct/>
       </Layout>
     </>

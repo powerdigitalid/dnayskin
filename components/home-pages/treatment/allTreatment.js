@@ -40,16 +40,16 @@ export default function AllTreatment() {
         </div>
         <div className="row">
         {dataTreatment.map((treatment, i) => (
-          <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
+          <div className="col-lg-6 col-md-6 col-sm-12" key={i}>
             {/* Start Single Product */}
             <div className="single-product" style={{ height: "350px" }}>
               <div className="row">
-                <div className="col-lg-6 col-md-6 col-sm-12">
+                <div className="col-lg-3 col-md-6 col-sm-12">
                   <div className="product-image">
                     <img src={`https://powerdigital.id/rumahatha-backend${treatment.treatment_img}`} className="" alt="#" />
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-12">
+                <div className="col-lg-9 col-md-6 col-sm-12">
                   <div className="product-info">
                     <h4 className="title">{treatment.treatment_name}
                     </h4>
