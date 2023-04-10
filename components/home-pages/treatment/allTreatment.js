@@ -49,7 +49,7 @@ export default function AllTreatment() {
                     <img src={`https://powerdigital.id/rumahatha-backend${treatment.treatment_img}`} className="" alt="#" />
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 col-sm-12">
+                <div className="col-lg-3 col-md-6 col-sm-12">
                   <div className="product-info">
                     <h4 className="title">{treatment.treatment_name}
                     </h4>
