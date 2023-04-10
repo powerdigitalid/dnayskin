@@ -42,7 +42,7 @@ export default function AllTreatment() {
         {dataTreatment.map((treatment, i) => (
           <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
             {/* Start Single Product */}
-            <div className="single-product" style={{ height: "350px" }}>
+            <div className="single-product">
               <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12">
                   <div className="product-image">
