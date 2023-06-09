@@ -163,7 +163,7 @@ export default function TableCustomer(props) {
                               </tr>
                             </thead>
                             <tbody className="overflow-auto">
-                              {searched.map((customer, i) => (
+                              {searched.length && searched.map((customer, i) => (
                                 <tr key={i} role="row" className="odd">
                                   <td className="sorting_1">{i + 1}</td>
                                   <td>{customer.cust_name}</td>
@@ -205,7 +205,13 @@ export default function TableCustomer(props) {
                                     </Link>
                                   </td>
                                 </tr>
-                              ))}
+                              )) || (
+                                <tr>
+                                  <td colSpan={4} className="text-center">
+                                    Data Kosong
+                                  </td>
+                                  </tr> 
+                              )}
                             </tbody>
                           </table>
                         </div>
