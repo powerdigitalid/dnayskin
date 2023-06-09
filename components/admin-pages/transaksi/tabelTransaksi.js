@@ -91,7 +91,6 @@ export default function TabelTransaksi() {
                                   <input
                                     type="search"
                                     className="form-control form-control-sm"
-                                    placeholder
                                     aria-controls="table-1"
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}

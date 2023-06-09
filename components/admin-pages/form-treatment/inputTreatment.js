@@ -130,7 +130,7 @@ export default function InputTreatment() {
                     <div className="form-group col-sm-12">
                       <label>Deskripsi</label>
                       <textarea
-                        class="form-control"
+                        className="form-control"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                       />

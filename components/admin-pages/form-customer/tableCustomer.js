@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 export default function TableCustomer(props) {
   const [dataCustomer, setDataCustomer] = useState([]);
   const [search, setSearch] = useState('');
-  const searched = dataCustomer.filter((customer) => customer.cust_name !== null ? customer.cust_name.toLowerCase().includes(search.toLowerCase()) : []);
+  const searched = dataCustomer ? dataCustomer.filter((customer) => customer.cust_name !== null ? customer.cust_name.toLowerCase().includes(search.toLowerCase()) : []) : [];
   const router = useRouter();
   const fetchCustomer = async () => {
     setDataCustomer([]);
@@ -28,6 +28,26 @@ export default function TableCustomer(props) {
     fetchCustomer();
   }, [props.onTriggered]);
 
+  const generateID = (e, id, name) => {
+    e.preventDefault();
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}customer/generate-customer-id`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Token': getCookie('token')
+      },
+      body: JSON.stringify({ id, cust_name: name })
+    })
+      .then((res) => res.json())
+      .then((res => {
+        if (res.data) {
+          Swal.fire('Success!', 'ID Customer berhasil digenerate', 'success');
+          fetchCustomer();
+        }
+      }))
+      .catch((err) => console.log(err));
+  }
+
   async function deleteCustomer(id) {
     Swal.fire({
       title: 'Apakah anda yakin?',
@@ -47,15 +67,15 @@ export default function TableCustomer(props) {
             },
           }
         )
-        .then((res) => {
-          if (res.status === 204) {
-            Swal.fire('Deleted!', 'Data berhasil dihapus', 'success');
-            fetchCustomer();
-          } else {
-            Swal.fire('Failed!', 'Data gagal dihapus', 'error');
-          }
-        })
-        .catch((err) => console.log(err));
+          .then((res) => {
+            if (res.status === 204) {
+              Swal.fire('Deleted!', 'Data berhasil dihapus', 'success');
+              fetchCustomer();
+            } else {
+              Swal.fire('Failed!', 'Data gagal dihapus', 'error');
+            }
+          })
+          .catch((err) => console.log(err));
       }
     })
     router.push("/admin/formcustomerpages");
@@ -203,15 +223,25 @@ export default function TableCustomer(props) {
                                     >
                                       <i className="fas fa-info-circle fa-fw" /> Details
                                     </Link>
+                                    <a type="button"
+                                      className="btn btn-sm btn-dark ml-2"
+                                      hidden={customer.cust_id && customer.cust_id !== '' ? true : false}
+                                      onClick={(e) => generateID(e, customer.id, customer.cust_name)}
+                                    >
+                                      <i className="fas fa-sync fa-fw" /> Generate ID
+                                    </a>
                                   </td>
                                 </tr>
                               )) || (
-                                <tr>
-                                  <td colSpan={4} className="text-center">
-                                    Data Kosong
-                                  </td>
-                                  </tr> 
-                              )}
+                                  <tr>
+                                    <td
+                                      colSpan={7}
+                                      className="text-center text-warning"
+                                    >
+                                      Data Order Kosong!
+                                    </td>
+                                  </tr>
+                                )}
                             </tbody>
                           </table>
                         </div>

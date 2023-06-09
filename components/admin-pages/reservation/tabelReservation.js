@@ -123,7 +123,6 @@ export default function TabelReservation() {
                                   <input
                                     type="search"
                                     className="form-control form-control-sm"
-                                    placeholder
                                     aria-controls="table-1"
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
@@ -199,7 +198,7 @@ export default function TabelReservation() {
                                   </tr>
                                 </thead>
                                 <tbody className="overflow-auto">
-                                  {searched.length < 1 ? (<tr role="row" className="odd"></tr>) : (searched.map((reservation, i) => (
+                                  {searched.length < 1 ? (<tr role="row" className="odd text-center"><td colSpan={7} className="text-center text-warning" >Data Order Kosong!</td></tr>) : (searched.map((reservation, i) => (
                                     <tr key={i} role="row" className={ (i+1) % 2 == 0 ? "even":"odd"}>
                                     <td className="sorting_1">{i+1}</td>
                                     <td>{reservation.customerName}</td>

@@ -9,7 +9,7 @@ export default function AllTreatment() {
   const router = useRouter();
 
   const fetchTreatment = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_DEV}api/v1/treatment/all`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}treatment/all`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export default function AllTreatment() {
   async function deleteTreatment(id) {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_DEV}api/v1/treatment/delete/${id}`,
+        `${process.env.NEXT_PUBLIC_API_DEV}treatment/delete/${id}`,
         {
           method: "DELETE",
           headers: {
