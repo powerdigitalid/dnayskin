@@ -298,6 +298,10 @@ export default function InputTransaksi() {
                 <textarea className="form-control" onChange={(e) => setDiagnosis(e.target.value)} />
               </div>
               <div className="form-group">
+                <label>Keterangan</label>
+                <textarea className="form-control" onChange={(e) => setDiagnosis(e.target.value)} />
+              </div>
+              <div className="form-group">
                 <label>Total Pesanan</label>
                 <div className="input-group">
                   <div class="input-group-prepend">

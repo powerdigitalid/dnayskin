@@ -223,6 +223,13 @@ export default function TableCustomer(props) {
                                     >
                                       <i className="fas fa-info-circle fa-fw" /> Details
                                     </Link>
+                                    <Link
+                                      href="/admin/formcustomerpages/detailtransaksicustomer"
+                                      type="button"
+                                      className="btn btn-sm btn-secondary ml-2"
+                                    >
+                                      <i className="fas fa-info-circle fa-fw" /> Detail Transaksi
+                                    </Link>
                                     <a type="button"
                                       className="btn btn-sm btn-dark ml-2"
                                       hidden={customer.cust_id && customer.cust_id !== '' ? true : false}
