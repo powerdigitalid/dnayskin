@@ -117,7 +117,7 @@ export default function InputTransaksi() {
       userId: getCookie("id"),
       officeId: officeId,
       order_detail: [...addedProducts, ...addedTreatment],
-      order_date: date,
+      order_date: new Date(),
       order_desc: "-",
       order_total: total,
       order_payment: "-",
@@ -282,10 +282,10 @@ export default function InputTransaksi() {
                 <option value={'Kantor_Melaya'}>Kantor Melaya Bali</option>
               </select>
             </div>
-            <div className="form-group col-6">
+            {/* <div className="form-group col-6">
               <label>Tanggal</label>
               <input type="datetime-local" className="form-control" onChange={(e) => setDate(e.target.value)} />
-            </div>
+            </div> */}
           </div>
           <div className="row">
             <div className="form-group col-12">

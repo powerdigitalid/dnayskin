@@ -148,6 +148,18 @@ export default function TableCustomer(props) {
                                   Nomer
                                 </th>
                                 <th
+                                  className="text-center sorting_asc col-1"
+                                  tabIndex={0}
+                                  aria-controls="table-1"
+                                  rowSpan={1}
+                                  colSpan={1}
+                                  aria-sort="ascending"
+                                  aria-label="#activate to sort column descending"
+                                  style={{ width: "px" }}
+                                >
+                                  Nomer Induk
+                                </th>
+                                <th
                                   className="sorting col-2"
                                   tabIndex={0}
                                   aria-controls="table-1"
@@ -186,6 +198,7 @@ export default function TableCustomer(props) {
                               {searched.length && searched.map((customer, i) => (
                                 <tr key={i} role="row" className="odd">
                                   <td className="sorting_1">{i + 1}</td>
+                                  <td>{customer.cust_id}</td>
                                   <td>{customer.cust_name}</td>
                                   <td>{customer.cust_address}</td>
                                   <td>
