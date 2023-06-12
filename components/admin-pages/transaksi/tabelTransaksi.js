@@ -7,6 +7,7 @@ export default function TabelTransaksi() {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const searched = orders.filter((order) => order.customerName !== null ? order.customerName.toLowerCase().includes(search.toLowerCase()) : []);
+  const searched2 = orders.filter((order) => order.officeId !== null ? order.officeId.toLowerCase().includes(search.toLowerCase()) : []);
   const router = useRouter();
   const handleFetchOrders = () => {
     setLoading(true);
@@ -81,6 +82,29 @@ export default function TabelTransaksi() {
                               >
                               </div>
                             </div>
+                            {/* <div className="col-sm-12 col-md-6">
+                              <div
+                                id="table-1_filter"
+                                className="dataTables_filter"
+                              >
+                                <label>
+                                  Select:
+                                  <select
+                                    className="form-control form-control-sm"
+                                    aria-controls="table-1"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                  >
+                                    <option value="">All</option>
+                                    {searched2.map((order, index) => (
+                                      <option key={index} value={order.officeId}>
+                                        {order.officeId}
+                                      </option>
+                                    ))}
+                                  </select>
+                                </label>
+                              </div>
+                            </div> */}
                             <div className="col-sm-12 col-md-6">
                               <div
                                 id="table-1_filter"

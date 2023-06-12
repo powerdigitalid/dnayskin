@@ -16,6 +16,7 @@ export default function InputTransaksi() {
   const [date, setDate] = useState("");
   const [anamnesia, setAnamnesia] = useState("");
   const [diagnosis, setDiagnosis] = useState("");
+  const [terapi, setTerapi] = useState("");
   const [total, setTotal] = useState(0);
   // end of transaction data
   const [customers, setCustomers] = useState([]);
@@ -123,7 +124,7 @@ export default function InputTransaksi() {
       order_payment: "-",
       anamnesa: anamnesia,
       diagnosa: diagnosis,
-      terapi: "-"
+      terapi: terapi,
     };
     fetch(`${process.env.NEXT_PUBLIC_API_DEV}order/create`, {
       method: "POST",
@@ -299,7 +300,7 @@ export default function InputTransaksi() {
               </div>
               <div className="form-group">
                 <label>Keterangan</label>
-                <textarea className="form-control" onChange={(e) => setDiagnosis(e.target.value)} />
+                <textarea className="form-control" onChange={(e) => setTerapi(e.target.value)} />
               </div>
               <div className="form-group">
                 <label>Total Pesanan</label>

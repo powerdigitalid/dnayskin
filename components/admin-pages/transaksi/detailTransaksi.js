@@ -24,6 +24,7 @@ export default function DetailTransaksi() {
         console.log(err);
       });
   };
+  
   useEffect(() => {
     handleFetchOrder();
   }, []);

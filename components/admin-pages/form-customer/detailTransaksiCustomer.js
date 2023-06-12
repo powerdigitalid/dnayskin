@@ -6,11 +6,16 @@ export default function TabelTransaksiCustomer() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-  const searched = orders.filter((order) => order.customerName !== null ? order.customerName.toLowerCase().includes(search.toLowerCase()) : []);
+  const searched = orders.filter((order) =>
+    order.customerName !== null
+      ? order.customerName.toLowerCase().includes(search.toLowerCase())
+      : []
+  );
   const router = useRouter();
+  const { customerName } = router.query;
   const handleFetchOrders = () => {
     setLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_API_DEV}order/all`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_DEV}order/customer/${customerName}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -21,11 +26,13 @@ export default function TabelTransaksiCustomer() {
       .then((res) => {
         if (res.data) {
           setOrders(res.data);
+          console.log(res.data);
         }
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   };
   useEffect(() => {
@@ -78,8 +85,7 @@ export default function TabelTransaksiCustomer() {
                               <div
                                 className="dataTables_length"
                                 id="table-1_length"
-                              >
-                              </div>
+                              ></div>
                             </div>
                             <div className="col-sm-12 col-md-6">
                               <div
@@ -221,18 +227,40 @@ export default function TabelTransaksiCustomer() {
                                         <td>{order.officeId}</td>
                                         <td>{order.anamnesa}</td>
                                         <td>{order.diagnosa}</td>
-                                        <td>pelembab <br />
-                                          lulur<br />
+                                        <td>
+                                          {order.order_detail ? (
+                                            order.order_detail.map(
+                                              (product, i) => (
+                                                <tr key={i}>
+                                                  <td>
+                                                    {product.product_name
+                                                      ? product.product_name
+                                                      : product.treatment_name}
+                                                  </td>
+                                                  {/* <td className="text-right">{product.price}</td> */}
+                                                </tr>
+                                              )
+                                            )
+                                          ) : (
+                                            <tr>
+                                              <td
+                                                className="text-center text-warning"
+                                                colSpan={3}
+                                              >
+                                                Belum ada produk yang
+                                                ditambahkan
+                                              </td>
+                                            </tr>
+                                          )}{" "}
+                                          
                                         </td>
-                                        <td>contoh keterangan</td>
+                                        <td>{order.terapi}</td>
                                         <td>
                                           {new Date(
                                             order.order_date
                                           ).toLocaleDateString()}
-                                        </td> 
-                                        <td>
-                                          Rp. 30.0000
                                         </td>
+                                        <td>Rp. {order.order_total}</td>
                                       </tr>
                                     ))
                                   ) : (

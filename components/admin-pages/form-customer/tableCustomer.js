@@ -237,7 +237,7 @@ export default function TableCustomer(props) {
                                       <i className="fas fa-info-circle fa-fw" /> Details
                                     </Link>
                                     <Link
-                                      href="/admin/formcustomerpages/detailtransaksicustomer"
+                                      href={`/admin/formcustomerpages/detailtransaksicustomer?customerName=${customer.cust_name}`}
                                       type="button"
                                       className="btn btn-sm btn-secondary ml-2"
                                     >
